@@ -15,8 +15,6 @@ model IpBlockList {
 
 model CountryWhitelist {
   id          Int    @id @default(autoincrement())
-  countryCode String @unique
-  countryName String
+  countryCode String @unique @db.VarChar(2)
+  countryName String @db.VarChar(64)
 }
-
-
