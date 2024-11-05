@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model IpBlockList {
+  id     Int     @id @default(autoincrement())
+  ip     String  @unique
+  reason String?
+}
+
+model CountryWhitelist {
+  id          Int    @id @default(autoincrement())
+  countryCode String @unique
+  countryName String
+}
+
+
