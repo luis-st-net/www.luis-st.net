@@ -1,0 +1,12 @@
+.errorText {
+	margin: 10px 0;
+	padding: 0;
+	text-align: center;
+}
+
+.verticalDivider {
+	margin: 1rem auto;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	height: 100px;
+}
