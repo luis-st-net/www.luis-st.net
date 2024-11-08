@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createHash, getCountry, getIp, isCountryBlocked, isIpBlocked, validateHash } from "@/lib/security";
 import { isDevelopment } from "@/lib/utility";
+import { asCookie, Cookie } from "@/lib/types";
 
 export async function middleware(request: NextRequest) {
 	console.log("Middleware");
@@ -17,14 +18,15 @@ export async function middleware(request: NextRequest) {
 		return redirect(request, "/error/missing-country");
 	}
 	if (request.cookies.has("Save-Ip") && request.cookies.has("Save-Country")) {
-		let saveIp = request.cookies.get("Save-Ip");
-		let saveCountry = request.cookies.get("Save-Country");
-		if (await validateHash(saveIp?.value, ip, getExpires(saveIp)) && await validateHash(saveCountry?.value, country, getExpires(saveCountry))) {
+		const salt = process.env.HASH_SALT as string;
+		const saveIp = asCookie(request.cookies.get("Save-Ip"));
+		const saveCountry = asCookie(request.cookies.get("Save-Country"));
+		if (await validateCookie(saveIp, ip) && await validateCookie(saveCountry, country)) {
 			return NextResponse.next();
 		}
 	}
-	const ipWhitelisted = !(await isIpBlocked(ip));
-	const countryWhitelisted = !(await isCountryBlocked(country));
+	const ipWhitelisted = isIpBlocked(ip);
+	const countryWhitelisted = isCountryBlocked(country);
 	if (!ipWhitelisted || !countryWhitelisted) {
 		return redirect(request, "/error/forbidden");
 	}
@@ -38,32 +40,27 @@ function redirect(request: NextRequest, redirectUrl: string) {
 }
 
 async function createSafeResponse(ip: string, country: string) {
-	let expires = Date.now() + 1000 * 60 * 60 * 24 * 365;
+	const expires = Date.now() + 1000 * 60 * 60 * 24 * 365;
+	const salt = process.env.HASH_SALT as string;
 	const response = NextResponse.next();
 	response.cookies.set({
 		name: "Save-Ip",
-		value: await createHash(ip, expires),
+		value: await createHash(salt, ip, expires),
 		expires: expires
 	});
 	response.cookies.set({
 		name: "Save-Country",
-		value: await createHash(country, expires),
+		value: await createHash(salt, country, expires),
 		expires: expires
 	});
 	return response;
 }
 
-function getExpires(cookie: any): number | undefined {
-	if (!cookie.expires) {
-		return undefined;
+function validateCookie(cookie: Cookie | null, value: string): Promise<boolean> {
+	if (!cookie) {
+		return Promise.resolve(false);
 	}
-	if (typeof cookie.expires === "string") {
-		return new Date(cookie.expires).getTime();
-	}
-	if (typeof cookie.expires === "number") {
-		return cookie.expires;
-	}
-	return undefined;
+	return validateHash(cookie.value, process.env.HASH_SALT as string, value, cookie.expires);
 }
 
 export const config = {
