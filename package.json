@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"seed": "ts-node prisma/seed.js"
+		"seed": "ts-node prisma/seed.js",
+		"open": "node util/open-links.js"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.22.0",
@@ -14,9 +15,10 @@
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.469.0",
 		"next": "15.0.2",
+		"open": "^10.1.0",
 		"pg": "^8.13.1",
-		"react": "19.0.0-rc-02c0e824-20241028",
-		"react-dom": "19.0.0-rc-02c0e824-20241028",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss-animate": "^1.0.7"
 	},
