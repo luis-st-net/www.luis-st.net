@@ -1,10 +1,18 @@
 import React from "react";
 import { usePathname } from "next/navigation";
+import { SidebarProvider, SidebarTrigger } from "@/lib/components/ui/sidebar";
+import ConfiguredSidebar from "@/lib/components/sidebar";
 
-export default function ({ children }: { children: React.ReactNode }) {
+export default function (
+	{ children }: { children: React.ReactNode }
+) {
 	return (
-		<div>
-			{children}
-		</div>
+		<SidebarProvider>
+			<ConfiguredSidebar/>
+			<main>
+				<SidebarTrigger/>
+				{children}
+			</main>
+		</SidebarProvider>
 	);
 }

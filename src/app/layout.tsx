@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 	publisher: "Luis Staudt",
 };
 
-export default function ({ children }: { children: React.ReactNode }) {
+export default function (
+	{ children }: { children: React.ReactNode }
+) {
 	return (
 		<html lang="en">
 		<body>

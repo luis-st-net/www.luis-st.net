@@ -80,12 +80,32 @@ const config: Config = {
     				to: {
     					height: '0'
     				}
-    			}
+    			},
+				'collapsible-expand-slide-down': { /*data-state="open"*/
+					from: {
+						opacity: '10%',
+						transform: 'translateY(-1rem)'
+					}
+				},
+				'collapsible-collapse-slide-down': { /*data-state="closed"*/
+					to: {
+						opacity: '10%',
+						transform: 'translateY(-1rem)'
+					}
+				}
     		},
     		animation: {
     			'accordion-down': 'accordion-down 0.2s ease-out',
-    			'accordion-up': 'accordion-up 0.2s ease-out'
-    		}
+    			'accordion-up': 'accordion-up 0.2s ease-out',
+				'collapsible-expand-slide': 'collapsible-expand-slide-down 400ms ease',
+				'collapsible-collapse-slide': 'collapsible-collapse-slide-down 400ms ease'
+    		},
+			transitionDuration: {
+				'400': '400ms'
+			},
+			transitionProperty: {
+				'height': 'height'
+			}
     	}
     },
 	plugins: [require("tailwindcss-animate")],
