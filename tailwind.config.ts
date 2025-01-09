@@ -102,9 +102,6 @@ const config: Config = {
     		},
 			transitionDuration: {
 				'400': '400ms'
-			},
-			transitionProperty: {
-				'height': 'height'
 			}
     	}
     },

@@ -56,8 +56,6 @@ function ConfiguredSidebarGroup(
 function ConfiguredSidebarMenuItem(
 	{ item }: { item: SidebarItem },
 ) {
-	//transition-height ease-linear duration-1000
-	//transition-height ease-linear duration-1000 data-[state=closed]:max-h-10 overflow-hidden data-[state=open]:max-h-96
 	return <Collapsible className="group/collapsible">
 		<SidebarMenuItem>
 			<CollapsibleTrigger asChild>
@@ -67,11 +65,10 @@ function ConfiguredSidebarMenuItem(
 					<Icons.ChevronRight className="ml-auto duration-400 ease group-data-[state=open]/collapsible:rotate-90"/>
 				</SidebarMenuButton>
 			</CollapsibleTrigger>
-			{/*className="transition-transform data-[state=open]:animate-collapsible-expand-slide data-[state=closed]:animate-collapsible-collapse-slide"*/}
-			<CollapsibleContent>
+			<CollapsibleContent className="transition-transform data-[state=open]:animate-collapsible-expand-slide data-[state=closed]:animate-collapsible-collapse-slide">
 				<SidebarMenuSub>
 					{item.subItems.map(subItem => (
-						<SidebarMenuSubItem key={subItem.title}>
+						<SidebarMenuSubItem key={subItem.title} className="block">
 							<SidebarMenuSubButton asChild>
 								<Link href={subItem.url}>
 									<subItem.icon/>
