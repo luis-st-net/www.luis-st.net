@@ -4,7 +4,7 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGrou
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/lib/components/ui/collapsible";
 import { SidebarItem } from "@/lib/types/ui";
 
 const overview: SidebarItem = {
@@ -65,7 +65,7 @@ function ConfiguredSidebarMenuItem(
 					<Icons.ChevronRight className="ml-auto duration-400 ease group-data-[state=open]/collapsible:rotate-90"/>
 				</SidebarMenuButton>
 			</CollapsibleTrigger>
-			<CollapsibleContent className="transition-transform data-[state=open]:animate-collapsible-expand-slide data-[state=closed]:animate-collapsible-collapse-slide">
+			<CollapsibleContent>
 				<SidebarMenuSub>
 					{item.subItems.map(subItem => (
 						<SidebarMenuSubItem key={subItem.title} className="block">
