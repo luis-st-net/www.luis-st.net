@@ -6,7 +6,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"seed": "ts-node prisma/seed.js",
+		"seed": "node prisma/seed.js",
 		"open": "node util/open-links.js"
 	},
 	"dependencies": {

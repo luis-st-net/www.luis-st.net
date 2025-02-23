@@ -1,10 +1,9 @@
 "use client";
 
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarSeparator } from "@/lib/components/ui/sidebar";
+import * as Ui from "@/lib/components/ui/";
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/lib/components/ui/collapsible";
 import { SidebarItem } from "@/lib/types/ui";
 
 const overview: SidebarItem = {
@@ -30,55 +29,55 @@ const test: SidebarItem = {
 	],
 };
 
-export default function ConfiguredSidebar() {
-	return <Sidebar collapsible="icon">
-		<SidebarContent>
-			<ConfiguredSidebarGroup groupTitle="Application-Collapsible">
-				<SidebarMenu>
-					<ConfiguredSidebarMenuItem item={overview}/>
-					<ConfiguredSidebarMenuItem item={test}/>
-				</SidebarMenu>
-			</ConfiguredSidebarGroup>
-		</SidebarContent>
-	</Sidebar>;
+export default function Sidebar() {
+	return <Ui.Sidebar collapsible="icon">
+		<Ui.SidebarContent>
+			<SidebarGroup>
+				<Ui.SidebarMenu>
+					<CollapsibleSidebarMenuItem item={overview}/>
+					<CollapsibleSidebarMenuItem item={test}/>
+				</Ui.SidebarMenu>
+			</SidebarGroup>
+		</Ui.SidebarContent>
+	</Ui.Sidebar>;
 }
 
-function ConfiguredSidebarGroup(
-	{ groupTitle, children }: { groupTitle: string, children: React.ReactNode },
+function SidebarGroup(
+	{ children }: { children: React.ReactNode },
 ) {
-	return <SidebarGroup>
-		<SidebarGroupContent>
+	return <Ui.SidebarGroup>
+		<Ui.SidebarGroupContent>
 			{children}
-		</SidebarGroupContent>
-	</SidebarGroup>;
+		</Ui.SidebarGroupContent>
+	</Ui.SidebarGroup>;
 }
 
-function ConfiguredSidebarMenuItem(
+function CollapsibleSidebarMenuItem(
 	{ item }: { item: SidebarItem },
 ) {
-	return <Collapsible className="group/collapsible">
-		<SidebarMenuItem>
-			<CollapsibleTrigger asChild>
-				<SidebarMenuButton>
+	return <Ui.Collapsible className="group/collapsible">
+		<Ui.SidebarMenuItem>
+			<Ui.CollapsibleTrigger asChild>
+				<Ui.SidebarMenuButton>
 					<item.icon/>
 					<span>{item.title}</span>
 					<Icons.ChevronRight className="ml-auto duration-400 ease group-data-[state=open]/collapsible:rotate-90"/>
-				</SidebarMenuButton>
-			</CollapsibleTrigger>
-			<CollapsibleContent>
-				<SidebarMenuSub>
+				</Ui.SidebarMenuButton>
+			</Ui.CollapsibleTrigger>
+			<Ui.CollapsibleContent>
+				<Ui.SidebarMenuSub>
 					{item.subItems.map(subItem => (
-						<SidebarMenuSubItem key={subItem.title} className="block">
-							<SidebarMenuSubButton asChild>
+						<Ui.SidebarMenuSubItem key={subItem.title} className="block">
+							<Ui.SidebarMenuSubButton asChild>
 								<Link href={subItem.url}>
 									<subItem.icon/>
 									<span>{subItem.title}</span>
 								</Link>
-							</SidebarMenuSubButton>
-						</SidebarMenuSubItem>
+							</Ui.SidebarMenuSubButton>
+						</Ui.SidebarMenuSubItem>
 					))}
-				</SidebarMenuSub>
-			</CollapsibleContent>
-		</SidebarMenuItem>
-	</Collapsible>;
+				</Ui.SidebarMenuSub>
+			</Ui.CollapsibleContent>
+		</Ui.SidebarMenuItem>
+	</Ui.Collapsible>;
 }
