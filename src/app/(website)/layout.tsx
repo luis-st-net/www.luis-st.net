@@ -9,7 +9,6 @@ export default function (
 		<Ui.SidebarProvider>
 			<Sidebar/>
 			<main>
-				<Ui.SidebarTrigger/>
 				{children}
 			</main>
 		</Ui.SidebarProvider>

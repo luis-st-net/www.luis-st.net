@@ -3,11 +3,13 @@ import * as Icons from "lucide-react";
 export interface SidebarItem {
 	title: string,
 	icon: Icons.LucideIcon,
-	subItems: SidebarSubItem[]
+	urlPrefix: string,
+	subItems: SidebarSubItem[],
 }
 
 export interface SidebarSubItem {
 	title: string,
 	url: string,
 	icon: Icons.LucideIcon
+}
 }
