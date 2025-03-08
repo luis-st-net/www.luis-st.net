@@ -4,7 +4,6 @@ import * as Ui from "@/lib/components/ui/";
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { SidebarItem } from "@/lib/types/ui";
 import { SidebarItem } from "@/lib/types";
 
 const websites: SidebarItem = {
@@ -149,7 +148,7 @@ function SidebarFooterContent(
 	{ open }: { open: boolean },
 ) {
 	if (!open) {
-		return <Icons.SettingsIcon className={open ? "ml-auto cursor-pointer" : "cursor-pointer"}/>;
+		return <div>©</div>;
 	}
 	return <div className="flex items-center bg-gray-200 rounded-md p-2">
 		<div>
@@ -157,6 +156,5 @@ function SidebarFooterContent(
 				© {new Date().getFullYear()} Luis Staudt
 			</p>
 		</div>
-		<Icons.SettingsIcon className={open ? "ml-auto cursor-pointer" : "cursor-pointer"}/>
 	</div>;
 }

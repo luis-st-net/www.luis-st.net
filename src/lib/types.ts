@@ -10,6 +10,4 @@ export interface SidebarItem {
 export interface SidebarSubItem {
 	title: string,
 	url: string,
-	icon: Icons.LucideIcon
-}
 }
