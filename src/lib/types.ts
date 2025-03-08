@@ -1,13 +1,8 @@
 import * as Icons from "lucide-react";
 
-export interface SidebarItem {
+export interface Route {
 	title: string,
-	icon: Icons.LucideIcon,
-	urlPrefix: string,
-	subItems: SidebarSubItem[],
-}
-
-export interface SidebarSubItem {
-	title: string,
-	url: string,
+	icon?: Icons.LucideIcon,
+	route: string,
+	subRoutes: Route[],
 }
