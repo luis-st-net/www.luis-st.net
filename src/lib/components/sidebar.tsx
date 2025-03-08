@@ -92,7 +92,7 @@ function CollapsibleSidebarMenuItem(
 					<Ui.SidebarMenuSub>
 						{item.subRoutes.map(subItem => (
 							<Ui.SidebarMenuSubItem key={subItem.title} className="block">
-								<Ui.SidebarMenuSubButton asChild>
+								<Ui.SidebarMenuSubButton href="" asChild>
 									<Link href={item.route + subItem.route}>
 										<span>{subItem.title}</span>
 									</Link>

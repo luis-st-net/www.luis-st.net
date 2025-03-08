@@ -18,6 +18,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/lib/components/ui/tooltip";
+import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -707,13 +708,13 @@ SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
 
 const SidebarMenuSubButton = React.forwardRef<
 	HTMLAnchorElement,
-	React.ComponentProps<"a"> & {
+	React.ComponentProps<typeof Link> & {
 	asChild?: boolean
 	size?: "sm" | "md"
 	isActive?: boolean
 }
 >(({ asChild = false, size = "md", isActive, className, ...props }, ref) => {
-	const Comp = asChild ? Slot : "a";
+	const Comp = asChild ? Slot : Link;
 	
 	return (
 		<Comp
