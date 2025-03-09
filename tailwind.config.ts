@@ -13,6 +13,32 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)",
 			},
 			colors: {
+				custom: {
+					accent: {
+						blue: "var(--custom-accent-blue)",
+						green: "var(--custom-accent-green)",
+						yellow: "var(--custom-accent-yellow)",
+						orange: "var(--custom-accent-orange)",
+						red: "var(--custom-accent-red)",
+					},
+					light: {
+						blue: "var(--custom-light-blue)",
+					},
+					dark: {
+						blue: "var(--custom-dark-blue)",
+						green: "var(--custom-dark-green)",
+						orange: "var(--custom-dark-orange)",
+						red: "var(--custom-dark-red)",
+					},
+					turquoise: "var(--custom-turquoise)",
+					green: "var(--custom-green)",
+					orange: "var(--custom-orange)",
+					red: "var(--custom-red)",
+					white: "var(--custom-white)",
+					gray: "var(--custom-gray)",
+					anthracite: "var(--custom-anthracite)",
+					black: "var(--custom-black)",
+				},
 				background: "var(--background)",
 				foreground: "var(--foreground)",
 				card: {
