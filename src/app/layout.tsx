@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import * as Ui from "@/lib/components/ui/";
 import "./globals.css";
 import React from "react";
 
@@ -14,9 +15,11 @@ export default function (
 	{ children }: { children: React.ReactNode },
 ) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 		<body>
-		{children}
+		<Ui.ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+			{children}
+		</Ui.ThemeProvider>
 		</body>
 		</html>
 	);
