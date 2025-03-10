@@ -8,27 +8,15 @@
 
 @layer base {
 	:root {
-		/*Dark: https://coolors.co/1a1f23-fca311-9bc53d-022b3a-1f7a8c*/
-		/*Light: https://coolors.co/eef0f2-fca311-9bc53d-022b3a-1f7a8c*/
-		/*
-		Extended colors
-		 - Light blue
-		 - Dark green
-		 - Dark orange
-		 - Red
-		 - Dark red
-		 - Anthracite
-		*/
-		
 		/*Main colors*/
 		--custom-light-blue: #48beff;
-		--custom-turquoise: #1f7a8c;
+		--custom-blue: #0eb1d2;
 		--custom-dark-blue: #022b3a;
-		--custom-green: #9bc53d;
 		--custom-dark-green: #58641d;
+		--custom-green: #9bc53d;
 		
-		--custom-orange: #fca311;
-		--custom-dark-orange: #db7c26;
+		--custom-yellow: #fca311;
+		--custom-orange: #db7c26;
 		--custom-red: #ef6461;
 		--custom-dark-red: #8e443d;
 		
@@ -86,10 +74,22 @@
 		--sidebar-accent: hsl(240 4.8% 95.9%);
 		--sidebar-accent-foreground: /*hsl(240 5.9% 10%)*/ var(--custom-black-secondary);
 		--sidebar-border: hsl(220 13% 91%);
-		--sidebar-ring: /*hsl(217.2 91.2% 59.8%)*/ var(--custom-turquoise);
+		--sidebar-ring: hsl(217.2 91.2% 59.8%);
 	}
 	
 	.dark {
+		/*Main colors*/
+		--custom-light-blue: #00b7db;
+		--custom-blue: #0054db;/*005FDB*/
+		--custom-dark-blue: #000f6e;
+		--custom-green: #9bc53d;
+		--custom-dark-green: #1c800f;
+		
+		--custom-yellow: #ffd046;
+		--custom-orange: #d98324;
+		--custom-red: #aa2b35;
+		--custom-dark-red: #6a0200;
+		
 		--background: /*hsl(0 0% 3.9%)*/ var(--custom-black);
 		--foreground: /*hsl(0 0% 98%)*/ var(--custom-white-primary);
 		--card: /*hsl(0 0% 3.9%)*/ var(--custom-black);

@@ -27,11 +27,11 @@ const config: Config = {
 					dark: {
 						blue: "var(--custom-dark-blue)",
 						green: "var(--custom-dark-green)",
-						orange: "var(--custom-dark-orange)",
 						red: "var(--custom-dark-red)",
 					},
-					turquoise: "var(--custom-turquoise)",
+					blue: "var(--custom-blue)",
 					green: "var(--custom-green)",
+					yellow: "var(--custom-yellow)",
 					orange: "var(--custom-orange)",
 					red: "var(--custom-red)",
 					white: "var(--custom-white)",
