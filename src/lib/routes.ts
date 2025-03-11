@@ -1,6 +1,13 @@
 import { Route } from "@/lib/types";
 import * as Icons from "lucide-react";
 
+export const aboutMe: Route = {
+	title: "About Me",
+	icon: Icons.User,
+	route: "/about-me",
+	subRoutes: [],
+}
+
 export const websites: Route = {
 	title: "Websites",
 	icon: Icons.Earth,
@@ -61,6 +68,17 @@ export const programming: Route = {
 	],
 }
 
+export const general: Route = {
+	title: "General",
+	icon: Icons.Settings,
+	route: "/general",
+	subRoutes: [
+		{ title: "Imprint", icon: Icons.FileText, route: "/imprint", subRoutes: [] },
+		{ title: "Privacy Policy", icon: Icons.Shield, route: "/privacy-policy", subRoutes: [] },
+		{ title: "Contact", icon: Icons.Mail, route: "/contact", subRoutes: [] },
+	],
+}
+
 export const base: Route = {
 	title: "Home",
 	icon: Icons.Home,
@@ -68,6 +86,7 @@ export const base: Route = {
 	subRoutes: [
 		aboutMe,
 		programming,
+		general,
 	],
 };
 

@@ -5,7 +5,7 @@ import * as Icons from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Route } from "@/lib/types";
-import { websites, projects, mods, services } from "@/lib/routes";
+import { aboutMe, programming, general } from "@/lib/routes";
 
 const animation = " transition-all duration-200 ease-in-out ";
 
@@ -20,12 +20,28 @@ export default function Sidebar() {
 			</Ui.SidebarHeader>
 			
 			<Ui.SidebarContent>
-				<SidebarGroup title="Programing">
+				<SidebarGroup title="About me">
 					<Ui.SidebarMenu>
+						<SidebarMenuItem route={aboutMe}/>
+					</Ui.SidebarMenu>
+				</SidebarGroup>
+				
+				<Ui.SidebarSeparator/>
+				
 				<SidebarGroup title="Programming">
 					<Ui.SidebarMenu>
 						{programming.subRoutes.map((route, index) => (
 							<CollapsibleSidebarMenuItem key={index} parentRoute={programming} route={route}/>
+						))}
+					</Ui.SidebarMenu>
+				</SidebarGroup>
+				
+				<Ui.SidebarSeparator/>
+				
+				<SidebarGroup title="General">
+					<Ui.SidebarMenu>
+						{general.subRoutes.map((route, index) => (
+							<SidebarMenuItem key={index} parentRoute={general} route={route}/>
 						))}
 					</Ui.SidebarMenu>
 				</SidebarGroup>
@@ -78,6 +94,21 @@ function SidebarGroup(
 				{children}
 			</Ui.SidebarGroupContent>
 		</Ui.SidebarGroup>
+	);
+}
+
+function SidebarMenuItem(
+	{ parentRoute, route }: { parentRoute?: Route, route: Route },
+) {
+	return (
+		<Ui.SidebarMenuItem>
+			<Ui.SidebarMenuButton asChild>
+				<Link href={parentRoute ? parentRoute.route + route.route : route.route}>
+					{route.icon && <route.icon/>}
+					<span>{route.title}</span>
+				</Link>
+			</Ui.SidebarMenuButton>
+		</Ui.SidebarMenuItem>
 	);
 }
 
