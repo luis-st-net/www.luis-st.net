@@ -50,3 +50,125 @@ export const services: Route = {
 	],
 };
 
+export const base: Route = {
+	title: "Home",
+	icon: Icons.Home,
+	route: "/",
+	subRoutes: [
+		websites,
+		projects,
+		mods,
+		services,
+	],
+};
+
+//region Helper functions
+function getRouteString(route: string): string {
+	if (!route.startsWith("/")) {
+		return "/" + route;
+	}
+	return route;
+}
+
+function searchRoute(path: string[], route: Route): Route | undefined {
+	if (path.length === 0) {
+		return undefined;
+	}
+	const routeString = getRouteString(path[0]);
+	if (routeString === route.route && path.length === 1) {
+		return route;
+	}
+	for (const subRoute of route.subRoutes) {
+		const foundRoute = searchRoute(path.slice(1), subRoute);
+		if (foundRoute) {
+			return foundRoute;
+		}
+	}
+	return undefined;
+}
+
+//endregion
+
+/**
+ * Returns the base route for the given path.<br>
+ * The base route is the first route in the path (either / or a sub-route of /).<br>
+ */
+export function getBaseRoute(path: string[]): Route {
+	if (path.length === 0) {
+		return base;
+	}
+	const routeString = getRouteString(path[0]);
+	if (routeString === "/") {
+		return base;
+	}
+	for (const subRoute of base.subRoutes) {
+		if (routeString === subRoute.route) {
+			return subRoute;
+		}
+	}
+	throw new Error("Base route not found, missing reference to '/" + path.join("/") + "' in root route");
+}
+
+/**
+ * Returns the route for the given path.<br>
+ * The route is the route that matches the path.<br>
+ */
+export function getRoute(path: string[]): Route {
+	if (path.length === 0) {
+		return base;
+	}
+	const routeString = getRouteString(path[0]);
+	if (routeString === "/") {
+		return base;
+	}
+	for (const subRoute of base.subRoutes) {
+		const foundRoute = searchRoute(path, subRoute);
+		if (foundRoute) {
+			return foundRoute;
+		}
+	}
+	throw new Error("Route is not found, missing reference to '/" + path.join("/") + "' in its parent route");
+}
+
+/**
+ * Returns the parent route for the given path.<br>
+ * The parent route is the route that is one level up in the path.<br>
+ */
+export function getParentRoute(path: string[]): Route {
+	return getRoute(path.slice(0, path.length - 1));
+}
+
+/**
+ * Returns the previous routes for the given path.<br>
+ * The previous routes are the routes that are one level up in the path.<br>
+ * The result is an array of routes containing all previous routes (excluding the current route).<br>
+ */
+export function getPreviousRoutes(path: string[]): Route[] {
+	let routes = [];
+	for (let i = 0; i < path.length - 1; i++) {
+		routes.push(getRoute(path.slice(0, i + 1)));
+	}
+	if (path.length !== 0) {
+		routes.unshift(base);
+	}
+	return routes;
+}
+
+/**
+ * Returns the parallel routes for the given path.<br>
+ * The parallel routes are the routes that are at the same level as the given path.<br>
+ * The result is an array of routes containing all parallel routes (including the current route).<br>
+ */
+export function getParallelRoutes(path: string[]): Route[] {
+	if (path.length === 0) {
+		return [];
+	}
+	if (path.length === 1 && getRouteString(path[0]) === "/") {
+		return [];
+	}
+	const parentRoute = getParentRoute(path);
+	if (parentRoute) {
+		return parentRoute.subRoutes;
+	}
+	throw new Error("Route is not configured correctly: /" + path.join("/"));
+}

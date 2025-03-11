@@ -7,13 +7,16 @@ import React from "react";
 import { Route } from "@/lib/types";
 import { websites, projects, mods, services } from "@/lib/routes";
 
+const animation = " transition-all duration-200 ease-in-out ";
+
 export default function Sidebar() {
 	const { open, toggleSidebar } = Ui.useSidebar();
-	
 	return (
 		<Ui.Sidebar collapsible="icon">
-			<Ui.SidebarHeader onClick={toggleSidebar} className={open ? "cursor-pointer" : "flex items-center justify-center cursor-pointer"}>
-				<SidebarHeaderContent open={open}/>
+			<Ui.SidebarHeader onClick={toggleSidebar} className="cursor-pointer">
+				<div className={"flex items-center h-14 mt-1 rounded-lg pt-0 pb-0 bg-custom-light-blue text-custom-black" + animation + (open ? "p-2" : "p-1")}>
+					<SidebarHeaderContent open={open}/>
+				</div>
 			</Ui.SidebarHeader>
 			
 			<Ui.SidebarContent>
@@ -27,8 +30,10 @@ export default function Sidebar() {
 				</SidebarGroup>
 			</Ui.SidebarContent>
 			
-			<Ui.SidebarFooter className={open ? "" : "flex items-center justify-center"}>
-				<SidebarFooterContent open={open}/>
+			<Ui.SidebarFooter>
+				<div className={"flex items-center h-10 mb-1 rounded-md pt-0 pb-0 bg-custom-light-blue text-custom-black pl-[9px] " + (open ? "p-2" : "")}>
+					<SidebarFooterContent open={open}/>
+				</div>
 			</Ui.SidebarFooter>
 		</Ui.Sidebar>
 	);
@@ -41,13 +46,13 @@ function SidebarHeaderContent(
 		return <SidebarHeaderAvatar open={open}/>;
 	}
 	return (
-		<div className="flex items-center bg-gray-200 rounded-md p-1 pt-0 pb-0">
+		<>
 			<SidebarHeaderAvatar open={open}/>
 			<div className="ml-3.5 mt-1 mb-1">
 				<p className="text-lg font-bold text-nowrap">Luis Staudt</p>
 				<p className="text-sm text-nowrap">Hobby Developer</p>
 			</div>
-		</div>
+		</>
 	);
 }
 
@@ -55,7 +60,7 @@ function SidebarHeaderAvatar(
 	{ open }: { open: boolean },
 ) {
 	return (
-		<Ui.Avatar className={open ? "w-10 h-10" : "w-7 h-7"}>
+		<Ui.Avatar className={animation + (open ? "w-10 h-10" : "w-6 h-6")}>
 			<Ui.AvatarImage src="https://avatars.githubusercontent.com/u/76595940?v=4"/>
 			<Ui.AvatarFallback>LS</Ui.AvatarFallback>
 		</Ui.Avatar>
@@ -110,15 +115,13 @@ function SidebarFooterContent(
 	{ open }: { open: boolean },
 ) {
 	if (!open) {
-		return <div>©</div>;
+		return (
+			<>©</>
+		);
 	}
 	return (
-		<div className="flex items-center bg-gray-200 rounded-md p-2">
-			<div>
-				<p className="text-base text-nowrap">
-					© {new Date().getFullYear()} Luis Staudt
-				</p>
-			</div>
-		</div>
+		<p className="text-base text-nowrap">
+			© {new Date().getFullYear()} Luis Staudt
+		</p>
 	);
 }

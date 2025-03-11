@@ -17,7 +17,7 @@ export default function (
 	return (
 		<html lang="en" suppressHydrationWarning>
 		<body>
-		<Ui.ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+		<Ui.ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 			{children}
 		</Ui.ThemeProvider>
 		</body>
