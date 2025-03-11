@@ -22,10 +22,11 @@ export default function Sidebar() {
 			<Ui.SidebarContent>
 				<SidebarGroup title="Programing">
 					<Ui.SidebarMenu>
-						<CollapsibleSidebarMenuItem item={websites}/>
-						<CollapsibleSidebarMenuItem item={projects}/>
-						<CollapsibleSidebarMenuItem item={mods}/>
-						<CollapsibleSidebarMenuItem item={services}/>
+				<SidebarGroup title="Programming">
+					<Ui.SidebarMenu>
+						{programming.subRoutes.map((route, index) => (
+							<CollapsibleSidebarMenuItem key={index} parentRoute={programming} route={route}/>
+						))}
 					</Ui.SidebarMenu>
 				</SidebarGroup>
 			</Ui.SidebarContent>
@@ -81,24 +82,24 @@ function SidebarGroup(
 }
 
 function CollapsibleSidebarMenuItem(
-	{ item }: { item: Route },
+	{ parentRoute, route }: { parentRoute: Route, route: Route },
 ) {
 	return (
 		<Ui.Collapsible className="group/collapsible">
 			<Ui.SidebarMenuItem>
 				<Ui.CollapsibleTrigger asChild>
 					<Ui.SidebarMenuButton>
-						{item.icon && <item.icon/>}
-						<span>{item.title}</span>
+						{route.icon && <route.icon/>}
+						<span>{route.title}</span>
 						<Icons.ChevronRight className="ml-auto duration-400 ease group-data-[state=open]/collapsible:rotate-90"/>
 					</Ui.SidebarMenuButton>
 				</Ui.CollapsibleTrigger>
 				<Ui.CollapsibleContent>
 					<Ui.SidebarMenuSub>
-						{item.subRoutes.map(subItem => (
+						{route.subRoutes.map(subItem => (
 							<Ui.SidebarMenuSubItem key={subItem.title} className="block">
 								<Ui.SidebarMenuSubButton href="" asChild>
-									<Link href={item.route + subItem.route}>
+									<Link href={parentRoute.route + route.route + subItem.route}>
 										<span>{subItem.title}</span>
 									</Link>
 								</Ui.SidebarMenuSubButton>

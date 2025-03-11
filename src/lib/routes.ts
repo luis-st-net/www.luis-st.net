@@ -49,16 +49,25 @@ export const services: Route = {
 		{ title: "Mail Web Ui", route: "/mail-web-ui", subRoutes: [] },
 	],
 };
+export const programming: Route = {
+	title: "Programming",
+	icon: Icons.Code,
+	route: "/programming",
+	subRoutes: [
+		websites,
+		projects,
+		mods,
+		services,
+	],
+}
 
 export const base: Route = {
 	title: "Home",
 	icon: Icons.Home,
 	route: "/",
 	subRoutes: [
-		websites,
-		projects,
-		mods,
-		services,
+		aboutMe,
+		programming,
 	],
 };
 
