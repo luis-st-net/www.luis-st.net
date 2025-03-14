@@ -10,7 +10,7 @@ export default function NavigationBar() {
 	const path = usePathname().split("/").filter(s => s.length > 0);
 	
 	return (
-		<div className="flex flex-row items-center h-14 m-4 mt-3 rounded-lg p-4 pr-2 bg-gradient-to-r from-custom-light-blue to-custom-green">
+		<div className="flex flex-row items-center h-14 m-4 mt-3 mb-8 rounded-lg p-4 bg-gradient-to-r from-custom-light-blue to-custom-green">
 			<Breadcrumb path={path}/>
 			<Ui.ThemeToggle className="ml-auto"/>
 		</div>

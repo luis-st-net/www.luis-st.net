@@ -9,9 +9,9 @@ export default function (
 	return (
 		<Ui.SidebarProvider>
 			<Sidebar/>
-			<div className="flex flex-col w-full h-full">
+			<div className="flex flex-col h-screen w-full">
 				<NavigationBar/>
-				<main>
+				<main className="flex flex-col items-center flex-1 ml-4 mr-4 overflow-hidden overflow-y-auto">
 					{children}
 				</main>
 			</div>

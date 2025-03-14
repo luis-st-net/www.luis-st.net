@@ -14,6 +14,8 @@ const config: Config = {
 			},
 			colors: {
 				custom: {
+					primary: "var(--custom-primary)",
+					secondary: "var(--custom-secondary)",
 					accent: {
 						blue: "var(--custom-accent-blue)",
 						green: "var(--custom-accent-green)",
@@ -23,21 +25,33 @@ const config: Config = {
 					},
 					light: {
 						blue: "var(--custom-light-blue)",
+						gray: "var(--custom-light-gray)",
 					},
 					dark: {
 						blue: "var(--custom-dark-blue)",
 						green: "var(--custom-dark-green)",
 						red: "var(--custom-dark-red)",
+						gray: "var(--custom-dark-gray)",
 					},
 					blue: "var(--custom-blue)",
 					green: "var(--custom-green)",
 					yellow: "var(--custom-yellow)",
 					orange: "var(--custom-orange)",
 					red: "var(--custom-red)",
-					white: "var(--custom-white)",
 					gray: "var(--custom-gray)",
 					anthracite: "var(--custom-anthracite)",
-					black: "var(--custom-black)",
+					white: {
+						DEFAULT: "var(--custom-white)",
+						primary: "var(--custom-white-primary)",
+						secondary: "var(--custom-white-secondary)",
+						tertiary: "var(--custom-white-tertiary)",
+					},
+					black: {
+						DEFAULT: "var(--custom-black)",
+						primary: "var(--custom-black-primary)",
+						secondary: "var(--custom-black-secondary)",
+						tertiary: "var(--custom-black-tertiary)",
+					},
 				},
 				background: "var(--background)",
 				foreground: "var(--foreground)",

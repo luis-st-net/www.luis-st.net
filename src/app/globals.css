@@ -42,6 +42,13 @@
 		--custom-accent-orange: #fa7b4c;
 		--custom-accent-red: #ef6461;
 		
+		/*Base colors*/
+		--custom-primary: var(--custom-white);
+		--custom-secondary: var(--custom-white-primary);
+		/*--custom-tertiary: unset;*/
+		/*--custom-quaternary: unset;*/
+		
+		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 100%)*/ var(--custom-white);
 		--foreground: /*hsl(0 0% 3.9%)*/ var(--custom-black);
 		--card: /*hsl(0 0% 100%)*/ var(--custom-white);
@@ -80,7 +87,7 @@
 	.dark {
 		/*Main colors*/
 		--custom-light-blue: #00b7db;
-		--custom-blue: #0054db;/*005FDB*/
+		--custom-blue: #0054db; /*005FDB*/
 		--custom-dark-blue: #000f6e;
 		--custom-green: #9bc53d;
 		--custom-dark-green: #1c800f;
@@ -90,6 +97,13 @@
 		--custom-red: #aa2b35;
 		--custom-dark-red: #6a0200;
 		
+		/*Base colors*/
+		--custom-primary: var(--custom-black);
+		--custom-secondary: var(--custom-black-secondary);
+		/*--custom-tertiary: unset;*/
+		/*--custom-quaternary: unset;*/
+		
+		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 3.9%)*/ var(--custom-black);
 		--foreground: /*hsl(0 0% 98%)*/ var(--custom-white-primary);
 		--card: /*hsl(0 0% 3.9%)*/ var(--custom-black);
