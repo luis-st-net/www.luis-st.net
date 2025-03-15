@@ -74,7 +74,6 @@ export const general: Route = {
 	route: "/general",
 	subRoutes: [
 		{ title: "Imprint", icon: Icons.FileText, route: "/imprint", subRoutes: [] },
-		{ title: "Privacy Policy", icon: Icons.Shield, route: "/privacy-policy", subRoutes: [] },
 		{ title: "Contact", icon: Icons.Mail, route: "/contact", subRoutes: [] },
 	],
 }
