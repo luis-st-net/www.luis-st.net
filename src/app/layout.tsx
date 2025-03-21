@@ -19,6 +19,7 @@ export default function (
 		<body>
 		<Ui.ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 			{children}
+			<Ui.Toaster/>
 		</Ui.ThemeProvider>
 		</body>
 		</html>

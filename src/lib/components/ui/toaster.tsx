@@ -10,7 +10,7 @@ import {
 	ToastViewport,
 } from "@/lib/components/ui/toast";
 
-export function Toaster() {
+export function ToasterProvider() { // Renamed from 'Toaster' to 'ToasterProvider' because 'sonner' already exports a 'Toaster' component
 	const { toasts } = useToast();
 	
 	return (

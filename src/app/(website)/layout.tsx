@@ -14,6 +14,7 @@ export default function (
 				<main className="flex flex-col items-center flex-1 ml-4 mr-4 overflow-hidden overflow-y-auto">
 					{children}
 				</main>
+				<Ui.ToasterProvider/>
 			</div>
 		</Ui.SidebarProvider>
 	);
