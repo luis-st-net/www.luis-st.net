@@ -25,6 +25,7 @@ export default function () {
 			subject: "",
 			message: "",
 			acceptTerms: false,
+			bot: true,
 		},
 	});
 	
@@ -76,6 +77,8 @@ export default function () {
 						<Ui.FormField control={form.control} name="message" render={MessageFormFieldRenderer}/>
 						
 						<Ui.FormField control={form.control} name="acceptTerms" render={AcceptTermsFormFieldRenderer}/>
+						
+						<Ui.FormField control={form.control} name="bot" render={BotFieldRenderer}/>
 						
 						<Ui.Button type="submit" className="w-full" disabled={isSubmitting}>
 							{isSubmitting ? "Sending..." : "Send Message"}
@@ -148,10 +151,35 @@ function AcceptTermsFormFieldRenderer(
 					</Ui.FormLabel>
 				</div>
 			</div>
-			<div className="min-h-[20px]">
-				<Ui.FormMessage/>
-			</div>
+			<Ui.FormMessage/>
 		</Ui.FormItem>
+	);
+}
+
+function BotFieldRenderer(
+	{ field, fieldState, formState }: FieldRendererProps<"bot">,
+) {
+	return (
+		<div>
+			<Ui.FormItem>
+				<div className="flex flex-row items-start space-x-3 space-y-0">
+					<Ui.FormControl>
+						<Ui.Checkbox
+							checked={field.value}
+							onCheckedChange={field.onChange}
+							name={field.name}
+							ref={field.ref}
+							onBlur={field.onBlur}
+						/>
+					</Ui.FormControl>
+					<div className="space-y-1 leading-none">
+						<Ui.FormLabel>
+							I am a bot, i just want to send spam.
+						</Ui.FormLabel>
+					</div>
+				</div>
+			</Ui.FormItem>
+		</div>
 	);
 }
 

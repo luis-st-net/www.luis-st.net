@@ -32,6 +32,13 @@ export async function sendContactEmail(data: ContactFormValues) {
 			};
 		}
 		
+		if (data.bot === true) {
+			return {
+				success: true,
+				message: "Message not sent. Please uncheck the 'I am a bot' field if you're human",
+			};
+		}
+		
 		const mailOptions: Mail.Options = {
 			from: `${data.name} via <${process.env.SMTP_USER}>`,
 			to: process.env.SMTP_USER,
@@ -43,7 +50,6 @@ export async function sendContactEmail(data: ContactFormValues) {
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Subject:</strong> ${data.subject}</p>
-          <br/>
           <p>${data.message.replace(/\n/g, "<br/>")}</p>
         </div>
       `,
