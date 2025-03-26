@@ -66,8 +66,12 @@ function SidebarHeaderContent(
 		<>
 			<SidebarHeaderAvatar open={open}/>
 			<div className="ml-3.5 mt-1 mb-1">
-				<p className="text-lg font-bold text-nowrap">Luis Staudt</p>
-				<p className="text-sm text-nowrap">Hobby Developer</p>
+				<p className="text-lg font-bold text-nowrap">
+					Luis Staudt
+				</p>
+				<p className="text-sm text-nowrap">
+					Hobby Developer
+				</p>
 			</div>
 		</>
 	);
@@ -79,7 +83,9 @@ function SidebarHeaderAvatar(
 	return (
 		<Ui.Avatar className={animation + (open ? "w-10 h-10" : "w-6 h-6")}>
 			<Ui.AvatarImage src="https://avatars.githubusercontent.com/u/76595940?v=4"/>
-			<Ui.AvatarFallback>LS</Ui.AvatarFallback>
+			<Ui.AvatarFallback>
+				LS
+			</Ui.AvatarFallback>
 		</Ui.Avatar>
 	);
 }
@@ -121,7 +127,9 @@ function CollapsibleSidebarMenuItem(
 				<Ui.CollapsibleTrigger asChild>
 					<Ui.SidebarMenuButton>
 						{route.icon && <route.icon/>}
-						<span>{route.title}</span>
+						<span>{
+							route.title}
+						</span>
 						<Icons.ChevronRight className="ml-auto duration-400 ease group-data-[state=open]/collapsible:rotate-90"/>
 					</Ui.SidebarMenuButton>
 				</Ui.CollapsibleTrigger>
@@ -131,7 +139,9 @@ function CollapsibleSidebarMenuItem(
 							<Ui.SidebarMenuSubItem key={subItem.title} className="block">
 								<Ui.SidebarMenuSubButton href="" asChild>
 									<Link href={parentRoute.route + route.route + subItem.route}>
-										<span>{subItem.title}</span>
+										<span>
+											{subItem.title}
+										</span>
 									</Link>
 								</Ui.SidebarMenuSubButton>
 							</Ui.SidebarMenuSubItem>
