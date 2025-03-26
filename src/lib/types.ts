@@ -1,5 +1,6 @@
 import * as Icons from "lucide-react";
 import { z } from "zod";
+import type { IconType } from "react-icons";
 
 export interface Route {
 	title: string,
@@ -18,3 +19,11 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+export interface SocialLink {
+	icon: IconType
+	href: string,
+	title: string,
+	username: string,
+	description: string,
+}
