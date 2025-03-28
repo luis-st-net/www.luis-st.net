@@ -9,21 +9,19 @@ declare global {
 }
 
 export default function CodeBlock(
-	{ code, language, showLineNumbers = true, title }: { code: string; language?: string; showLineNumbers?: boolean; title?: string },
+	{ code, language, showLineNumbers = true, title }: { code: string; language: string; showLineNumbers?: boolean; title?: string },
 ) {
 	const { resolvedTheme } = useTheme();
-
+	
 	useEffect(() => {
 		if (typeof window === "undefined") {
 			return;
 		}
-
+		
 		const initializePrism = async () => {
 			try {
-				// Load Prism core
 				const { default: Prism } = await import("prismjs");
-
-				// Load language components only once
+				
 				if (!window.prismLanguagesLoaded) {
 					const languageImports = [
 						() => import("prismjs/components/prism-javascript"),
@@ -42,12 +40,11 @@ export default function CodeBlock(
 						() => import("prismjs/components/prism-rust"),
 						() => import("prismjs/components/prism-markup"),
 					];
-
+					
 					await Promise.all(languageImports.map(importFn => importFn()));
 					window.prismLanguagesLoaded = true;
 				}
-
-				// Highlight code after a brief delay to ensure styles are applied
+				
 				requestAnimationFrame(() => {
 					Prism.highlightAll();
 				});
@@ -55,21 +52,21 @@ export default function CodeBlock(
 				console.error("Error initializing Prism:", error);
 			}
 		};
-
-		initializePrism();
+		
+		(async () => {
+			await initializePrism();
+		})();
 	}, [resolvedTheme]);
-
-	const normalizedLanguage = language?.toLowerCase() || "javascript";
-
+	
 	return (
-		<div className={"code-block-wrapper"}>
+		<div className="code-block-wrapper">
 			{title && (
 				<div className="code-block-title">
 					<span>{title}</span>
 				</div>
 			)}
-			<pre className={`language-${normalizedLanguage}`}>
-				<code className={`language-${normalizedLanguage}`}>{code}</code>
+			<pre className={"language-" + language}>
+				<code className={"language-" + language}>{code}</code>
 			</pre>
 		</div>
 	);
