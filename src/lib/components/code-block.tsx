@@ -1,5 +1,5 @@
 import * as Ui from "@/lib/components/ui/";
-import React, { useEffect } from "react";
+import React, { HTMLAttributes, useEffect } from "react";
 import { useTheme } from "next-themes";
 import "./code-block.css";
 
@@ -10,7 +10,7 @@ declare global {
 }
 
 export default function CodeBlock(
-	{ code, language, showLineNumbers = true, title }: { code: string; language: string; showLineNumbers?: boolean; title?: string },
+	{ children, language, title, className, ...props }: HTMLAttributes<HTMLDivElement> & { language: string, title?: string, children: string },
 ) {
 	const { resolvedTheme } = useTheme();
 	
@@ -55,18 +55,18 @@ export default function CodeBlock(
 	}, [resolvedTheme]);
 	
 	return (
-		<div className="rounded-md overflow-hidden">
+		<div className={className} {...props}>
 			{title && (
-				<div className="py-2 px-4 font-mono bg-custom-secondary dark:bg-custom-tertiary">
+				<div className="py-2 px-4 overflow-hidden font-mono bg-custom-secondary dark:bg-custom-tertiary">
 					{title}
 				</div>
 			)}
 			{title && (
 				<Ui.Separator className="h-[2px] bg-custom-quaternary"/>
 			)}
-			<pre className={"m-0 p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code language-" + language}>
+			<pre className={"m-0 rounded-md p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code overflow-scroll language-" + language}>
 				<code className={"language-" + language}>
-					{code}
+					{children}
 				</code>
 			</pre>
 		</div>
