@@ -16,6 +16,8 @@ const config: Config = {
 				custom: {
 					primary: "var(--custom-primary)",
 					secondary: "var(--custom-secondary)",
+					tertiary: "var(--custom-tertiary)",
+					quaternary: "var(--custom-quaternary)",
 					accent: {
 						blue: "var(--custom-accent-blue)",
 						green: "var(--custom-accent-green)",

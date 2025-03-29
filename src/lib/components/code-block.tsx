@@ -1,3 +1,4 @@
+import * as Ui from "@/lib/components/ui/";
 import React, { useEffect } from "react";
 import { useTheme } from "next-themes";
 import "./code-block.css";
@@ -25,16 +26,11 @@ export default function CodeBlock(
 				if (!window.prismLanguagesLoaded) {
 					const languageImports = [
 						() => import("prismjs/components/prism-javascript"),
-						() => import("prismjs/components/prism-jsx"),
 						() => import("prismjs/components/prism-typescript"),
-						() => import("prismjs/components/prism-tsx"),
 						() => import("prismjs/components/prism-css"),
-						() => import("prismjs/components/prism-scss"),
 						() => import("prismjs/components/prism-python"),
 						() => import("prismjs/components/prism-java"),
-						() => import("prismjs/components/prism-bash"),
 						() => import("prismjs/components/prism-json"),
-						() => import("prismjs/components/prism-markdown"),
 						() => import("prismjs/components/prism-sql"),
 						() => import("prismjs/components/prism-csharp"),
 						() => import("prismjs/components/prism-rust"),
@@ -59,14 +55,19 @@ export default function CodeBlock(
 	}, [resolvedTheme]);
 	
 	return (
-		<div className="code-block-wrapper">
+		<div className="rounded-md overflow-hidden">
 			{title && (
-				<div className="code-block-title">
-					<span>{title}</span>
+				<div className="py-2 px-4 font-mono bg-custom-secondary dark:bg-custom-tertiary">
+					{title}
 				</div>
 			)}
-			<pre className={"language-" + language}>
-				<code className={"language-" + language}>{code}</code>
+			{title && (
+				<Ui.Separator className="h-[2px] bg-custom-quaternary"/>
+			)}
+			<pre className={"m-0 p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code language-" + language}>
+				<code className={"language-" + language}>
+					{code}
+				</code>
 			</pre>
 		</div>
 	);

@@ -30,10 +30,12 @@
 		/*Shades of white and black*/
 		--custom-white-primary: #f2f2f2;
 		--custom-white-secondary: #ebebeb;
-		--custom-white-tertiary: #e0e0e0;
+		--custom-white-tertiary: #c2c2c2;
+		--custom-white-quaternary: #d5d5d5;
 		--custom-black-primary: #0f1112;
 		--custom-black-secondary: #171a1c;
 		--custom-black-tertiary: #1e2224;
+		--custom-black-quaternary: #343a3d;
 		
 		/*Accent colors*/
 		--custom-accent-blue: #80a1c1;
@@ -45,8 +47,8 @@
 		/*Base colors*/
 		--custom-primary: var(--custom-white);
 		--custom-secondary: var(--custom-white-primary);
-		/*--custom-tertiary: unset;*/
-		/*--custom-quaternary: unset;*/
+		--custom-tertiary: var(--custom-white-tertiary);
+		--custom-quaternary: var(--custom-white-quaternary);
 		
 		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 100%)*/ var(--custom-white);
@@ -100,8 +102,8 @@
 		/*Base colors*/
 		--custom-primary: var(--custom-black);
 		--custom-secondary: var(--custom-black-secondary);
-		/*--custom-tertiary: unset;*/
-		/*--custom-quaternary: unset;*/
+		--custom-tertiary: var(--custom-black-tertiary);
+		--custom-quaternary: var(--custom-black-quaternary);
 		
 		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 3.9%)*/ var(--custom-black);
