@@ -1,5 +1,6 @@
 "use client";
 
+import * as Ui from "@/lib/components/ui/";
 import React from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import ContentPane from "@/lib/components/content-pane";
@@ -14,7 +15,6 @@ const github: SocialLink = {
 	username: "Luis-St",
 	description: "Projects and contributions",
 };
-
 const linkedin: SocialLink = {
 	icon: FaLinkedin,
 	href: "https://www.linkedin.com/in/luis-staudt-63b384285",
@@ -22,7 +22,6 @@ const linkedin: SocialLink = {
 	username: "Luis Staudt",
 	description: "Networking and professional profile",
 };
-
 const discord: SocialLink = {
 	icon: FaDiscord,
 	href: "https://www.discordapp.com/users/488344980415578124/",
@@ -31,40 +30,64 @@ const discord: SocialLink = {
 	description: "Chat and community",
 };
 
-const java = `
-public class Me {
-    public static void main(String[] args) {
-		System.out.println("Hello World!");
+const me = `
+{
+	"me": {
+		"name": "Luis Staudt",
+		"age": ${getAgeFromBirthdate()},
+		"location": {
+			"country": "Germany"
+		},
+		"interests": [
+			"backend development",
+			"theoretical computer science",
+			"programming languages",
+			"web development"
+		],
+		"useless knowledge": [
+			"java bytecode",
+			"advanced compiler fundamentals",
+			"be able to center a div",
+			"knowledge of how to brew coffee with a tea pot"
+		]
 	}
 }
-`;
+`.trim();
 
 export default function () {
 	return (
-		<div className="w-3/4">
-			<div className="flex flex-row m-10">
-				<div className="flex flex-col max-w-[30%]">
-					<h2 className="text-2xl mb-6">
+		<div className="w-full flex flex-col items-center 2xl:w-3/4">
+			<div className="m-10 flex flex-col items-center 2xl:flex-row">
+				<div className="w-[30rem] flex flex-col items-center 2xl:max-w-[50%] 2xl:items-start">
+					<h2 className="text-2xl mb-8">
 						Hey, I'm
 					</h2>
-					<h1 className="text-4xl mb-6">
+					<h1 className="text-4xl font-bold mb-8">
 						Luis
 					</h1>
-					<p className="text-lg mb-4">
-						I'm a software developer and computer science student at the University of Furtwangen.
-						Developing software and exploring new technologies brings me great joy.
-						My toolkit includes a variety of programming languages for different projects.
-						I prefer to develop backend applications but I also have experience in developing web applications.
+					<p className="text-lg mb-4 2xl:w-2/3">
+						a software developer and computer science student at the University of Furtwangen.
+						I'm passionate about software development and constantly exploring emerging technologies.
+						I've mastered several programming languages.
+						While my expertise primarily lies in backend development, I'm also proficient in developing web applications.
 					</p>
 				</div>
 				<div>
-					<CodeBlock language="java" code={java}/>
+					<CodeBlock language="json" className="w-fit xl:w-full">
+						{me}
+					</CodeBlock>
 				</div>
 			</div>
-			<div className="flex flex-row gap-10">
-				<SocialLinkPane {...github}/>
-				<SocialLinkPane {...linkedin}/>
-				<SocialLinkPane {...discord}/>
+			
+			<div className="flex flex-col mt-96">
+				<div className="text-4xl mb-6">
+					Socials
+				</div>
+				<div className="flex flex-row flex-wrap gap-10">
+					<SocialLinkPane {...github}/>
+					<SocialLinkPane {...linkedin}/>
+					<SocialLinkPane {...discord}/>
+				</div>
 			</div>
 		</div>
 	);
@@ -94,4 +117,15 @@ function SocialLinkPane(
 			</ContentPane>
 		</Link>
 	);
+}
+
+function getAgeFromBirthdate(): number {
+	const birthdate = new Date(2004, 3, 11);
+	const today = new Date();
+	
+	let years = today.getFullYear() - birthdate.getFullYear();
+	if (today.getMonth() < birthdate.getMonth() || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())) {
+		years--;
+	}
+	return years;
 }
