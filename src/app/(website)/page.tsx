@@ -3,7 +3,7 @@ import React from "react";
 
 export default function () {
 	return (
-		<ContentPane>
+		<ContentPane defaultColor={true}>
 			<div className="max-w-96">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
 				nulla justo, eget luctus tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.

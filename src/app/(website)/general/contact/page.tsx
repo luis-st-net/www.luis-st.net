@@ -61,7 +61,7 @@ export default function () {
 	}
 	
 	return (
-		<ContentPane className="w-1/3">
+		<ContentPane defaultColor={true} className="w-1/3">
 			<div className="m-4">
 				<h1 className="text-4xl mb-4">
 					Contact Us

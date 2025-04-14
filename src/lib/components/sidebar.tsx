@@ -6,15 +6,16 @@ import Link from "next/link";
 import React from "react";
 import { Route } from "@/lib/types";
 import { aboutMe, programming, general } from "@/lib/routes";
+import { cn } from "@/lib/utils";
 
-const animation = " transition-all duration-200 ease-in-out ";
+const animation = "transition-all duration-200 ease-in-out";
 
 export default function Sidebar() {
 	const { open, toggleSidebar } = Ui.useSidebar();
 	return (
 		<Ui.Sidebar collapsible="icon">
 			<Ui.SidebarHeader onClick={toggleSidebar} className="cursor-pointer">
-				<div className={"flex items-center h-14 mt-1 rounded-lg pt-0 pb-0 bg-custom-light-blue text-custom-black" + animation + (open ? "p-2" : "p-1")}>
+				<div className={cn("flex items-center h-14 mt-1 rounded-lg pt-0 pb-0 bg-custom-light-blue text-custom-black", animation, (open ? "p-2" : "p-1"))}>
 					<SidebarHeaderContent open={open}/>
 				</div>
 			</Ui.SidebarHeader>
@@ -48,7 +49,7 @@ export default function Sidebar() {
 			</Ui.SidebarContent>
 			
 			<Ui.SidebarFooter>
-				<div className={"flex items-center h-10 mb-1 rounded-md pt-0 pb-0 bg-custom-light-blue text-custom-black pl-[9px] " + (open ? "p-2" : "")}>
+				<div className={cn("flex items-center h-10 mb-1 rounded-md pt-0 pb-0 bg-custom-light-blue text-custom-black pl-[9px]", (open ? "p-2" : ""))}>
 					<SidebarFooterContent open={open}/>
 				</div>
 			</Ui.SidebarFooter>
@@ -81,7 +82,7 @@ function SidebarHeaderAvatar(
 	{ open }: { open: boolean },
 ) {
 	return (
-		<Ui.Avatar className={animation + (open ? "w-10 h-10" : "w-6 h-6")}>
+		<Ui.Avatar className={cn(animation, (open ? "w-10 h-10" : "w-6 h-6"))}>
 			<Ui.AvatarImage src="https://avatars.githubusercontent.com/u/76595940?v=4"/>
 			<Ui.AvatarFallback>
 				LS

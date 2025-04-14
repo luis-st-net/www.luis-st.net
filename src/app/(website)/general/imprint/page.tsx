@@ -13,7 +13,7 @@ export default function () {
 	const ownerMail = process.env.NEXT_PUBLIC_OWNER_MAIL as string;
 	
 	return (
-		<ContentPane className="w-3/5">
+		<ContentPane defaultColor={true} className="w-3/5">
 			<div className="m-4">
 				<h1 className="text-4xl mb-6">
 					Imprint
