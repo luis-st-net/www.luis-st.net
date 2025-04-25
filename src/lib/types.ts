@@ -27,3 +27,29 @@ export interface SocialLink {
 	username: string,
 	description: string,
 }
+
+export type ExperienceLevel =
+	| "Beginner"        // Basic knowledge, can write simple programs/scripts
+	| "Proficient"      // Comfortable with core concepts, can build applications
+	| "Experienced"     // Strong knowledge, can architect solutions and build complex systems
+	| "Advanced"        // Deep understanding of language internals and best practices
+	| "Expert";         // Mastery level, can optimize and teach others
+
+export type SkillType =
+	| "language"
+	| "framework"
+	| "build system"
+	| "development tool";
+
+export interface SkillColor {
+	background: string,
+	text: string,
+}
+
+export interface Skill {
+	type: SkillType,
+	name: string,
+	experience: ExperienceLevel,
+	description: string,
+	color: SkillColor,
+}

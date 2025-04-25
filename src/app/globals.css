@@ -50,6 +50,35 @@
 		--custom-tertiary: var(--custom-white-tertiary);
 		--custom-quaternary: var(--custom-white-quaternary);
 		
+		/*Programming Languages*/
+		--language-java: #f89820;
+		--language-python: #4b8bbe;
+		--language-javascript: #f0db4f;
+		--language-typescript: #007acc;
+		--language-csharp: #178600;
+		--language-cpp: #f34b7d;
+		--language-shell: #4e5d6b;
+		--language-kotlin: #d023b1;
+		--language-groovy: #4b8b8d;
+		
+		/*Frameworks*/
+		--framework-spring: #6db33f;
+		--framework-asp-dot-net: #7014e6;
+		--framework-react: #58c4dc;
+		--framework-next-js: #ffffff;
+		--framework-vue-js: #42b883;
+		--framework-tailwind: #00bcff;
+		--framework-java-fx: #51b9b5;
+		--framework-wpf: #b975da;
+		--framework-qt: #2bd781;
+		--framework-unity: #7c7c7c;
+		
+		/*Build Systems*/
+		--build-system-gradle: #1a2f5c;
+		--build-system-maven: #a8215b;
+		--build-system-npm: #ca3432;
+		--build-system-vite: #ffc820;
+		
 		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 100%)*/ var(--custom-white);
 		--foreground: /*hsl(0 0% 3.9%)*/ var(--custom-black);
