@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import ContentPane from "@/lib/components/content-pane";
-import Link from "next/link";
-import { Skill, SocialLink } from "@/lib/types";
+import { SocialLink } from "@/lib/types";
 import CodeBlock from "@/lib/components/code-block";
 import { getAgeFromBirthdate } from "@/lib/utility";
-import { cn } from "@/lib/utils";
-import { languages, frameworks } from "@/lib/skills";
+import SocialLinkBadge from "@/lib/components/social-link-badge";
 
 const github: SocialLink = {
 	icon: FaGithub,
@@ -63,28 +61,20 @@ export default function () {
 	return (
 		<div className="w-full flex flex-col items-center 2xl:w-3/4">
 			<IntroductionSection/>
-			<ProfileDetailsSection/>
+			<SocialSection/>
 		</div>
 	);
 }
 
 function IntroductionSection() {
 	return (
-		<div className="min-h-[calc(100vh-68px)] flex flex-col items-center justify-center 2xl:flex-row">
-			<div className="w-[30rem] flex flex-col items-center 2xl:max-w-[50%] 2xl:items-start">
-				<h3 className="text-2xl mb-8">
-					Hey, I'm
-				</h3>
-				<h1 className="text-6xl font-bold mb-8">
-					Luis
-				</h1>
-				<p className="text-lg mb-4 2xl:w-2/3">
-					a software developer and computer science student at the University of Furtwangen.
-					I'm passionate about software development and constantly exploring emerging technologies.
-					I've mastered several programming languages.
-					While my expertise primarily lies in backend development, I'm also proficient in developing web applications.
-				</p>
-			</div>
+		<div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center 2xl:flex-row">
+			<InformationCard intro="Hi, I'm" title="Luis">
+				I'm a software developer and computer science student at the University of Furtwangen.
+				I'm passionate about software development and constantly exploring emerging technologies.
+				I've mastered several programming languages.
+				While my expertise primarily lies in backend development, I'm also proficient in developing web applications.
+			</InformationCard>
 			<ContentPane defaultColor={true} defaultSpacing={false}>
 				<CodeBlock language="json" className="w-fit xl:w-full">
 					{me}
@@ -94,102 +84,35 @@ function IntroductionSection() {
 	);
 }
 
-function ProfileDetailsSection() {
+function SocialSection() {
 	return (
-		<div className="min-h-[calc(calc(100vh-68px)*4)] flex flex-col items-center">
-			<div className="min-h-[calc(100vh-68px)] flex flex-col">
-				<h2 className="text-4xl mb-6">
-					Languages
-				</h2>
-				<div className="flex flex-row flex-wrap gap-10">
-					{languages.map((language) => (
-						<SkillBadge key={language.name} {...language}/>
-					))}
-				</div>
-			</div>
-			<div className="min-h-[calc(100vh-68px)] flex flex-col">
-				<h2 className="text-4xl mb-6">
-					Frameworks
-				</h2>
-				<div className="flex flex-row flex-wrap gap-10">
-					{frameworks.map((framework) => (
-						<SkillBadge key={framework.name} {...framework}/>
-					))}
-				</div>
-			</div>
-			
-			<div className="min-h-[calc(100vh-68px)] flex flex-col">
-				<h2 className="text-4xl mb-6">
-					Socials
-				</h2>
-				<div className="flex flex-row flex-wrap gap-10">
-					{socials.map((social) => (
-						<SocialLinkBadge key={social.title} {...social}/>
-					))}
-				</div>
+		<div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center 2xl:flex-row">
+			<InformationCard intro="My" title="Socials">
+				if you're interested in my work or want to connect, feel free to reach out to me on any platform.
+			</InformationCard>
+			<div className="flex flex-col flex-wrap gap-16">
+				{socials.map((social) => (
+					<SocialLinkBadge key={social.title} {...social}/>
+				))}
 			</div>
 		</div>
 	);
 }
 
-function SkillBadge(
-	{ name, experience, description, color }: Skill,
-) {
-	const [isHovered, setIsHovered] = useState(false);
-	
-	const createGlow = (color: string, intensity: number) => {
-		return `0 0 ${intensity}px var(${color}), 0 0 ${intensity * 2}px var(${color}), 0 0 ${intensity * 3}px var(${color})`;
-	};
-	
-	return (
-		<ContentPane defaultSpacing={false} className={color.background} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className="w-96 h-28 bg-custom-black rounded-md">
-				<div className={cn("absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-500", isHovered ? "opacity-0" : "opacity-100")}>
-					<div
-						className="font-bold text-2xl mb-3 transition-all text-background"
-						style={{
-							textShadow: createGlow(color.background.replace("bg-", "--"), 2),
-							letterSpacing: "1px",
-						}}
-					>
-						{name}
-					</div>
-					<div style={{ boxShadow: "none" }} className={cn("text-sm px-3 py-1 rounded-full border transition-all duration-300 bg-transparent", color.text)}>
-						{experience}
-					</div>
-				</div>
-				
-				<div className={cn("absolute inset-0 w-full h-full flex items-center justify-center p-6 text-center transition-opacity duration-500 text-foreground", isHovered ? "opacity-100" : "opacity-0")}>
-					<p className={cn("text-sm leading-relaxed select-none", color.text)}>
-						{description}
-					</p>
-				</div>
-			</div>
-		</ContentPane>
-	);
-}
-
-function SocialLinkBadge(
-	{ icon: Icon, href, title, username, description }: SocialLink,
+function InformationCard(
+	{ intro, title, children }: { intro: string; title: string; children: React.ReactNode },
 ) {
 	return (
-		<Link href={href}>
-			<ContentPane defaultColor={true} className="mt-0 mb-0 w-[22rem] transition-transform hover:scale-105">
-				<div className="flex flex-row items-center">
-					<Icon className="size-20"/>
-					<div className="ml-3.5 mt-1 mb-1">
-						<h4 className="text-lg font-bold">
-							{title}
-						</h4>
-						<p className="text-sm">
-							{username}
-						</p>
-						<p className="text-sm">
-							{description}
-						</p>
-					</div>
-				</div>
-			</ContentPane>
-		</Link>
+		<div className="w-[30rem] flex flex-col items-center 2xl:max-w-[50%] 2xl:items-start">
+			<h3 className="text-2xl mb-8">
+				{intro}
+			</h3>
+			<h1 className="text-6xl font-bold mb-8">
+				{title}
+			</h1>
+			<p className="text-lg mb-4 2xl:w-2/3">
+				{children}
+			</p>
+		</div>
 	);
 }

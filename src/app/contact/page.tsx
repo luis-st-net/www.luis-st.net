@@ -63,9 +63,9 @@ export default function () {
 	return (
 		<ContentPane defaultColor={true} className="w-1/3">
 			<div className="m-4">
-				<h1 className="text-4xl mb-4">
+				<h2 className="text-4xl mb-4">
 					Contact Us
-				</h1>
+				</h2>
 				<Ui.Form {...form}>
 					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 						<Ui.FormField control={form.control} name="name" render={NameFormFieldRenderer}/>

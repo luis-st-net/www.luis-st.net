@@ -21,7 +21,7 @@ export default function (
 		<Ui.ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 			<div className="flex flex-col h-screen w-full">
 				<NavigationBar/>
-				<main className="flex flex-col items-center flex-1 ml-4 mr-4 overflow-hidden overflow-y-auto">
+				<main className="flex flex-col items-center flex-1 overflow-hidden overflow-y-auto">
 					{children}
 				</main>
 			</div>

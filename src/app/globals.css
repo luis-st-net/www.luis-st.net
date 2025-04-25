@@ -10,8 +10,8 @@
 	:root {
 		/*Main colors*/
 		--custom-light-blue: #48beff;
-		--custom-blue: #0eb1d2;
-		--custom-dark-blue: #022b3a;
+		--custom-blue: #144b8f;
+		--custom-dark-blue: #0a2342;
 		--custom-dark-green: #58641d;
 		--custom-green: #9bc53d;
 		
@@ -65,7 +65,7 @@
 		--framework-spring: #6db33f;
 		--framework-asp-dot-net: #7014e6;
 		--framework-react: #58c4dc;
-		--framework-next-js: #ffffff;
+		--framework-next-js: #000000; /*Must be inverted in light mode because of readability*/
 		--framework-vue-js: #42b883;
 		--framework-tailwind: #00bcff;
 		--framework-java-fx: #51b9b5;
@@ -118,7 +118,7 @@
 	.dark {
 		/*Main colors*/
 		--custom-light-blue: #00b7db;
-		--custom-blue: #0054db; /*005FDB*/
+		--custom-blue: #0054db;
 		--custom-dark-blue: #000f6e;
 		--custom-green: #9bc53d;
 		--custom-dark-green: #1c800f;
@@ -133,6 +133,9 @@
 		--custom-secondary: var(--custom-black-secondary);
 		--custom-tertiary: var(--custom-black-tertiary);
 		--custom-quaternary: var(--custom-black-quaternary);
+		
+		/*Frameworks*/
+		--framework-next-js: #ffffff;
 		
 		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 3.9%)*/ var(--custom-black);

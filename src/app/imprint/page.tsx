@@ -1,62 +1,68 @@
 "use client";
 
 import * as Ui from "@/lib/components/ui";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getContactInformation } from "./actions";
 import ContentPane from "@/lib/components/content-pane";
 import Link from "next/link";
+import { ContactInformation } from "@/lib/types";
 
 export default function () {
-	const ownerName = process.env.NEXT_PUBLIC_WEBSITE_OWNER as string;
-	const ownerStreet = process.env.NEXT_PUBLIC_OWNER_STREET as string;
-	const ownerCity = process.env.NEXT_PUBLIC_OWNER_CITY as string;
-	const ownerCountry = process.env.NEXT_PUBLIC_OWNER_COUNTRY as string;
-	const ownerMail = process.env.NEXT_PUBLIC_OWNER_MAIL as string;
+	const [contactInfo, setContactInfo] = useState<ContactInformation>({
+		name: "Fetching...",
+		street: "Fetching...",
+		city: "Fetching...",
+		country: "Fetching...",
+		mail: "Fetching...",
+	});
+	
+	useEffect(() => {
+		getContactInformation().then(data => {
+			setContactInfo(data);
+		});
+	}, []);
 	
 	return (
 		<ContentPane defaultColor={true} className="w-3/5">
 			<div className="m-4">
-				<h1 className="text-4xl mb-6">
+				<h2 className="text-4xl mb-6">
 					Imprint
-				</h1>
+				</h2>
 				<div>
 					<p className="mb-4">
 						Information according to § 5 DSA (DDG)
 					</p>
 					<p className="mb-4">
-						{ownerName}
+						{contactInfo.name}
 					</p>
 					<p className="mb-4">
-						<DataHider>
-							{ownerStreet}<br/>
-							{ownerCity}<br/>
-							{ownerCountry}
-						</DataHider>
+						{contactInfo.street}<br/>
+						{contactInfo.city}<br/>
+						{contactInfo.country}
 					</p>
 				</div>
 				<div className="mt-12">
 					<p className="mb-4">
 						<strong>Represented by:</strong><br/>
-						<span className="inline-block border-l-white ml-1.5 mt-1.5 p-0.5 pl-2 border border-t-0 border-r-0 border-b-0">
-							{ownerName}
+						<span className="inline-block border-l-custom-black dark:border-l-white ml-1.5 mt-1.5 p-0.5 pl-2 border border-t-0 border-r-0 border-b-0">
+							{contactInfo.name}
 						</span>
 					</p>
 					
 					<p className="mb-4">
 						<strong>Contact:</strong><br/>
-						<DataHider buttonMargin={1.5}>
-							<span className="inline-block border-l-white ml-1.5 mt-1.5 p-0.5 pl-2 border border-t-0 border-r-0 border-b-0">
-								Mail:{" "}
-								<Link href={"mailto:" + ownerMail} className="text-custom-light-blue underline">
-									{ownerMail}
-								</Link>
-							</span>
-						</DataHider>
+						<span className="inline-block border-l-custom-black dark:border-l-white ml-1.5 mt-1.5 p-0.5 pl-2 border border-t-0 border-r-0 border-b-0">
+							Mail:{" "}
+							<Link href={"mailto:" + contactInfo.mail} className="text-custom-blue underline">
+									{contactInfo.mail}
+							</Link>
+						</span>
 					</p>
 				</div>
 				<div className="mt-12">
-					<h3 className="text-xl mb-4">
+					<h4 className="text-xl mb-4">
 						<strong>Disclaimer</strong>
-					</h3>
+					</h4>
 					<Ui.Accordion type="single" collapsible>
 						<DisclaimerItem title="Liability for content" index={0}>
 							<p className="mb-4">
@@ -114,24 +120,6 @@ export default function () {
 				</div>
 			</div>
 		</ContentPane>
-	);
-}
-
-function DataHider(
-	{ buttonMargin, children }: { buttonMargin?: number, children: React.ReactNode },
-) {
-	const [isVisible, setIsVisible] = React.useState(false);
-	
-	if (!isVisible) {
-		return (
-			<Ui.Button variant="outline" onClick={() => setIsVisible(true)} className={"mt-" + (buttonMargin ?? 0)}>
-				Show
-			</Ui.Button>
-		);
-	}
-	
-	return (
-		<>{children}</>
 	);
 }
 

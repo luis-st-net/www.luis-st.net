@@ -13,6 +13,14 @@ export const contactFormSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+export interface ContactInformation {
+	name: string,
+	street: string,
+	city: string,
+	country: string,
+	mail: string,
+}
+
 export interface SocialLink {
 	icon: IconType
 	href: string,
@@ -30,9 +38,7 @@ export type ExperienceLevel =
 
 export type SkillType =
 	| "language"
-	| "framework"
-	| "build system"
-	| "development tool";
+	| "framework";
 
 export interface SkillColor {
 	background: string,
