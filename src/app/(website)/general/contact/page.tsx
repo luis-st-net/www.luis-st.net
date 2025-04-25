@@ -5,7 +5,7 @@ import React from "react";
 import ContentPane from "@/lib/components/content-pane";
 import { ControllerFieldState, ControllerRenderProps, useForm, UseFormStateReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/lib/hooks/use-toast";
 import { contactFormSchema, ContactFormValues } from "@/lib/types";
 import { sendContactEmail } from "./actions";
 
