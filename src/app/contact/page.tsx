@@ -1,6 +1,6 @@
 "use client";
 
-import * as Ui from "@/lib/components/ui/";
+import * as Ui from "@/lib/components/ui";
 import React from "react";
 import ContentPane from "@/lib/components/content-pane";
 import { ControllerFieldState, ControllerRenderProps, useForm, UseFormStateReturn } from "react-hook-form";

@@ -2,13 +2,6 @@ import * as Icons from "lucide-react";
 import { z } from "zod";
 import type { IconType } from "react-icons";
 
-export interface Route {
-	title: string,
-	icon?: Icons.LucideIcon,
-	route: string,
-	subRoutes: Route[],
-}
-
 export const contactFormSchema = z.object({
 	name: z.string().min(1, "Name is required"),
 	email: z.string().email("Invalid email address"),
