@@ -60,6 +60,9 @@
 		--language-shell: #4e5d6b;
 		--language-kotlin: #d023b1;
 		--language-groovy: #4b8b8d;
+		--language-sql: #b4e600;
+		--language-html: #e44d26;
+		--language-css: #633194;
 		
 		/*Frameworks*/
 		--framework-spring: #6db33f;
@@ -76,8 +79,17 @@
 		/*Build Systems*/
 		--build-system-gradle: #1a2f5c;
 		--build-system-maven: #a8215b;
-		--build-system-npm: #ca3432;
 		--build-system-vite: #ffc820;
+		
+		/*Development Tools*/
+		--development-tool-jetbrains: #cb0657;
+		--development-tool-eclipse: #f7951e;
+		--development-tool-npm: #ca3432;
+		--development-tool-git: #f1502f;
+		--development-tool-ci-cd: #f0db4f;
+		--development-tool-docker: #2496ed;
+		--development-tool-postman: #fe703b;
+		--development-tool-postgresql: #396c94;
 		
 		/*Shadcn component colors*/
 		--background: /*hsl(0 0% 100%)*/ var(--custom-white);

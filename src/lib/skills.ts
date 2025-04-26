@@ -91,6 +91,36 @@ const groovy: Skill = {
 		text: "text-language-groovy",
 	},
 };
+const sql: Skill = {
+	type: "language",
+	name: "SQL",
+	experience: "Advanced",
+	description: "The language i learned at university to retrieve data from a database. Not modern but practical. I prefer to use modern ORMs like Hibernate or Entity Framework.",
+	color: {
+		background: "bg-language-sql",
+		text: "text-language-sql",
+	},
+};
+const html: Skill = {
+	type: "language",
+	name: "HTML",
+	experience: "Expert",
+	description: "Well not a programming language, but i have used it for all my websites. I know how to use it and how to use it correctly.",
+	color: {
+		background: "bg-language-html",
+		text: "text-language-html",
+	},
+};
+const css: Skill = {
+	type: "language",
+	name: "CSS",
+	experience: "Advanced",
+	description: "Yea, not a programming language, but i need it to make this look good. I now the most thinks about CSS, but i personally prefer to use Tailwind CSS.",
+	color: {
+		background: "bg-language-css",
+		text: "text-language-css",
+	},
+};
 
 // Frameworks
 const spring: Skill = {
@@ -194,13 +224,125 @@ const unity: Skill = {
 	},
 };
 
+// Build system
+const gradle: Skill = {
+	type: "build-system",
+	name: "Gradle",
+	experience: "Experienced",
+	description: "The build system i use for all of my java projects. I have used it for a lot of projects at work and for my own projects.",
+	color: {
+		background: "bg-build-system-gradle",
+		text: "text-build-system-gradle",
+	},
+};
+const maven: Skill = {
+	type: "build-system",
+	name: "Maven",
+	experience: "Beginner",
+	description: "The build system i have been forced to use at work. I don't like maven at all because it feels outdated with the XML configuration files.",
+	color: {
+		background: "bg-build-system-maven",
+		text: "text-build-system-maven",
+	},
+};
+const vite: Skill = {
+	type: "build-system",
+	name: "Vite",
+	experience: "Beginner",
+	description: "I am very new to this build system, i have used it until today only in one project. Currently i have no further plans to use it.",
+	color: {
+		background: "bg-build-system-vite",
+		text: "text-build-system-vite",
+	},
+};
+
+// Development tools
+const jetbrains: Skill = {
+	type: "development-tool",
+	name: "JetBrains",
+	experience: "Advanced",
+	description: "The IDEs i love the most. IntelliJ, Rider, WebStorm, PyCharm, CLion, and all the other IDEs from JetBrains are my favorite tools to work with.",
+	color: {
+		background: "bg-development-tool-jetbrains",
+		text: "text-development-tool-jetbrains",
+	},
+};
+const eclipse: Skill = {
+	type: "development-tool",
+	name: "Eclipse",
+	experience: "Expert",
+	description: "The IDE i have used until i discovered the JetBrains IDEs. If you use this IDE, i have questions!",
+	color: {
+		background: "bg-development-tool-eclipse",
+		text: "text-development-tool-eclipse",
+	},
+};
+const npm: Skill = {
+	type: "development-tool",
+	name: "Npm",
+	experience: "Proficient",
+	description: "The package manager i use for all my Web projects. I have used it for a lot of projects at work and for my private projects.",
+	color: {
+		background: "bg-development-tool-npm",
+		text: "text-development-tool-npm",
+	},
+};
+const git: Skill = {
+	type: "development-tool",
+	name: "Git",
+	experience: "Expert",
+	description: "The must use tool for every developer. What would i do without it, properly suffer a lot because i delete some important lines without a option to recover them.",
+	color: {
+		background: "bg-development-tool-git",
+		text: "text-development-tool-git",
+	},
+};
+const docker: Skill = {
+	type: "development-tool",
+	name: "Docker",
+	experience: "Experienced",
+	description: "A tool i love and hate at the same time. I moved from it works on my machine to it works in my container.",
+	color: {
+		background: "bg-development-tool-docker",
+		text: "text-development-tool-docker",
+	},
+};
+const postman: Skill = {
+	type: "development-tool",
+	name: "Postman",
+	experience: "Experienced",
+	description: "The tool i spent a lot of time to debug Rest APIs. I love it, but i hate it when i have to use it (this means something it's not working).",
+	color: {
+		background: "bg-development-tool-postman",
+		text: "text-development-tool-postman",
+	},
+};
+const postgresql: Skill = {
+	type: "development-tool",
+	name: "PostgreSQL",
+	experience: "Experienced",
+	description: "My favorite database. Used whenever i need a database.",
+	color: {
+		background: "bg-development-tool-postgresql",
+		text: "text-development-tool-postgresql",
+	},
+};
+
 export const languages: Skill[] = [
-	java, python, javascript, typescript, csharp, cpp, shell, kotlin, groovy,
+	java, python, javascript, typescript, csharp, cpp, shell, kotlin, groovy, sql, html, css,
 ];
 export const frameworks: Skill[] = [
 	spring, aspDotNet, react, nextjs, javaFx, wpf, qt, vuejs, tailwind, unity,
 ];
+export const buildSystems: Skill[] = [
+	gradle, maven, vite,
+];
+export const developmentTools: Skill[] = [
+	jetbrains, eclipse, npm, git, docker, postman, postgresql,
+];
 export const skills: Skill[] = [
 	...languages,
 	...frameworks,
+	...buildSystems,
+	...developmentTools,
 ];

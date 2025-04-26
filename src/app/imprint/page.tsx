@@ -73,9 +73,6 @@ export default function () {
 								general legislation remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a
 								specific infringement. As soon as I become aware of such infringements, I will remove this content immediately.
 							</p>
-							<p>
-								Translated with <Link href="https://www.deepl.com" className="text-custom-light-blue underline">DeepL</Link> (free version)
-							</p>
 						</DisclaimerItem>
 						<DisclaimerItem title="Liability for links" index={1}>
 							<p className="mb-4">
@@ -84,9 +81,6 @@ export default function () {
 								of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not
 								recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without
 								concrete evidence of an infringement. If I become aware of any legal infringements, I will remove such links immediately.
-							</p>
-							<p>
-								Translated with <Link href="https://www.deepl.com" className="text-custom-light-blue underline">DeepL</Link> (free version)
 							</p>
 						</DisclaimerItem>
 						<DisclaimerItem title="Copyright" index={2}>
@@ -98,9 +92,6 @@ export default function () {
 								Should you nevertheless become aware of a copyright infringement, please inform me accordingly.
 								If I become aware of any infringements, I will remove such content immediately.
 							</p>
-							<p>
-								Translated with <Link href="https://www.deepl.com" className="text-custom-light-blue underline">DeepL</Link> (free version)
-							</p>
 						</DisclaimerItem>
 						<DisclaimerItem title="Privacy policy" index={3}>
 							<p className="mb-4">
@@ -111,9 +102,6 @@ export default function () {
 								obligation by third parties for sending unsolicited advertising and information materials is hereby expressly prohibited.
 								As the operator of this website, I expressly reserve the right to take legal action in the event of the unsolicited sending
 								of advertising information, such as spam e-mails.
-							</p>
-							<p>
-								Translated with <Link href="https://www.deepl.com" className="text-custom-light-blue underline">DeepL</Link> (free version)
 							</p>
 						</DisclaimerItem>
 					</Ui.Accordion>
@@ -133,6 +121,9 @@ function DisclaimerItem(
 			</Ui.AccordionTrigger>
 			<Ui.AccordionContent>
 				{children}
+				<p>
+					Translated with <Link href="https://www.deepl.com" className="text-custom-blue underline">DeepL</Link> (free version)
+				</p>
 			</Ui.AccordionContent>
 		</Ui.AccordionItem>
 	);

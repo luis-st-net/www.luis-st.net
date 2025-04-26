@@ -38,7 +38,9 @@ export type ExperienceLevel =
 
 export type SkillType =
 	| "language"
-	| "framework";
+	| "framework"
+	| "build-system"
+	| "development-tool";
 
 export interface SkillColor {
 	background: string,

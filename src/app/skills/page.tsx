@@ -1,17 +1,19 @@
 "use client";
 
-import { frameworks, languages } from "@/lib/skills";
 import React, { useState } from "react";
 import { Skill } from "@/lib/types";
+import { frameworks, languages, buildSystems, developmentTools } from "@/lib/skills";
 import ContentPane from "@/lib/components/content-pane";
 import { cn } from "@/lib/utils";
 
 export default function () {
 	return (
 		<div className="w-full flex flex-col items-center 2xl:w-3/4">
-			<div className="min-h-[calc(calc(100vh-80px)*2)] flex flex-col items-center">
+			<div className="min-h-[calc(calc(100vh-80px)*4)] flex flex-col items-center">
 				<SkillSection type="Languages" text="i have already used" skills={languages}/>
-				<SkillSection type="Frameworks" text="i have already used" skills={frameworks}/>
+				<SkillSection type="Frameworks" text="i have worked with" skills={frameworks}/>
+				<SkillSection type="Build Systems" text="i have already used" skills={buildSystems}/>
+				<SkillSection type="Development Tools" text="i have worked with" skills={developmentTools}/>
 			</div>
 		</div>
 	);
@@ -22,20 +24,20 @@ function SkillSection(
 ) {
 	return (
 		<div className="min-h-[calc(100vh-80px)] w-4/6 flex flex-col justify-center">
-			<div className="flex flex-row items-end mb-10">
-				<h2 className="text-6xl mr-5">
-					{type}
-				</h2>
-				<h3 className="text-2xl">
-					{text}
-				</h3>
-			</div>
+			<h2 className="text-6xl mb-10">
+				{type}
+			</h2>
 			
-			<div className="flex flex-row flex-wrap gap-10 items-center">
+			<div className="h-fit flex flex-row flex-wrap gap-10 items-center">
 				{skills.map((framework) => (
 					<SkillBadge key={framework.name} {...framework}/>
 				))}
 			</div>
+			
+			{/*Duplicated header for centering the inner section*/}
+			<h2 className="text-6xl mb-10 opacity-0 select-none">
+				{type}
+			</h2>
 		</div>
 	);
 }
@@ -50,8 +52,8 @@ function SkillBadge(
 	};
 	
 	return (
-		<ContentPane defaultSpacing={false} className={color.background} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className="w-96 h-28 bg-custom-white dark:bg-black rounded-md">
+		<ContentPane defaultSpacing={false} className={cn(color.background, "cursor-pointer")} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className="w-96 h-28 bg-custom-white dark:bg-custom-primary rounded-md">
 				<div className={cn("absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-500", isHovered ? "opacity-0" : "opacity-100")}>
 					<div
 						className="font-bold text-2xl mb-3 transition-all text-background"
