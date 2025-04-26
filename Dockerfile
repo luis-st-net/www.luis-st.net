@@ -1,11 +1,11 @@
 # Build image with:
 #  docker buildx build --load --platform linux/arm64 -t main-web:latest .
 # Save image with:
-#  docker save -o D:\Programmieren\Docker\Images\Main-Website\main-web-<version>.tar <image>
+#  docker save -o D:\Programmieren\Docker\Images\Main-Website\main-web-<version>.tar main-web
 # Load image with:
-#  docker load -i .\main-web-<version>.tar
+#  docker load -i ./main-web-<version>.tar
 # Retag image with:
-#  docker tag <image> main-web:<version>
+#  docker tag main-web main-web:<version>
 # Run image with:
 #  docker run -d -p 3000:3000 --name main-web main-web:<version>
 FROM node:lts-alpine
