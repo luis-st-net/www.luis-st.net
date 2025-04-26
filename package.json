@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
+		"start": "node server.js",
 		"open": "node util/open-links.js"
 	},
 	"dependencies": {
