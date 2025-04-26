@@ -2,6 +2,7 @@ import * as Ui from "@/lib/components/ui/";
 import React, { HTMLAttributes, useEffect } from "react";
 import { useTheme } from "next-themes";
 import "./code-block.css";
+import { cn } from "@/lib/utils";
 
 declare global {
 	interface Window {
@@ -64,8 +65,8 @@ export default function CodeBlock(
 			{title && (
 				<Ui.Separator className="h-[2px] bg-custom-quaternary"/>
 			)}
-			<pre className={"m-0 rounded-md p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code overflow-scroll language-" + language}>
-				<code className={"language-" + language}>
+			<pre className={cn("m-0 rounded-md p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code overflow-scroll", "language-" + language)}>
+				<code className={cn("text-xs text-wrap sm:text-base", "language-" + language)}>
 					{children}
 				</code>
 			</pre>

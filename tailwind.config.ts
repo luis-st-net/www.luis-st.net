@@ -8,6 +8,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			screens: {
+				"custom-lg": "61.25rem",
 				"3xl": "112rem",
 				"4xl": "128rem",
 			},

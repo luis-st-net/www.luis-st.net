@@ -23,7 +23,7 @@ export default function () {
 	}, []);
 	
 	return (
-		<ContentPane defaultColor={true} className="w-3/5">
+		<ContentPane defaultColor={true} className="w-4/5 2xl:w-3/5">
 			<div className="m-4">
 				<h2 className="text-4xl mb-6">
 					Imprint

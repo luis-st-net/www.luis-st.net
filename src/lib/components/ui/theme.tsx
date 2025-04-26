@@ -25,7 +25,7 @@ export function ThemeToggle(
 		<div className={className} {...props}>
 			<Ui.DropdownMenu>
 				<Ui.DropdownMenuTrigger asChild>
-					<Ui.Button variant="outline" size="icon" className="focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-transparent">
+					<Ui.Button variant="outline" size="icon" className="size-10 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-transparent sm:size-11">
 						<Icons.Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"/>
 						<Icons.Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"/>
 						<span className="sr-only">Toggle theme</span>

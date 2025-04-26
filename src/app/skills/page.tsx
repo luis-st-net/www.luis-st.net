@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function () {
 	return (
-		<div className="w-full flex flex-col items-center 2xl:w-3/4">
+		<div className="w-full">
 			<div className="min-h-[calc(calc(100vh-80px)*4)] flex flex-col items-center">
 				<SkillSection type="Languages" text="i have already used" skills={languages}/>
 				<SkillSection type="Frameworks" text="i have worked with" skills={frameworks}/>
@@ -23,19 +23,19 @@ function SkillSection(
 	{ type, text, skills }: { type: string, text: string, skills: Skill[] },
 ) {
 	return (
-		<div className="min-h-[calc(100vh-80px)] w-4/6 flex flex-col justify-center">
-			<h2 className="text-6xl mb-10">
+		<div className="w-5/6 min-h-[calc(100vh-80px)] flex flex-col items-center justify-center xl:w-4/6">
+			<h2 className="text-6xl my-10 custom-lg:self-start">
 				{type}
 			</h2>
 			
-			<div className="h-fit flex flex-row flex-wrap gap-10 items-center">
+			<div className="w-full flex flex-row flex-wrap gap-10 justify-center custom-lg:justify-start">
 				{skills.map((framework) => (
 					<SkillBadge key={framework.name} {...framework}/>
 				))}
 			</div>
 			
 			{/*Duplicated header for centering the inner section*/}
-			<h2 className="text-6xl mb-10 opacity-0 select-none">
+			<h2 className="text-6xl my-10 opacity-0 select-none">
 				{type}
 			</h2>
 		</div>
