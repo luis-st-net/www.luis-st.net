@@ -1,7 +1,5 @@
 "use server";
 
-import { ContactInformation } from "@/lib/types";
-
 export async function getContactInformation() {
 	return Promise.resolve({
 		name: process.env.WEBSITE_OWNER as string,

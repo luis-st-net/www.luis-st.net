@@ -17,7 +17,7 @@ export default function (
 ) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-		<body>
+		<body className="min-w-64">
 		<Ui.ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 			<div className="flex flex-col h-screen w-full">
 				<NavigationBar/>

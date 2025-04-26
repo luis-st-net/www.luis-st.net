@@ -3,6 +3,7 @@
 import * as Ui from "@/lib/components/ui/";
 import React from "react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function NavigationBar() {
 	return (
@@ -12,19 +13,21 @@ export default function NavigationBar() {
 				<PageLink title="Projects" href="https://github.com/Luis-St"/>
 				<PageLink title="Skills"/>
 				<PageLink title="Imprint"/>
-				<PageLink title="Contact"/>
+				<PageLink title="Contact" className="hidden xxs:block"/>
 			</div>
-			<Ui.ThemeToggle/>
+			<Ui.ThemeToggle className="hidden micro:block"/>
 		</div>
 	);
 }
 
 function PageLink(
-	{ title, href } : { title: string, href?: string },
+	{ title, href, className, ...props }: Omit<React.ComponentProps<typeof Link>, "href"> & { title: string, href?: string },
 ) {
 	return (
-		<Link href={href ? href : "/" + title.toLowerCase()} className="text-lg font-bold text-custom-white-primary sm:text-xl custom-lg:text-3xl">
-			{title}
+		<Link href={href ? href : "/" + title.toLowerCase()} className={cn("text-base  text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl", className)} {...props}>
+			<strong>
+				{title}
+			</strong>
 		</Link>
 	);
 }

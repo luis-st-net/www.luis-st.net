@@ -1,14 +1,7 @@
 "use client";
 
 import { useToast } from "@/lib/hooks/use-toast";
-import {
-	Toast,
-	ToastClose,
-	ToastDescription,
-	ToastProvider,
-	ToastTitle,
-	ToastViewport,
-} from "@/lib/components/ui/toast";
+import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "@/lib/components/ui/toast";
 
 export function ToasterProvider() { // Renamed from 'Toaster' to 'ToasterProvider' because 'sonner' already exports a 'Toaster' component
 	const { toasts } = useToast();

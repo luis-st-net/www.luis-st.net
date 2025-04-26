@@ -105,7 +105,7 @@ function MailFormFieldRenderer(
 ) {
 	return (
 		<FormFieldRenderer label="Email">
-			<Ui.Input type="email" placeholder="your.email@example.com" {...field} />
+			<Ui.Input type="email" placeholder="email@example.com" {...field} />
 		</FormFieldRenderer>
 	);
 }

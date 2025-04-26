@@ -6,6 +6,7 @@ import ContentPane from "@/lib/components/content-pane";
 import { SocialLink } from "@/lib/types";
 import CodeBlock from "@/lib/components/code-block";
 import { getAgeFromBirthdate } from "@/lib/utility";
+import InformationCard from "@/lib/components/information-card";
 import SocialLinkBadge from "@/lib/components/social-link-badge";
 
 const github: SocialLink = {
@@ -75,7 +76,7 @@ function IntroductionSection() {
 				I've mastered several programming languages.
 				While my expertise primarily lies in backend development, I'm also proficient in developing web applications.
 			</InformationCard>
-			<ContentPane defaultColor={true} defaultSpacing={false}>
+			<ContentPane defaultColor={true} defaultSpacing={false} className="hidden xs:block">
 				<CodeBlock language="json" className="w-fit xl:w-full">
 					{me}
 				</CodeBlock>
@@ -95,24 +96,6 @@ function SocialSection() {
 					<SocialLinkBadge key={social.title} {...social}/>
 				))}
 			</div>
-		</div>
-	);
-}
-
-function InformationCard(
-	{ intro, title, children }: { intro: string; title: string; children: React.ReactNode },
-) {
-	return (
-		<div className="w-full flex flex-col items-center p-8 sm:w-[30rem] 2xl:max-w-[50%] 2xl:items-start">
-			<h3 className="text-2xl mb-8">
-				{intro}
-			</h3>
-			<h1 className="text-6xl font-bold mb-8">
-				{title}
-			</h1>
-			<p className="text-lg text-center mb-4 sm:text-left 2xl:w-2/3">
-				{children}
-			</p>
 		</div>
 	);
 }

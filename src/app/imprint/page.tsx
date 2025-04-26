@@ -1,7 +1,7 @@
 "use client";
 
 import * as Ui from "@/lib/components/ui";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getContactInformation } from "./actions";
 import ContentPane from "@/lib/components/content-pane";
 import Link from "next/link";
@@ -29,9 +29,6 @@ export default function () {
 					Imprint
 				</h2>
 				<div>
-					<p className="mb-4">
-						Information according to § 5 DSA (DDG)
-					</p>
 					<p className="mb-4">
 						{contactInfo.name}
 					</p>
@@ -117,13 +114,12 @@ function DisclaimerItem(
 	return (
 		<Ui.AccordionItem value={"item-" + index}>
 			<Ui.AccordionTrigger>
-				<strong>{title}</strong>
+				<strong>
+					{title}
+				</strong>
 			</Ui.AccordionTrigger>
 			<Ui.AccordionContent>
 				{children}
-				<p>
-					Translated with <Link href="https://www.deepl.com" className="text-custom-blue underline">DeepL</Link> (free version)
-				</p>
 			</Ui.AccordionContent>
 		</Ui.AccordionItem>
 	);

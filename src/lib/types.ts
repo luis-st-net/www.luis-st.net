@@ -1,4 +1,3 @@
-import * as Icons from "lucide-react";
 import { z } from "zod";
 import type { IconType } from "react-icons";
 

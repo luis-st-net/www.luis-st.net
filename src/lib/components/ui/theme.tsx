@@ -3,8 +3,8 @@
 import * as Ui from "@/lib/components/ui/";
 import * as Icons from "lucide-react";
 import * as React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { useTheme } from "next-themes";
+import { HTMLAttributes } from "react";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 
 export function ThemeProvider(
 	{ children, ...props }: React.ComponentProps<typeof NextThemesProvider>,
@@ -17,7 +17,7 @@ export function ThemeProvider(
 }
 
 export function ThemeToggle(
-	{ className, ...props }: React.ComponentProps<"div"> & { className?: string },
+	{ className, ...props }: HTMLAttributes<HTMLDivElement> & { className?: string },
 ) {
 	const { setTheme } = useTheme();
 	

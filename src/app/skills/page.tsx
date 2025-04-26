@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Skill } from "@/lib/types";
-import { frameworks, languages, buildSystems, developmentTools } from "@/lib/skills";
-import ContentPane from "@/lib/components/content-pane";
-import { cn } from "@/lib/utils";
+import { buildSystems, developmentTools, frameworks, languages } from "@/lib/skills";
+import SkillBadge from "@/lib/components/skill-badge";
 
 export default function () {
 	return (
@@ -24,7 +23,7 @@ function SkillSection(
 ) {
 	return (
 		<div className="w-5/6 min-h-[calc(100vh-80px)] flex flex-col items-center justify-center xl:w-4/6">
-			<h2 className="text-6xl my-10 custom-lg:self-start">
+			<h2 className="text-4xl text-center my-10 sm:text-6xl sm:text-left custom-lg:self-start">
 				{type}
 			</h2>
 			
@@ -39,42 +38,5 @@ function SkillSection(
 				{type}
 			</h2>
 		</div>
-	);
-}
-
-function SkillBadge(
-	{ name, experience, description, color }: Skill,
-) {
-	const [isHovered, setIsHovered] = useState(false);
-	
-	const createGlow = (color: string, intensity: number) => {
-		return `0 0 ${intensity}px var(${color}), 0 0 ${intensity * 2}px var(${color}), 0 0 ${intensity * 3}px var(${color})`;
-	};
-	
-	return (
-		<ContentPane defaultSpacing={false} className={cn(color.background, "cursor-pointer")} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className="w-96 h-28 bg-custom-white dark:bg-custom-primary rounded-md">
-				<div className={cn("absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-500", isHovered ? "opacity-0" : "opacity-100")}>
-					<div
-						className="font-bold text-2xl mb-3 transition-all text-background"
-						style={{
-							textShadow: createGlow(color.background.replace("bg-", "--"), 2),
-							letterSpacing: "1px",
-						}}
-					>
-						{name}
-					</div>
-					<div style={{ boxShadow: "none" }} className={cn("text-sm px-3 py-1 rounded-full border transition-all duration-300 bg-transparent", color.text)}>
-						{experience}
-					</div>
-				</div>
-				
-				<div className={cn("absolute inset-0 w-full h-full flex items-center justify-center p-6 text-center transition-opacity duration-500 text-foreground", isHovered ? "opacity-100" : "opacity-0")}>
-					<p className={cn("text-sm leading-relaxed select-none", color.text)}>
-						{description}
-					</p>
-				</div>
-			</div>
-		</ContentPane>
 	);
 }

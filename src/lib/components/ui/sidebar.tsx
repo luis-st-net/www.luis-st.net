@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { PanelLeft } from "lucide-react";
 
 import { useIsMobile } from "@/lib/hooks/use-mobile";
@@ -12,12 +12,7 @@ import { Input } from "@/lib/components/ui/input";
 import { Separator } from "@/lib/components/ui/separator";
 import { Sheet, SheetContent } from "@/lib/components/ui/sheet";
 import { Skeleton } from "@/lib/components/ui/skeleton";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "@/lib/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

@@ -20,7 +20,7 @@ export async function sendContactEmail(data: ContactFormValues) {
 		return {
 			success: true,
 			message: "Email sent successfully, mail delivery simulated in development",
-		}
+		};
 	}
 	try {
 		const result = contactFormSchema.safeParse(data);
@@ -34,7 +34,7 @@ export async function sendContactEmail(data: ContactFormValues) {
 		
 		if (data.bot === true) {
 			return {
-				success: true,
+				success: false,
 				message: "Message not sent. Please uncheck the 'I am a bot' field if you're human",
 			};
 		}

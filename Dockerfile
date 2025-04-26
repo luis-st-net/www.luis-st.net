@@ -1,5 +1,5 @@
 # Build image with:
-#  docker buildx build --load --platform linux/arm64 -t main-web:latest .
+#  docker buildx build --load --platform linux/arm64 -t main-web:<version> .
 # Save image with:
 #  docker save -o D:\Programmieren\Docker\Images\Main-Website\main-web-<version>.tar main-web
 # Load image with:

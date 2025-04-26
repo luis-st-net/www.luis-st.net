@@ -1,20 +1,20 @@
 {
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "src/app/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/lib/components",
+	"style": "default",
+	"rsc": true,
+	"tsx": true,
+	"tailwind": {
+		"config": "tailwind.config.ts",
+		"css": "src/app/globals.css",
+		"baseColor": "neutral",
+		"cssVariables": true,
+		"prefix": ""
+	},
+	"aliases": {
+		"components": "@/lib/components",
 		"utils": "@/lib/utils",
-    "ui": "@/lib/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/lib/hooks"
-  },
-  "iconLibrary": "lucide"
+		"ui": "@/lib/components/ui",
+		"lib": "@/lib",
+		"hooks": "@/lib/hooks"
+	},
+	"iconLibrary": "lucide"
 }

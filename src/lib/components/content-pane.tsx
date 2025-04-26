@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export default function ContentPane(
-	{ children, defaultColor = false, defaultSpacing = true, className, ...props }: HTMLAttributes<HTMLDivElement> & { children: React.ReactNode, defaultColor?: boolean , defaultSpacing?: boolean },
+	{ children, defaultColor = false, defaultSpacing = true, className, ...props }: HTMLAttributes<HTMLDivElement> & { children: React.ReactNode, defaultColor?: boolean, defaultSpacing?: boolean },
 ) {
 	const { isGradient, gradientType, gradientFrom, gradientTo, isStaticColor, staticColor, classes } = findClassesForShadow(className);
 	
