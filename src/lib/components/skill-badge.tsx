@@ -3,7 +3,8 @@
 import { Skill } from "@/lib/types";
 import React, { useState } from "react";
 import ContentPane from "@/lib/components/content-pane";
-import { cn } from "@/lib/utils";
+
+import { cn } from "@/lib/utility";
 
 export default function SkillBadge(
 	{ name, experience, description, color }: Skill,

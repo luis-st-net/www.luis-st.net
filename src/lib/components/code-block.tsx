@@ -2,7 +2,8 @@ import * as Ui from "@/lib/components/ui/";
 import React, { HTMLAttributes, useEffect } from "react";
 import { useTheme } from "next-themes";
 import "./code-block.css";
-import { cn } from "@/lib/utils";
+
+import { cn } from "@/lib/utility";
 
 declare global {
 	interface Window {

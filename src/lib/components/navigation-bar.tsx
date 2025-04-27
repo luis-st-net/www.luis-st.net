@@ -3,7 +3,8 @@
 import * as Ui from "@/lib/components/ui/";
 import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+
+import { cn } from "@/lib/utility";
 
 export default function NavigationBar() {
 	return (

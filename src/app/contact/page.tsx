@@ -9,7 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/lib/hooks/use-toast";
 import { ContactFormFieldRendererProps, contactFormSchema, ContactFormValues, VerificationFormFieldRendererProps, verificationFormSchema, VerificationFormValues } from "@/lib/types";
 import { initiateMailVerification, verifyAndSendContactMail } from "./actions";
-import { cn } from "@/lib/utils";
+
+import { cn } from "@/lib/utility";
 
 export default function () {
 	const { toast } = useToast();
