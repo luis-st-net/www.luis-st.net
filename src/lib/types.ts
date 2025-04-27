@@ -9,8 +9,13 @@ export const contactFormSchema = z.object({
 	acceptTerms: z.boolean().refine(value => value, "You must accept the contact conditions"),
 	bot: z.boolean().optional(),
 });
-
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+export const verificationFormSchema = z.object({
+  verificationToken: z.string(),
+  verificationCode: z.string().length(6, "Verification code must be 6 digits")
+});
+export type VerificationFormValues = z.infer<typeof verificationFormSchema>;
 
 export interface ContactInformation {
 	name: string,
