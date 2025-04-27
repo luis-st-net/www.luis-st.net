@@ -50,7 +50,7 @@ export async function sendContactEmail(data: ContactFormValues) {
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Subject:</strong> ${data.subject}</p>
-          <p>${data.message.replace(/\n/g, "<br/>")}</p>
+          <p>${data.message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\n/g, "<br/>")}</p>
         </div>
       `,
 		};
