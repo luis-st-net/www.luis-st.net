@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "contact-form-secret";
+const JWT_SECRET = process.env.SECRET || "contact-form-secret";
 const TOKEN_EXPIRY = "15m";
 
 type VerificationPayload = {
-	email: string;
+	mail: string;
 	code: string;
 	formData: Record<string, any>;
 };
@@ -22,6 +22,5 @@ export function verifyToken(token: string): VerificationPayload | null {
 }
 
 export function generateVerificationCode(): string {
-	// Generate 6-digit code
 	return Math.floor(100000 + Math.random() * 900000).toString();
 }

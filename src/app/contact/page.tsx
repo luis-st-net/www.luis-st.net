@@ -1,25 +1,15 @@
 "use client";
 
 import * as Ui from "@/lib/components/ui";
+import { useFormField } from "@/lib/components/ui";
 import React from "react";
 import ContentPane from "@/lib/components/content-pane";
-import { ControllerFieldState, ControllerRenderProps, useForm, UseFormStateReturn } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/lib/hooks/use-toast";
-import { contactFormSchema, ContactFormValues, verificationFormSchema, VerificationFormValues } from "@/lib/types";
-import { initiateContactVerification, verifyAndSendContactEmail } from "./actions";
-
-type ContactFormFieldRendererProps<T extends keyof ContactFormValues = keyof ContactFormValues> = {
-	field: ControllerRenderProps<ContactFormValues, T>;
-	fieldState: ControllerFieldState;
-	formState: UseFormStateReturn<ContactFormValues>;
-};
-
-type VerificationFormFieldRendererProps<T extends keyof VerificationFormValues = keyof VerificationFormValues> = {
-	field: ControllerRenderProps<VerificationFormValues, T>;
-	fieldState: ControllerFieldState;
-	formState: UseFormStateReturn<VerificationFormValues>;
-};
+import { ContactFormFieldRendererProps, contactFormSchema, ContactFormValues, VerificationFormFieldRendererProps, verificationFormSchema, VerificationFormValues } from "@/lib/types";
+import { initiateMailVerification, verifyAndSendContactMail } from "./actions";
+import { cn } from "@/lib/utils";
 
 export default function () {
 	const { toast } = useToast();
@@ -29,11 +19,11 @@ export default function () {
 		token: "",
 	});
 	
-	const form = useForm<ContactFormValues>({
+	const contactForm = useForm<ContactFormValues>({
 		resolver: zodResolver(contactFormSchema),
 		defaultValues: {
 			name: "",
-			email: "",
+			mail: "",
 			subject: "",
 			message: "",
 			acceptTerms: false,
@@ -49,14 +39,14 @@ export default function () {
 		},
 	});
 	
-	async function onSubmit(data: ContactFormValues) {
+	async function onContactSubmit(data: ContactFormValues) {
 		setIsSubmitting(true);
 		try {
-			const result = await initiateContactVerification(data);
+			const result = await initiateMailVerification(data);
 			
 			if (result.success) {
 				toast({
-					title: "Verification Email Sent",
+					title: "Verification Mail Sent",
 					description: result.message,
 				});
 				
@@ -66,7 +56,6 @@ export default function () {
 				});
 				
 				verificationForm.setValue("verificationToken", result.verificationToken);
-				
 				setVerificationState({
 					isVerifying: true,
 					token: result.verificationToken,
@@ -92,15 +81,16 @@ export default function () {
 	async function onVerificationSubmit(data: VerificationFormValues) {
 		setIsSubmitting(true);
 		try {
-			const result = await verifyAndSendContactEmail(data);
+			const result = await verifyAndSendContactMail(data);
 			
 			if (result.success) {
 				toast({
 					title: "Success",
 					description: result.message,
 				});
+				
 				setVerificationState({ isVerifying: false, token: "" });
-				form.reset();
+				contactForm.reset();
 				verificationForm.reset();
 			} else {
 				toast({
@@ -128,19 +118,19 @@ export default function () {
 				</h2>
 				
 				{!verificationState.isVerifying ? (
-					<Ui.Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-							<Ui.FormField control={form.control} name="name" render={NameFormFieldRenderer}/>
+					<Ui.Form {...contactForm}>
+						<form onSubmit={contactForm.handleSubmit(onContactSubmit)} className="space-y-6">
+							<Ui.FormField control={contactForm.control} name="name" render={NameFormFieldRenderer}/>
 							
-							<Ui.FormField control={form.control} name="email" render={MailFormFieldRenderer}/>
+							<Ui.FormField control={contactForm.control} name="mail" render={MailFormFieldRenderer}/>
 							
-							<Ui.FormField control={form.control} name="subject" render={SubjectFormFieldRenderer}/>
+							<Ui.FormField control={contactForm.control} name="subject" render={SubjectFormFieldRenderer}/>
 							
-							<Ui.FormField control={form.control} name="message" render={MessageFormFieldRenderer}/>
+							<Ui.FormField control={contactForm.control} name="message" render={MessageFormFieldRenderer}/>
 							
-							<Ui.FormField control={form.control} name="acceptTerms" render={AcceptTermsFormFieldRenderer}/>
+							<Ui.FormField control={contactForm.control} name="acceptTerms" render={AcceptTermsFormFieldRenderer}/>
 							
-							<Ui.FormField control={form.control} name="bot" render={BotFieldRenderer}/>
+							<Ui.FormField control={contactForm.control} name="bot" render={BotFieldRenderer}/>
 							
 							<Ui.Button type="submit" className="w-full" disabled={isSubmitting}>
 								{isSubmitting ? "Sending verification..." : "Send verification code"}
@@ -163,8 +153,9 @@ export default function () {
 	);
 }
 
+//region Field renders
 function NameFormFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"name">,
+	{ field }: ContactFormFieldRendererProps<"name">,
 ) {
 	return (
 		<FormFieldRenderer label="Name">
@@ -174,17 +165,17 @@ function NameFormFieldRenderer(
 }
 
 function MailFormFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"email">,
+	{ field }: ContactFormFieldRendererProps<"mail">,
 ) {
 	return (
-		<FormFieldRenderer label="Email">
-			<Ui.Input type="email" placeholder="email@example.com" {...field} />
+		<FormFieldRenderer label="Mail">
+			<Ui.Input type="email" placeholder="mail@example.com" {...field} />
 		</FormFieldRenderer>
 	);
 }
 
 function SubjectFormFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"subject">,
+	{ field }: ContactFormFieldRendererProps<"subject">,
 ) {
 	return (
 		<FormFieldRenderer label="Subject">
@@ -194,7 +185,7 @@ function SubjectFormFieldRenderer(
 }
 
 function MessageFormFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"message">,
+	{ field }: ContactFormFieldRendererProps<"message">,
 ) {
 	return (
 		<FormFieldRenderer label="Message">
@@ -204,7 +195,7 @@ function MessageFormFieldRenderer(
 }
 
 function AcceptTermsFormFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"acceptTerms">,
+	{ field }: ContactFormFieldRendererProps<"acceptTerms">,
 ) {
 	return (
 		<Ui.FormItem>
@@ -230,7 +221,7 @@ function AcceptTermsFormFieldRenderer(
 }
 
 function BotFieldRenderer(
-	{ field, fieldState, formState }: ContactFormFieldRendererProps<"bot">,
+	{ field }: ContactFormFieldRendererProps<"bot">,
 ) {
 	return (
 		<div>
@@ -257,12 +248,30 @@ function BotFieldRenderer(
 }
 
 function VerificationCodeFormFieldRenderer(
-	{ field, fieldState, formState }: VerificationFormFieldRendererProps<"verificationCode">,
+	{ field }: VerificationFormFieldRendererProps<"verificationCode">,
 ) {
 	return (
-		<FormFieldRenderer label="Verification Code">
-			<Ui.Input placeholder="Enter 6-digit code" {...field}/>
-		</FormFieldRenderer>
+		<Ui.FormItem>
+			<Ui.FormLabel>
+				Verification Code
+			</Ui.FormLabel>
+			<Ui.FormControl>
+				<Ui.InputOTP maxLength={6} autoComplete="off" {...field}>
+					<Ui.InputOTPGroup>
+						<Ui.InputOTPSlot index={0} className="bg-background"/>
+						<Ui.InputOTPSlot index={1} className="bg-background"/>
+						<Ui.InputOTPSlot index={2} className="bg-background"/>
+						<Ui.InputOTPSlot index={3} className="bg-background"/>
+						<Ui.InputOTPSlot index={4} className="bg-background"/>
+						<Ui.InputOTPSlot index={5} className="bg-background"/>
+					</Ui.InputOTPGroup>
+				</Ui.InputOTP>
+			</Ui.FormControl>
+			<Ui.FormDescription>
+				Please enter the verification code sent to your mail.
+			</Ui.FormDescription>
+			<Ui.FormMessage/>
+		</Ui.FormItem>
 	);
 }
 
@@ -279,3 +288,5 @@ function FormFieldRenderer(
 		</Ui.FormItem>
 	);
 }
+
+//endregion
