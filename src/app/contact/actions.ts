@@ -24,7 +24,6 @@ const verificationTransporter = nodemailer.createTransport({
 	},
 });
 
-
 export async function initiateMailVerification(contactData: ContactFormValues) {
 	try {
 		const result = contactFormSchema.safeParse(contactData);
@@ -60,7 +59,7 @@ export async function initiateMailVerification(contactData: ContactFormValues) {
 		return {
 			success: true,
 			verificationToken: token,
-			message: "Verification code sent to your mail"
+			message: "Verification code sent to your mail",
 		};
 		
 	} catch (error) {
@@ -68,7 +67,7 @@ export async function initiateMailVerification(contactData: ContactFormValues) {
 		return {
 			success: false,
 			verificationToken: "",
-			message: "Failed to send verification mail"
+			message: "Failed to send verification mail",
 		};
 	}
 }
@@ -79,7 +78,7 @@ export async function verifyAndSendContactMail(verificationData: VerificationFor
 		if (!result.success) {
 			return { success: false, message: "Form validation failed" };
 		}
-
+		
 		const payload = verifyToken(verificationData.verificationToken);
 		if (!payload) {
 			return { success: false, message: "Verification failed. Token expired or invalid." };
@@ -109,13 +108,13 @@ export async function verifyAndSendContactMail(verificationData: VerificationFor
 		
 		return {
 			success: true,
-			message: "Mail sent successfully"
+			message: "Mail sent successfully",
 		};
 	} catch (error) {
 		console.error("Error sending mail:", error);
 		return {
 			success: false,
-			message: "Failed to send mail"
+			message: "Failed to send mail",
 		};
 	}
 }
