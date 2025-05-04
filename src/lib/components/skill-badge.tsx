@@ -11,21 +11,11 @@ export default function SkillBadge(
 ) {
 	const [isHovered, setIsHovered] = useState(false);
 	
-	const createGlow = (color: string, intensity: number) => {
-		return `0 0 ${intensity}px var(${color}), 0 0 ${intensity * 2}px var(${color}), 0 0 ${intensity * 3}px var(${color})`;
-	};
-	
 	return (
 		<ContentPane defaultSpacing={false} className={cn(color.background, "cursor-pointer")} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="size-52 bg-custom-white dark:bg-custom-primary rounded-md sm:w-96 sm:h-28">
 				<div className={cn("absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-500", isHovered ? "opacity-0" : "opacity-100")}>
-					<div
-						className="text-2xl mb-3 transition-all text-background"
-						style={{
-							textShadow: createGlow(color.background.replace("bg-", "--"), 2),
-							letterSpacing: "1px",
-						}}
-					>
+					<div className="text-2xl mb-3 transition-all text-custom-white-primary">
 						<strong>
 							{name}
 						</strong>

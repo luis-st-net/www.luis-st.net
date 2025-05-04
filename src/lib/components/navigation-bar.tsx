@@ -25,7 +25,7 @@ function PageLink(
 	{ title, href, className, ...props }: Omit<React.ComponentProps<typeof Link>, "href"> & { title: string, href?: string },
 ) {
 	return (
-		<Link href={href ? href : "/" + title.toLowerCase()} className={cn("text-base  text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl", className)} {...props}>
+		<Link href={href ? href : "/" + title.toLowerCase()} className={cn("text-base text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl", className)} {...props}>
 			<strong>
 				{title}
 			</strong>
