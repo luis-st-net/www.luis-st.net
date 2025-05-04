@@ -8,19 +8,19 @@ export default function SocialLinkBadge(
 ) {
 	return (
 		<Link href={href}>
-			<ContentPane defaultColor={true} className="w-[18rem] mt-0 mb-0 transition-transform xs:w-[22rem] xs:hover:scale-105">
-				<div className="flex flex-row items-center">
-					<Icon className="size-14 xs:size-20"/>
-					<div className="ml-3.5 mt-1 mb-1">
-						<h5 className="text-lg">
+			<ContentPane defaultSpacing={false} defaultColor={true} className="w-48 transition-transform micro:w-72 xs:w-96 xs:hover:scale-105">
+				<div className="flex flex-row items-center p-3 xs:p-4">
+					<Icon className="size-12 tiny:size-14 xs:size-20"/>
+					<div className="ml-3.5 my-0.5 tiny:my-1">
+						<h5 className="text-base tiny:text-lg">
 							<strong>
 								{title}
 							</strong>
 						</h5>
-						<p className="text-sm">
+						<p className="text-xs tiny:text-sm">
 							{username}
 						</p>
-						<p className="text-sm">
+						<p className="text-xs tiny:text-sm">
 							{description}
 						</p>
 					</div>

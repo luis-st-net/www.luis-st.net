@@ -13,10 +13,10 @@ export default function NavigationBar() {
 				<PageLink title="Home" href="/"/>
 				<PageLink title="Projects" href="https://github.com/Luis-St"/>
 				<PageLink title="Skills"/>
-				<PageLink title="Imprint"/>
-				<PageLink title="Contact" className="hidden xxs:block"/>
+				<PageLink title="Imprint" className="hidden xs:block"/>
+				<PageLink title="Contact" className="hidden xs:block"/>
 			</div>
-			<Ui.ThemeToggle className="hidden micro:block"/>
+			<Ui.ThemeToggle className="hidden nano:block"/>
 		</div>
 	);
 }
@@ -25,7 +25,7 @@ function PageLink(
 	{ title, href, className, ...props }: Omit<React.ComponentProps<typeof Link>, "href"> & { title: string, href?: string },
 ) {
 	return (
-		<Link href={href ? href : "/" + title.toLowerCase()} className={cn("text-base text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl", className)} {...props}>
+		<Link href={href ? href : "/" + title.toLowerCase()} className={cn("text-lg text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl", className)} {...props}>
 			<strong>
 				{title}
 			</strong>
