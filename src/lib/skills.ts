@@ -249,7 +249,7 @@ const vite: Skill = {
 	type: "build-system",
 	name: "Vite",
 	experience: "Beginner",
-	description: "I am very new to this build system, i have used it until today only in one project. Currently i have no further plans to use it.",
+	description: "I am very new to this build system, i have used it until today only in one project.",
 	color: {
 		background: "bg-build-system-vite",
 		text: "text-build-system-vite",
@@ -297,11 +297,21 @@ const git: Skill = {
 		text: "text-development-tool-git",
 	},
 };
+const ciCd: Skill = {
+	type: "development-tool",
+	name: "CI/CD",
+	experience: "Experienced",
+	description: "I have used it for a lot of projects at work and for my private projects. I'm familiar with the standard pipelines for java, javascript and c# projects.",
+	color: {
+		background: "bg-development-tool-ci-cd",
+		text: "text-development-tool-ci-cd",
+	},
+};
 const docker: Skill = {
 	type: "development-tool",
 	name: "Docker",
 	experience: "Experienced",
-	description: "A tool i love and hate at the same time. I moved from it works on my machine to it works in my container.",
+	description: "A tool i love and hate at the same time. I moved from 'it works on my machine' to 'it works in my container'.",
 	color: {
 		background: "bg-development-tool-docker",
 		text: "text-development-tool-docker",
@@ -338,7 +348,7 @@ export const buildSystems: Skill[] = [
 	gradle, maven, vite,
 ];
 export const developmentTools: Skill[] = [
-	jetbrains, eclipse, npm, git, docker, postman, postgresql,
+	jetbrains, eclipse, npm, git, ciCd, docker, postman, postgresql,
 ];
 export const skills: Skill[] = [
 	...languages,
