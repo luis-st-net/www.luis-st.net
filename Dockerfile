@@ -6,6 +6,10 @@
 # Build image on remote:
 #  docker build -t main-web:<version> .
 #  docker run -d -p 3000:3000 --name main-web main-web:<version>
+# Update the container:
+#  docker stop main-web
+#  docker rm main-web
+#  docker run -d -p 3000:3000 --name main-web main-web:<version>
 FROM node:lts-alpine
 
 WORKDIR /app
