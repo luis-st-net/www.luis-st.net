@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: main-web:latest
+    container_name: main-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

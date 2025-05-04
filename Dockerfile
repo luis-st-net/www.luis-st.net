@@ -2,14 +2,17 @@
 #  docker buildx build --load --platform linux/arm64 -t main-web:<version> .
 #  docker save -o D:\Programmieren\Docker\Images\Main-Website\main-web-<version>.tar main-web
 #  docker load -i ./main-web-<version>.tar
-#  docker run -d -p 3000:3000 --name main-web main-web:<version>
 # Build image on remote:
 #  docker build -t main-web:<version> .
-#  docker run -d -p 3000:3000 --name main-web main-web:<version>
 # Update the container:
 #  docker stop main-web
 #  docker rm main-web
-#  docker run -d -p 3000:3000 --name main-web main-web:<version>
+#  docker run -d -p 3000:3000 --restart unless-stopped --name main-web main-web:<version>
+
+# With docker compose:
+#  docker compose up -d --build
+#  docker compose down
+
 FROM node:lts-alpine
 
 WORKDIR /app
