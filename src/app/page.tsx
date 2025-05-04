@@ -69,7 +69,7 @@ export default function () {
 
 function IntroductionSection() {
 	return (
-		<div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center m-8 2xl:flex-row">
+		<div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center m-8 2xl:flex-row">
 			<InformationCard intro="Hi, I'm" title="Luis">
 				I'm a software developer and computer science student at the University of Furtwangen.
 				I'm passionate about software development and constantly exploring emerging technologies.
@@ -87,7 +87,7 @@ function IntroductionSection() {
 
 function SocialSection() {
 	return (
-		<div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center m-8 2xl:flex-row">
+		<div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center m-8 2xl:flex-row">
 			<InformationCard intro="My" title="Socials">
 				if you're interested in my work or want to connect, feel free to reach out to me on any platform.
 			</InformationCard>

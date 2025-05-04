@@ -8,7 +8,7 @@ import SkillBadge from "@/lib/components/skill-badge";
 export default function () {
 	return (
 		<div className="w-full">
-			<div className="min-h-[calc(calc(100vh-80px)*4)] flex flex-col items-center">
+			<div className="min-h-[calc(calc(100vh-120px)*4)] flex flex-col items-center">
 				<SkillSection type="Languages" text="i have already used" skills={languages}/>
 				<SkillSection type="Frameworks" text="i have worked with" skills={frameworks}/>
 				<SkillSection type="Build Systems" text="i have already used" skills={buildSystems}/>
@@ -22,7 +22,7 @@ function SkillSection(
 	{ type, text, skills }: { type: string, text: string, skills: Skill[] },
 ) {
 	return (
-		<div className="w-5/6 min-h-[calc(100vh-80px)] flex flex-col items-center justify-center xl:w-4/6">
+		<div className="w-5/6 min-h-[calc(100vh-120px)] flex flex-col items-center justify-center xl:w-4/6">
 			<h2 className="text-4xl text-center my-10 sm:text-6xl sm:text-left custom-lg:self-start">
 				{type}
 			</h2>
