@@ -1,10 +1,36 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: main-web:latest
     container_name: main-web
-    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3003" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    environment:
+      SECRET: ${SECRET}
+
+      CONTACT_SMTP_HOST: ${CONTACT_SMTP_HOST}
+      CONTACT_SMTP_PORT: ${CONTACT_SMTP_PORT}
+      CONTACT_SMTP_SECURE: ${CONTACT_SMTP_SECURE}
+      CONTACT_SMTP_USER: ${CONTACT_SMTP_USER}
+      CONTACT_SMTP_PASSWORD: ${CONTACT_SMTP_PASSWORD}
+
+      VERIFICATION_SMTP_HOST: ${VERIFICATION_SMTP_HOST}
+      VERIFICATION_SMTP_PORT: ${VERIFICATION_SMTP_PORT}
+      VERIFICATION_SMTP_SECURE: ${VERIFICATION_SMTP_SECURE}
+      VERIFICATION_SMTP_USER: ${VERIFICATION_SMTP_USER}
+      VERIFICATION_SMTP_PASSWORD: ${VERIFICATION_SMTP_PASSWORD}
+
+      WEBSITE_OWNER: ${WEBSITE_OWNER}
+      OWNER_STREET: ${OWNER_STREET}
+      OWNER_CITY: ${OWNER_CITY}
+      OWNER_COUNTRY: ${OWNER_COUNTRY}
+      OWNER_MAIL: ${OWNER_MAIL}
     ports:
-      - "3000:3000"
+      - "3006:3000"
+    restart: unless-stopped
+    network_mode: bridge
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

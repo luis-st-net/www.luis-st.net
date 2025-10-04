@@ -4,6 +4,7 @@
 node_modules/
 util/
 .dockerignore
+.env
 .gitignore
 Dockerfile
 README.md
