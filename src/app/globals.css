@@ -1,7 +1,188 @@
 @import "tailwindcss";
 
-:root {
-	font-family: 'Arial', sans-serif;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--breakpoint-nano: 16rem;
+	--breakpoint-micro: 20rem;
+	--breakpoint-tiny: 22.5rem;
+	--breakpoint-xxs: 25rem;
+	--breakpoint-xs: 30rem;
+	--breakpoint-custom-lg: 61.25rem;
+	--breakpoint-3xl: 112rem;
+	--breakpoint-4xl: 128rem;
+	
+	--radius-2xl: calc(var(--radius) + 4px);
+	--radius-xl: calc(var(--radius) + 2px);
+	--radius-lg: var(--radius);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 4px);
+	
+	--color-custom-primary: var(--custom-primary);
+	--color-custom-secondary: var(--custom-secondary);
+	--color-custom-tertiary: var(--custom-tertiary);
+	--color-custom-quaternary: var(--custom-quaternary);
+	
+	--color-custom-accent-blue: var(--custom-accent-blue);
+	--color-custom-accent-green: var(--custom-accent-green);
+	--color-custom-accent-yellow: var(--custom-accent-yellow);
+	--color-custom-accent-orange: var(--custom-accent-orange);
+	--color-custom-accent-red: var(--custom-accent-red);
+	
+	--color-custom-light-blue: var(--custom-light-blue);
+	--color-custom-light-gray: var(--custom-light-gray);
+	
+	--color-custom-dark-blue: var(--custom-dark-blue);
+	--color-custom-dark-green: var(--custom-dark-green);
+	--color-custom-dark-red: var(--custom-dark-red);
+	--color-custom-dark-gray: var(--custom-dark-gray);
+	
+	--color-custom-blue: var(--custom-blue);
+	--color-custom-green: var(--custom-green);
+	--color-custom-yellow: var(--custom-yellow);
+	--color-custom-orange: var(--custom-orange);
+	--color-custom-red: var(--custom-red);
+	--color-custom-gray: var(--custom-gray);
+	--color-custom-anthracite: var(--custom-anthracite);
+	
+	--color-custom-white: var(--custom-white);
+	--color-custom-white-primary: var(--custom-white-primary);
+	--color-custom-white-secondary: var(--custom-white-secondary);
+	--color-custom-white-tertiary: var(--custom-white-tertiary);
+	
+	--color-custom-black: var(--custom-black);
+	--color-custom-black-primary: var(--custom-black-primary);
+	--color-custom-black-secondary: var(--custom-black-secondary);
+	--color-custom-black-tertiary: var(--custom-black-tertiary);
+	
+	--color-language-java: var(--language-java);
+	--color-language-python: var(--language-python);
+	--color-language-javascript: var(--language-javascript);
+	--color-language-typescript: var(--language-typescript);
+	--color-language-csharp: var(--language-csharp);
+	--color-language-cpp: var(--language-cpp);
+	--color-language-shell: var(--language-shell);
+	--color-language-kotlin: var(--language-kotlin);
+	--color-language-groovy: var(--language-groovy);
+	--color-language-sql: var(--language-sql);
+	--color-language-html: var(--language-html);
+	--color-language-css: var(--language-css);
+	
+	--color-framework-spring: var(--framework-spring);
+	--color-framework-asp-dot-net: var(--framework-asp-dot-net);
+	--color-framework-react: var(--framework-react);
+	--color-framework-next-js: var(--framework-next-js);
+	--color-framework-vue-js: var(--framework-vue-js);
+	--color-framework-tailwind: var(--framework-tailwind);
+	--color-framework-java-fx: var(--framework-java-fx);
+	--color-framework-wpf: var(--framework-wpf);
+	--color-framework-qt: var(--framework-qt);
+	--color-framework-unity: var(--framework-unity);
+	
+	--color-build-system-gradle: var(--build-system-gradle);
+	--color-build-system-maven: var(--build-system-maven);
+	--color-build-system-vite: var(--build-system-vite);
+	
+	--color-development-tool-jetbrains: var(--development-tool-jetbrains);
+	--color-development-tool-eclipse: var(--development-tool-eclipse);
+	--color-development-tool-npm: var(--development-tool-npm);
+	--color-development-tool-git: var(--development-tool-git);
+	--color-development-tool-ci-cd: var(--development-tool-ci-cd);
+	--color-development-tool-docker: var(--development-tool-docker);
+	--color-development-tool-postman: var(--development-tool-postman);
+	--color-development-tool-postgresql: var(--development-tool-postgresql);
+	
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar-background);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+	
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+	--animate-collapsible-down: collapsible-down 0.4s ease;
+	--animate-collapsible-up: collapsible-up 0.4s ease;
+	
+	--transition-duration-400: 400ms;
+	
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+	
+	@keyframes collapsible-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-collapsible-content-height);
+		}
+	}
+	
+	@keyframes collapsible-up {
+		from {
+			height: var(--radix-collapsible-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+@layer utilities {
+	:root {
+		font-family: 'Arial', sans-serif;
+	}
 }
 
 @layer base {

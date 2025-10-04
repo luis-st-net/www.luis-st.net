@@ -21,7 +21,7 @@ export default function ContentPane(
 	
 	return (
 		<div className={cn("relative", defaultSpacing && "mt-16 mb-8", classes)} {...props}>
-			<div className={cn("absolute inset-0 rounded-xl blur-[8px] opacity-80", shadowClasses)}/>
+			<div className={cn("absolute inset-0 rounded-xl blur-sm opacity-80", shadowClasses)}/>
 			<div className={cn("relative rounded-lg p-0.5", shadowClasses)}>
 				<div className={cn("rounded-md bg-custom-secondary", defaultSpacing && "p-4")}>
 					{children}

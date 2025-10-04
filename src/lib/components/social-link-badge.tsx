@@ -8,7 +8,7 @@ export default function SocialLinkBadge(
 ) {
 	return (
 		<Link href={href}>
-			<ContentPane defaultSpacing={false} defaultColor={true} className="w-48 transition-transform micro:w-72 xs:w-96 xs:hover:scale-105">
+			<ContentPane defaultSpacing={false} defaultColor={true} className="w-48 transition-transform duration-300 ease-in-out will-change-transform micro:w-72 xs:w-96 xs:hover:scale-105">
 				<div className="flex flex-row items-center p-3 xs:p-4">
 					<Icon className="size-12 tiny:size-14 xs:size-20"/>
 					<div className="ml-3.5 my-0.5 tiny:my-1">
