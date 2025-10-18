@@ -1,6 +1,6 @@
 "use client";
 
-import * as Ui from "@/lib/components/ui";
+import * as Ui from "@/lib/components/custom";
 import React from "react";
 import ContentPane from "@/lib/components/content-pane";
 import { useForm } from "react-hook-form";

@@ -1,6 +1,6 @@
-import * as Ui from "@/lib/components/ui/";
 import React, { HTMLAttributes, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Separator } from "@/lib/components/custom";
 import "./code-block.css";
 
 import { cn } from "@/lib/utility";
@@ -64,7 +64,7 @@ export default function CodeBlock(
 				</div>
 			)}
 			{title && (
-				<Ui.Separator className="h-[2px] bg-custom-quaternary"/>
+				<Separator className="h-[2px]"/>
 			)}
 			<pre className={cn("m-0 rounded-md p-2 pt-4 pb-4 bg-custom-secondary dark:bg-custom-tertiary font-code overflow-auto", "language-" + language)}>
 				<code className={cn("text-xs text-wrap sm:text-base", "language-" + language)}>

@@ -1,6 +1,6 @@
 "use client";
 
-import * as Ui from "@/lib/components/ui";
+import * as Ui from "@/lib/components/custom";
 import React, { useEffect, useState } from "react";
 import { getContactInformation } from "./actions";
 import ContentPane from "@/lib/components/content-pane";
