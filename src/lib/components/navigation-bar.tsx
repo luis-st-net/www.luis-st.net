@@ -1,32 +1,102 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ThemeToggle } from "@/lib/components/custom";
+import { FaCode } from "react-icons/fa";
 
 import { cn } from "@/lib/utility";
 
 export default function NavigationBar() {
+	const { scrollY } = useScroll();
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	// Track scroll position
+	React.useEffect(() => {
+		const unsubscribe = scrollY.on("change", (latest) => {
+			setIsScrolled(latest > 50);
+		});
+		return () => unsubscribe();
+	}, [scrollY]);
+
+	const headerBackground = useTransform(
+		scrollY,
+		[0, 100],
+		["rgba(15, 23, 42, 0.3)", "rgba(15, 23, 42, 0.8)"]
+	);
+
 	return (
-		<motion.div
+		<motion.header
 			initial={{ y: -100, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.8, ease: "easeOut" }}
-			className="fixed top-0 left-0 right-0 z-50 h-20 flex flex-row items-center p-2 glass border-b border-white/10 sm:p-4 backdrop-blur-xl"
+			style={{ backgroundColor: headerBackground }}
+			className={cn(
+				"fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+				"backdrop-blur-xl border-b border-white/10",
+				isScrolled ? "shadow-2xl shadow-custom-blue/10" : ""
+			)}
 		>
-			{/* Subtle gradient overlay */}
-			<div className="absolute inset-0 bg-gradient-to-r from-custom-blue/5 via-custom-accent-purple/5 to-custom-accent-cyan/5" />
+			{/* Animated gradient overlay */}
+			<div className="absolute inset-0 bg-gradient-to-r from-custom-blue/10 via-custom-accent-purple/10 to-custom-accent-cyan/10 opacity-50" />
 
-			<div className="w-full flex flex-row items-center justify-start gap-4 sm:justify-center sm:gap-8 custom-lg:gap-14 relative z-10">
-				<PageLink title="Home" href="/" index={0}/>
-				<PageLink title="Projects" href="https://github.com/Luis-St" index={1}/>
-				<PageLink title="Skills" index={2}/>
-				<PageLink title="Imprint" className="hidden xs:block" index={3}/>
-				<PageLink title="Contact" className="hidden xs:block" index={4}/>
-			</div>
-			<ThemeToggle className="hidden nano:block relative z-10"/>
-		</motion.div>
+			{/* Animated accent line */}
+			<motion.div
+				className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan"
+				initial={{ scaleX: 0 }}
+				animate={{ scaleX: 1 }}
+				transition={{ duration: 1.2, delay: 0.5 }}
+			/>
+
+			<nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="flex items-center justify-between h-20 relative z-10">
+					{/* Logo/Brand */}
+					<motion.div
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						className="flex items-center gap-3"
+					>
+						<Link href="/" className="flex items-center gap-3 group">
+							<motion.div
+								whileHover={{ rotate: 360, scale: 1.1 }}
+								transition={{ duration: 0.6 }}
+								className="p-2 rounded-lg bg-gradient-to-br from-custom-blue via-custom-accent-purple to-custom-accent-cyan"
+							>
+								<FaCode className="size-6 text-white" />
+							</motion.div>
+							<div className="hidden sm:flex flex-col">
+								<span className="text-xl font-black bg-gradient-to-r from-custom-light-blue to-custom-accent-cyan bg-clip-text text-transparent">
+									Luis Staudt
+								</span>
+								<span className="text-xs text-custom-white-tertiary font-medium -mt-1">
+									Software Developer
+								</span>
+							</div>
+						</Link>
+					</motion.div>
+
+					{/* Navigation Links */}
+					<div className="flex items-center gap-2 sm:gap-4 custom-lg:gap-8">
+						<PageLink title="Home" href="/" index={0}/>
+						<PageLink title="Projects" href="https://github.com/Luis-St" index={1}/>
+						<PageLink title="Skills" index={2}/>
+						<PageLink title="Contact" className="hidden xs:block" index={3}/>
+
+						{/* Theme Toggle with enhanced styling */}
+						<motion.div
+							initial={{ opacity: 0, scale: 0 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.5, delay: 0.6 }}
+							className="hidden nano:block ml-2"
+						>
+							<ThemeToggle />
+						</motion.div>
+					</div>
+				</div>
+			</nav>
+		</motion.header>
 	);
 }
 
@@ -42,17 +112,18 @@ function PageLink(
 			<Link
 				href={href ? href : "/" + title.toLowerCase()}
 				className={cn(
-					"relative text-lg text-custom-white-primary xs:text-xl sm:text-2xl custom-lg:text-3xl",
-					"transition-all duration-300 hover:text-custom-light-blue",
-					"before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5",
-					"before:bg-gradient-to-r before:from-custom-blue before:via-custom-accent-purple before:to-custom-accent-pink",
-					"before:transition-all before:duration-300",
-					"hover:before:w-full",
+					"relative px-3 py-2 text-sm xs:text-base sm:text-lg font-bold",
+					"text-custom-white-primary transition-all duration-300",
+					"hover:text-transparent hover:bg-gradient-to-r hover:from-custom-light-blue hover:to-custom-accent-cyan hover:bg-clip-text",
+					"after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px]",
+					"after:bg-gradient-to-r after:from-custom-blue after:via-custom-accent-purple after:to-custom-accent-cyan",
+					"after:transition-all after:duration-300",
+					"hover:after:w-full",
 					className
 				)}
 				{...props}
 			>
-				<strong>{title}</strong>
+				{title}
 			</Link>
 		</motion.div>
 	);
