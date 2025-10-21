@@ -46,8 +46,7 @@ export default function () {
 
 function HeroSection() {
 	return (
-		<section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
-			{/* Animated gradient orbs */}
+		<section className="w-full flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 py-32 sm:py-40">
 			<motion.div
 				className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-custom-blue/20 via-custom-accent-purple/15 to-transparent rounded-full blur-3xl"
 				animate={{
@@ -75,46 +74,24 @@ function HeroSection() {
 				}}
 			/>
 
-			{/* Content */}
 			<div className="max-w-6xl mx-auto text-center relative z-10">
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.2 }}
-					className="mb-6"
-				>
-					<span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-custom-blue/20 to-custom-accent-purple/20 border border-custom-blue/30 text-custom-light-blue text-sm font-bold mb-4">
-						Welcome to my portfolio
-					</span>
-				</motion.div>
-
-				<motion.h1
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.3 }}
+				<h1
 					className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
 				>
 					<span className="block mb-2">Hi, I'm</span>
 					<span className="gradient-text">Luis Staudt</span>
-				</motion.h1>
+				</h1>
 
-				<motion.p
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.4 }}
+				<p
 					className="text-xl sm:text-2xl md:text-3xl text-custom-white-tertiary font-medium mb-12 max-w-3xl mx-auto"
 				>
 					Software Developer & Computer Science Student
-				</motion.p>
+				</p>
 
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.5 }}
+				<div
 					className="flex flex-wrap justify-center gap-4 mb-16"
 				>
 					<a
-						href="#connect"
 						className="group px-8 py-4 rounded-xl bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan font-bold text-white text-lg transition-all hover:scale-105 hover:shadow-2xl hover:shadow-custom-blue/50"
 					>
 						Let's Connect
@@ -125,45 +102,21 @@ function HeroSection() {
 					>
 						View Projects
 					</a>
-				</motion.div>
+				</div>
 
-				{/* Tech stack icons */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 1, delay: 0.7 }}
+				<div
 					className="flex justify-center gap-6 flex-wrap"
 				>
 					{[FaJava, SiTypescript, SiReact, SiNextdotjs, SiSpring].map((Icon, index) => (
-						<motion.div
+						<div
 							key={index}
-							initial={{ opacity: 0, scale: 0 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-							whileHover={{ scale: 1.2, rotate: 5 }}
 							className="p-4 rounded-xl glass border border-white/10 hover:border-custom-blue/50 transition-all"
 						>
 							<Icon className="size-8 text-custom-light-blue" />
-						</motion.div>
+						</div>
 					))}
-				</motion.div>
+				</div>
 			</div>
-
-			{/* Scroll indicator */}
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: 1.2 }}
-				className="absolute bottom-8 left-1/2 -translate-x-1/2"
-			>
-				<motion.div
-					animate={{ y: [0, 10, 0] }}
-					transition={{ duration: 2, repeat: Infinity }}
-					className="w-6 h-10 border-2 border-custom-blue/50 rounded-full flex justify-center pt-2"
-				>
-					<div className="w-1 h-2 bg-custom-blue rounded-full" />
-				</motion.div>
-			</motion.div>
 		</section>
 	);
 }
@@ -173,25 +126,17 @@ function AboutSection() {
 
 	return (
 		<section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-			<motion.div
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, margin: "-100px" }}
-				transition={{ duration: 0.8 }}
+			<div
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
 					About Me
 				</h2>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full" />
-			</motion.div>
+			</div>
 
 			<div className="grid md:grid-cols-2 gap-8 items-start">
-				<motion.div
-					initial={{ opacity: 0, x: -50 }}
-					whileInView={{ opacity: 1, x: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.8 }}
+				<div
 					className="glass rounded-2xl p-8 border border-white/10"
 				>
 					<h3 className="text-2xl font-bold text-custom-light-blue mb-6">Background</h3>
@@ -203,13 +148,9 @@ function AboutSection() {
 						With expertise spanning from backend development to modern web applications,
 						I continuously explore emerging technologies and push the boundaries of what's possible in software engineering.
 					</p>
-				</motion.div>
+				</div>
 
-				<motion.div
-					initial={{ opacity: 0, x: 50 }}
-					whileInView={{ opacity: 1, x: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.8 }}
+				<div
 					className="glass rounded-2xl p-8 border border-white/10"
 				>
 					<h3 className="text-2xl font-bold text-custom-light-blue mb-6">Interests & Focus</h3>
@@ -221,20 +162,16 @@ function AboutSection() {
 							"Web Development",
 							"System Architecture",
 						].map((interest, index) => (
-							<motion.li
+							<li
 								key={interest}
-								initial={{ opacity: 0, x: 20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
 								className="flex items-center gap-3 text-custom-white-tertiary text-lg"
 							>
 								<div className="w-2 h-2 rounded-full bg-gradient-to-r from-custom-blue to-custom-accent-cyan" />
 								{interest}
-							</motion.li>
+							</li>
 						))}
 					</ul>
-				</motion.div>
+				</div>
 			</div>
 		</section>
 	);
@@ -264,28 +201,19 @@ function ExpertiseSection() {
 
 	return (
 		<section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-			<motion.div
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, margin: "-100px" }}
-				transition={{ duration: 0.8 }}
+			<div
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
 					What I Do
 				</h2>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full" />
-			</motion.div>
+			</div>
 
 			<div className="grid md:grid-cols-3 gap-8">
 				{expertise.map((item, index) => (
-					<motion.div
+					<div
 						key={item.title}
-						initial={{ opacity: 0, y: 50 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: index * 0.2 }}
-						whileHover={{ y: -10, scale: 1.02 }}
 						className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/50 transition-all group"
 					>
 						<div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${item.color} mb-6 group-hover:scale-110 transition-transform`}>
@@ -295,7 +223,7 @@ function ExpertiseSection() {
 						<p className="text-custom-white-tertiary text-base leading-relaxed">
 							{item.description}
 						</p>
-					</motion.div>
+					</div>
 				))}
 			</div>
 		</section>
@@ -305,7 +233,6 @@ function ExpertiseSection() {
 function SocialSection() {
 	return (
 		<section id="connect" className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
-			{/* Decorative gradient orb */}
 			<motion.div
 				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-custom-accent-purple/10 to-custom-blue/10 rounded-full blur-3xl pointer-events-none"
 				animate={{
@@ -319,11 +246,7 @@ function SocialSection() {
 				}}
 			/>
 
-			<motion.div
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, margin: "-100px" }}
-				transition={{ duration: 0.8 }}
+			<div
 				className="text-center mb-16 relative z-10"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
@@ -333,23 +256,15 @@ function SocialSection() {
 				<p className="text-xl text-custom-white-tertiary max-w-2xl mx-auto">
 					Interested in my work or want to collaborate? Feel free to reach out on any of these platforms.
 				</p>
-			</motion.div>
+			</div>
 
 			<div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 relative z-10">
 				{socials.map((social, index) => (
-					<motion.div
+					<div
 						key={social.title}
-						initial={{ opacity: 0, y: 60, scale: 0.9 }}
-						whileInView={{ opacity: 1, y: 0, scale: 1 }}
-						viewport={{ once: true, margin: "-50px" }}
-						transition={{
-							duration: 0.6,
-							delay: 0.15 * index,
-							ease: "easeOut"
-						}}
 					>
 						<SocialLinkBadge {...social}/>
-					</motion.div>
+					</div>
 				))}
 			</div>
 		</section>

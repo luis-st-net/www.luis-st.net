@@ -24,9 +24,9 @@ export default function (
 		<ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 			<ToastProvider>
 				<AnimatedBackground />
-				<div className="flex flex-col h-screen w-full">
+				<div className="flex flex-col min-h-screen w-full">
 					<NavigationBar/>
-					<main className="flex flex-col items-center flex-1 overflow-hidden overflow-y-auto pt-20">
+					<main className="flex flex-col items-center flex-1 pt-20">
 						{children}
 					</main>
 					<Footer/>
