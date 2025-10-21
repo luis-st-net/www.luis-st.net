@@ -68,7 +68,6 @@ function SkillSection(
 			transition={{ duration: 0.6, delay: index * 0.1 }}
 			className="relative"
 		>
-			{/* Section header */}
 			<div className="mb-8">
 				<h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
 					{type}
@@ -76,7 +75,6 @@ function SkillSection(
 				<div className="w-16 h-1 bg-gradient-to-r from-custom-blue to-custom-accent-cyan rounded-full" />
 			</div>
 
-			{/* Skills grid */}
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"

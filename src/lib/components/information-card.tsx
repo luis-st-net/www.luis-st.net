@@ -8,7 +8,6 @@ export default function InformationCard(
 ) {
 	return (
 		<div className="w-full flex flex-col items-center p-8 sm:w-120 2xl:max-w-[50%] 2xl:items-start relative group">
-			{/* Subtle glow effect */}
 			<div className="absolute inset-0 bg-gradient-to-br from-custom-accent-purple/5 to-custom-blue/5 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
 			<div className="relative z-10">

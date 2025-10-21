@@ -12,7 +12,6 @@ export default function NavigationBar() {
 	const { scrollY } = useScroll();
 	const [isScrolled, setIsScrolled] = useState(false);
 
-	// Track scroll position
 	React.useEffect(() => {
 		const unsubscribe = scrollY.on("change", (latest) => {
 			setIsScrolled(latest > 50);
@@ -38,10 +37,8 @@ export default function NavigationBar() {
 				isScrolled ? "shadow-2xl shadow-custom-blue/10" : ""
 			)}
 		>
-			{/* Animated gradient overlay */}
 			<div className="absolute inset-0 bg-gradient-to-r from-custom-blue/10 via-custom-accent-purple/10 to-custom-accent-cyan/10 opacity-50" />
 
-			{/* Animated accent line */}
 			<motion.div
 				className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan"
 				initial={{ scaleX: 0 }}
@@ -51,7 +48,6 @@ export default function NavigationBar() {
 
 			<nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-20 relative z-10">
-					{/* Logo/Brand */}
 					<motion.div
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
@@ -77,13 +73,11 @@ export default function NavigationBar() {
 						</Link>
 					</motion.div>
 
-					{/* Navigation Links and Theme Toggle */}
 					<div className="flex items-center gap-2 sm:gap-4 custom-lg:gap-8">
 						<PageLink title="Home" href="/" index={0}/>
 						<PageLink title="Projects" href="https://github.com/Luis-St" index={1}/>
 						<PageLink title="Skills" index={2}/>
 
-						{/* Theme Toggle with enhanced styling */}
 						<motion.div
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}

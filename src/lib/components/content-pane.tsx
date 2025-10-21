@@ -29,22 +29,17 @@ export default function ContentPane(
 			transition={{ duration: 0.6, ease: "easeOut" }}
 			className={cn("relative group", defaultSpacing && "mt-16 mb-8", classes)}
 		>
-			{/* Glow effect */}
 			<div className={cn("absolute inset-0 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500", shadowClasses)}/>
 
-			{/* Border gradient */}
 			<div className={cn("relative rounded-2xl p-0.5", shadowClasses)}>
-				{/* Content container with glass effect */}
 				<div className={cn(
 					"rounded-2xl glass border border-white/10",
 					"bg-custom-secondary/80 dark:bg-custom-tertiary/80",
 					"backdrop-blur-xl shadow-2xl",
 					defaultSpacing && "p-6"
 				)}>
-					{/* Subtle gradient overlay */}
 					<div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/5 rounded-2xl pointer-events-none" />
 
-					{/* Content */}
 					<div className="relative z-10">
 						{children}
 					</div>

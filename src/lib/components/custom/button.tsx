@@ -23,7 +23,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					"disabled:opacity-50 disabled:cursor-not-allowed",
 					"overflow-hidden group",
 
-					// Variant styles
 					variant === "default" && [
 						"glass border border-white/20 hover:border-white/40",
 						"bg-gradient-to-r from-custom-light-blue/80 via-custom-accent-purple/80 to-custom-accent-cyan/80",

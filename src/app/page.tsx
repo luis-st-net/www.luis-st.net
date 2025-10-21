@@ -75,20 +75,29 @@ function HeroSection() {
 			/>
 
 			<div className="max-w-6xl mx-auto text-center relative z-10">
-				<h1
+				<motion.h1
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
 					className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
 				>
 					<span className="block mb-2">Hi, I'm</span>
 					<span className="gradient-text">Luis Staudt</span>
-				</h1>
+				</motion.h1>
 
-				<p
+				<motion.p
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
 					className="text-xl sm:text-2xl md:text-3xl text-custom-white-tertiary font-medium mb-12 max-w-3xl mx-auto"
 				>
 					Software Developer & Computer Science Student
-				</p>
+				</motion.p>
 
-				<div
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
 					className="flex flex-wrap justify-center gap-4 mb-16"
 				>
 					<a
@@ -102,20 +111,27 @@ function HeroSection() {
 					>
 						View Projects
 					</a>
-				</div>
+				</motion.div>
 
-				<div
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
 					className="flex justify-center gap-6 flex-wrap"
 				>
 					{[FaJava, SiTypescript, SiReact, SiNextdotjs, SiSpring].map((Icon, index) => (
-						<div
+						<motion.div
 							key={index}
-							className="p-4 rounded-xl glass border border-white/10 hover:border-custom-blue/50 transition-all"
+							initial={{ opacity: 0, scale: 0.8 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.4, delay: 0.8 + index * 0.1, ease: "easeOut" }}
+							whileHover={{ scale: 1.1, y: -4 }}
+							className="p-4 rounded-xl glass border border-white/10 hover:border-custom-blue/50 transition-colors"
 						>
 							<Icon className="size-8 text-custom-light-blue" />
-						</div>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
@@ -126,18 +142,26 @@ function AboutSection() {
 
 	return (
 		<section className="w-full h-[calc(100vh-5rem-4rem)] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-			<div
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
 					About Me
 				</h2>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full" />
-			</div>
+			</motion.div>
 
 			<div className="grid md:grid-cols-2 gap-8 items-start">
-				<div
-					className="glass rounded-2xl p-8 border border-white/10"
+				<motion.div
+					initial={{ opacity: 0, x: -30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+					className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/30 transition-colors"
 				>
 					<h3 className="text-2xl font-bold text-custom-light-blue mb-6">Background</h3>
 					<p className="text-custom-white-tertiary text-lg leading-relaxed mb-4">
@@ -148,10 +172,14 @@ function AboutSection() {
 						With expertise spanning from backend development to modern web applications,
 						I continuously explore emerging technologies and push the boundaries of what's possible in software engineering.
 					</p>
-				</div>
+				</motion.div>
 
-				<div
-					className="glass rounded-2xl p-8 border border-white/10"
+				<motion.div
+					initial={{ opacity: 0, x: 30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+					className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/30 transition-colors"
 				>
 					<h3 className="text-2xl font-bold text-custom-light-blue mb-6">Interests & Focus</h3>
 					<ul className="space-y-3">
@@ -162,16 +190,20 @@ function AboutSection() {
 							"Web Development",
 							"System Architecture",
 						].map((interest, index) => (
-							<li
+							<motion.li
 								key={interest}
+								initial={{ opacity: 0, x: -10 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: 0.6 + index * 0.1, ease: "easeOut" }}
 								className="flex items-center gap-3 text-custom-white-tertiary text-lg"
 							>
 								<div className="w-2 h-2 rounded-full bg-gradient-to-r from-custom-blue to-custom-accent-cyan" />
 								{interest}
-							</li>
+							</motion.li>
 						))}
 					</ul>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
@@ -201,20 +233,29 @@ function ExpertiseSection() {
 
 	return (
 		<section className="w-full h-[calc(100vh-5rem-4rem)] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-			<div
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
 					What I Do
 				</h2>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full" />
-			</div>
+			</motion.div>
 
 			<div className="grid md:grid-cols-3 gap-8">
 				{expertise.map((item, index) => (
-					<div
+					<motion.div
 						key={item.title}
-						className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/50 transition-all group"
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, margin: "-100px" }}
+						transition={{ duration: 0.5, delay: index * 0.2, ease: "easeOut" }}
+						whileHover={{ y: -8 }}
+						className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/50 transition-colors group"
 					>
 						<div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${item.color} mb-6 group-hover:scale-110 transition-transform`}>
 							<item.icon className="size-8 text-white" />
@@ -223,7 +264,7 @@ function ExpertiseSection() {
 						<p className="text-custom-white-tertiary text-base leading-relaxed">
 							{item.description}
 						</p>
-					</div>
+					</motion.div>
 				))}
 			</div>
 		</section>
@@ -246,7 +287,11 @@ function SocialSection() {
 				}}
 			/>
 
-			<div
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
 				className="text-center mb-16 relative z-10"
 			>
 				<h2 className="text-4xl sm:text-5xl md:text-6xl font-black gradient-text mb-6">
@@ -256,15 +301,20 @@ function SocialSection() {
 				<p className="text-xl text-custom-white-tertiary max-w-2xl mx-auto">
 					Interested in my work or want to collaborate? Feel free to reach out on any of these platforms.
 				</p>
-			</div>
+			</motion.div>
 
 			<div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 relative z-10">
 				{socials.map((social, index) => (
-					<div
+					<motion.div
 						key={social.title}
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, margin: "-100px" }}
+						transition={{ duration: 0.5, delay: 0.3 + index * 0.15, ease: "easeOut" }}
+						whileHover={{ scale: 1.05, y: -8 }}
 					>
 						<SocialLinkBadge {...social}/>
-					</div>
+					</motion.div>
 				))}
 			</div>
 		</section>

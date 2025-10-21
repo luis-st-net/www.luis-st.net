@@ -11,7 +11,6 @@ export default function SkillBadge(
 ) {
 	const [isExpanded, setIsExpanded] = useState(false);
 
-	// Map experience to visual indicator
 	const getExperienceColor = (exp: string) => {
 		switch (exp) {
 			case "Expert":
@@ -39,22 +38,18 @@ export default function SkillBadge(
 				isExpanded ? "h-auto" : "h-28"
 			)}
 		>
-			{/* Subtle gradient overlay on hover */}
 			<motion.div
 				className="absolute inset-0 bg-gradient-to-br from-custom-blue/5 via-transparent to-custom-accent-purple/5 opacity-0"
 				whileHover={{ opacity: 1 }}
 				transition={{ duration: 0.3 }}
 			/>
 
-			{/* Content */}
 			<div className="relative z-10 p-5 flex flex-col h-full">
-				{/* Header */}
 				<div className="flex items-start justify-between mb-2">
 					<h3 className="text-xl font-bold text-white">
 						{name}
 					</h3>
 
-					{/* Expand indicator - subtle */}
 					<motion.div
 						animate={{ rotate: isExpanded ? 180 : 0 }}
 						transition={{ duration: 0.3 }}
@@ -64,7 +59,6 @@ export default function SkillBadge(
 					</motion.div>
 				</div>
 
-				{/* Experience badge with gradient */}
 				<div className="flex items-center gap-2 mb-3">
 					<div className={cn(
 						"h-1.5 w-16 rounded-full bg-gradient-to-r",
@@ -75,7 +69,6 @@ export default function SkillBadge(
 					</span>
 				</div>
 
-				{/* Description - Expands on click */}
 				<AnimatePresence>
 					{isExpanded && (
 						<motion.div
@@ -93,7 +86,6 @@ export default function SkillBadge(
 				</AnimatePresence>
 			</div>
 
-			{/* Subtle shine effect on hover */}
 			<motion.div
 				className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none"
 				initial={{ x: "-100%", skewX: -20 }}

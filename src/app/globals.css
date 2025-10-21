@@ -215,7 +215,7 @@
 
 @layer base {
 	:root {
-		/*Main colors - Modern gradient-friendly palette*/
+		/*Main colors*/
 		--custom-light-blue: #60a5fa;
 		--custom-blue: #3b82f6;
 		--custom-dark-blue: #1e40af;
@@ -240,7 +240,7 @@
 		--gradient-cyan: #06b6d4;
 		--gradient-indigo: #6366f1;
 		
-		/*Shades of white and black - Modern neutral palette*/
+		/*Shades of white and black*/
 		--custom-white-primary: #f8fafc;
 		--custom-white-secondary: #f1f5f9;
 		--custom-white-tertiary: #e2e8f0;
@@ -250,7 +250,7 @@
 		--custom-black-tertiary: #334155;
 		--custom-black-quaternary: #475569;
 		
-		/*Accent colors - Vibrant modern accents*/
+		/*Accent colors*/
 		--custom-accent-blue: #3b82f6;
 		--custom-accent-green: #10b981;
 		--custom-accent-yellow: #fbbf24;
@@ -309,7 +309,6 @@
 	}
 	
 	.dark {
-		/*Main colors - Dark mode optimized*/
 		--custom-light-blue: #60a5fa;
 		--custom-blue: #3b82f6;
 		--custom-dark-blue: #1e3a8a;
@@ -321,19 +320,16 @@
 		--custom-red: #ef4444;
 		--custom-dark-red: #b91c1c;
 
-		/*Modern gradient colors*/
 		--gradient-purple: #a855f7;
 		--gradient-pink: #ec4899;
 		--gradient-cyan: #06b6d4;
 		--gradient-indigo: #6366f1;
 
-		/*Base colors*/
 		--custom-primary: var(--custom-black);
 		--custom-secondary: var(--custom-black-secondary);
 		--custom-tertiary: var(--custom-black-tertiary);
 		--custom-quaternary: var(--custom-black-quaternary);
 
-		/*Frameworks*/
 		--framework-next-js: #ffffff;
 	}
 }
@@ -364,7 +360,6 @@
 	}
 }
 
-/* Animation utility classes */
 @layer utilities {
 	.animate-float {
 		animation: float 6s ease-in-out infinite;
@@ -399,7 +394,6 @@
 		animation: rotate-slow 20s linear infinite;
 	}
 
-	/* Glass morphism effect */
 	.glass {
 		background: rgba(255, 255, 255, 0.05);
 		backdrop-filter: blur(10px);
@@ -412,7 +406,6 @@
 		border: 1px solid rgba(255, 255, 255, 0.05);
 	}
 
-	/* Modern gradient text - refined */
 	.gradient-text {
 		background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
 		background-size: 200% 200%;
@@ -422,7 +415,6 @@
 		animation: gradient-shift 8s ease infinite;
 	}
 
-	/* 3D Card effect */
 	.card-3d {
 		transform-style: preserve-3d;
 		transition: transform 0.6s ease;

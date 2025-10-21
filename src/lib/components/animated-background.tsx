@@ -13,7 +13,6 @@ export default function AnimatedBackground() {
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
-		// Set canvas size
 		const resizeCanvas = () => {
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
@@ -21,7 +20,6 @@ export default function AnimatedBackground() {
 		resizeCanvas();
 		window.addEventListener("resize", resizeCanvas);
 
-		// Particle class
 		class Particle {
 			x: number;
 			y: number;
@@ -42,10 +40,10 @@ export default function AnimatedBackground() {
 				this.opacity = Math.random() * 0.5 + 0.2;
 
 				const colors = [
-					"96, 165, 250",    // light blue
-					"168, 85, 247",    // purple
-					"6, 182, 212",     // cyan
-					"59, 130, 246",    // blue
+					"96, 165, 250",
+					"168, 85, 247",
+					"6, 182, 212",
+					"59, 130, 246",
 				];
 				this.color = colors[Math.floor(Math.random() * colors.length)];
 			}
@@ -69,7 +67,6 @@ export default function AnimatedBackground() {
 			}
 		}
 
-		// Create particles
 		const particles: Particle[] = [];
 		const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 100);
 
@@ -77,12 +74,10 @@ export default function AnimatedBackground() {
 			particles.push(new Particle(canvas));
 		}
 
-		// Animation loop
 		const animate = () => {
 			if (!ctx) return;
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-			// Draw connections
 			particles.forEach((particle, i) => {
 				particles.slice(i + 1).forEach((otherParticle) => {
 					const dx = particle.x - otherParticle.x;
@@ -100,7 +95,6 @@ export default function AnimatedBackground() {
 				});
 			});
 
-			// Update and draw particles
 			particles.forEach((particle) => {
 				particle.update();
 				particle.draw();
@@ -118,13 +112,11 @@ export default function AnimatedBackground() {
 
 	return (
 		<>
-			{/* Canvas for particle effects */}
 			<canvas
 				ref={canvasRef}
 				className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
 			/>
 
-			{/* Enhanced floating orbs with refined colors */}
 			<motion.div
 				className="fixed top-20 left-10 w-[450px] h-[450px] bg-gradient-to-br from-custom-light-blue/12 via-custom-blue/8 to-transparent rounded-full blur-3xl pointer-events-none"
 				animate={{

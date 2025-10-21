@@ -20,10 +20,8 @@ export default function SocialLinkBadge(
 					"relative group-hover:shadow-2xl group-hover:shadow-custom-blue/30"
 				)}
 			>
-				{/* Enhanced gradient overlay on hover */}
 				<div className="absolute inset-0 bg-gradient-to-br from-custom-light-blue/15 via-custom-accent-purple/10 to-custom-accent-cyan/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-				{/* Outer glow on hover */}
 				<div
 					className="absolute -inset-1 bg-gradient-to-r from-custom-light-blue/30 via-custom-accent-purple/30 to-custom-accent-cyan/30 rounded-2xl blur-lg opacity-0"
 				/>
@@ -45,7 +43,6 @@ export default function SocialLinkBadge(
 					</div>
 				</div>
 
-				{/* Enhanced shine effect */}
 				<motion.div
 					className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
 					initial={{ x: "-100%" }}
