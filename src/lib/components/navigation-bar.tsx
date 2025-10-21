@@ -67,7 +67,7 @@ export default function NavigationBar() {
 								<FaCode className="size-6 text-white" />
 							</motion.div>
 							<div className="hidden sm:flex flex-col">
-								<span className="text-xl font-black bg-gradient-to-r from-custom-light-blue to-custom-accent-cyan bg-clip-text text-transparent">
+								<span className="text-xl font-black text-white drop-shadow-lg">
 									Luis Staudt
 								</span>
 								<span className="text-xs text-custom-white-tertiary font-medium -mt-1">
@@ -77,19 +77,18 @@ export default function NavigationBar() {
 						</Link>
 					</motion.div>
 
-					{/* Navigation Links */}
+					{/* Navigation Links and Theme Toggle */}
 					<div className="flex items-center gap-2 sm:gap-4 custom-lg:gap-8">
 						<PageLink title="Home" href="/" index={0}/>
 						<PageLink title="Projects" href="https://github.com/Luis-St" index={1}/>
 						<PageLink title="Skills" index={2}/>
-						<PageLink title="Contact" className="hidden xs:block" index={3}/>
 
 						{/* Theme Toggle with enhanced styling */}
 						<motion.div
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ duration: 0.5, delay: 0.6 }}
-							className="hidden nano:block ml-2"
+							className="hidden nano:flex ml-4"
 						>
 							<ThemeToggle />
 						</motion.div>
