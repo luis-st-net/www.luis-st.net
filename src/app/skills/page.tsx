@@ -42,20 +42,8 @@ function SkillSection(
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.05,
-				delayChildren: 0.2,
-			}
-		}
-	};
-
-	const itemVariants = {
-		hidden: { opacity: 0, y: 20 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.5,
-				ease: "easeOut" as const
+				staggerChildren: 0.08,
+				delayChildren: 0.1,
 			}
 		}
 	};
@@ -65,25 +53,31 @@ function SkillSection(
 			initial={{ opacity: 0, y: 30 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: "-100px" }}
-			transition={{ duration: 0.6, delay: index * 0.1 }}
+			transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
 			className="relative"
 		>
-			<div className="mb-8">
-				<h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+			<motion.div
+				initial={{ opacity: 0, x: -20 }}
+				whileInView={{ opacity: 1, x: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+				className="mb-8"
+			>
+				<h2 className="text-3xl sm:text-4xl font-bold gradient-text mb-3">
 					{type}
 				</h2>
-				<div className="w-16 h-1 bg-gradient-to-r from-custom-blue to-custom-accent-cyan rounded-full" />
-			</div>
+				<div className="w-20 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan rounded-full" />
+			</motion.div>
 
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true, margin: "-50px" }}
-				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
 			>
 				{skills.map((skill) => (
-					<motion.div key={skill.name} variants={itemVariants}>
+					<motion.div key={skill.name}>
 						<SkillBadge {...skill}/>
 					</motion.div>
 				))}
