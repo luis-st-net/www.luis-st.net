@@ -8,77 +8,81 @@ import { motion } from "framer-motion";
 
 export default function () {
 	return (
-		<div className="w-full">
-			<div className="min-h-[calc(calc(100vh-120px)*4)] flex flex-col items-center">
-				<SkillSection type="Languages" text="i have already used" skills={languages} index={0}/>
-				<SkillSection type="Frameworks" text="i have worked with" skills={frameworks} index={1}/>
-				<SkillSection type="Build Systems" text="i have already used" skills={buildSystems} index={2}/>
-				<SkillSection type="Development Tools" text="i have worked with" skills={developmentTools} index={3}/>
+		<div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+			<motion.div
+				initial={{ opacity: 0, y: 30 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8 }}
+				className="text-center mb-16"
+			>
+				<h1 className="text-5xl sm:text-6xl md:text-7xl font-black gradient-text mb-6">
+					My Skills
+				</h1>
+				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full mb-6" />
+				<p className="text-xl text-custom-white-tertiary max-w-2xl mx-auto">
+					Technologies and tools I've worked with throughout my journey as a developer.
+				</p>
+			</motion.div>
+
+			<div className="space-y-20">
+				<SkillSection type="Languages" skills={languages} index={0}/>
+				<SkillSection type="Frameworks & Libraries" skills={frameworks} index={1}/>
+				<SkillSection type="Build Systems" skills={buildSystems} index={2}/>
+				<SkillSection type="Development Tools" skills={developmentTools} index={3}/>
 			</div>
 		</div>
 	);
 }
 
 function SkillSection(
-	{ type, text, skills, index }: { type: string, text: string, skills: Skill[], index: number },
+	{ type, skills, index }: { type: string, skills: Skill[], index: number },
 ) {
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.1,
-				delayChildren: 0.3,
+				staggerChildren: 0.05,
+				delayChildren: 0.2,
 			}
 		}
 	};
 
 	const itemVariants = {
-		hidden: { opacity: 0, y: 30, scale: 0.95 },
+		hidden: { opacity: 0, y: 20 },
 		visible: {
 			opacity: 1,
 			y: 0,
-			scale: 1,
 			transition: {
-				type: "spring" as const,
-				stiffness: 350,
-				damping: 25
+				duration: 0.5,
+				ease: "easeOut" as const
 			}
 		}
 	};
 
 	return (
-		<div className="w-5/6 min-h-[calc(100vh-120px)] flex flex-col items-center justify-center xl:w-4/6 relative">
-			{/* Decorative background element */}
-			<motion.div
-				className="absolute inset-0 bg-gradient-to-br from-custom-blue/5 via-transparent to-custom-accent-purple/5 rounded-3xl blur-3xl"
-				initial={{ opacity: 0, scale: 0.8 }}
-				whileInView={{ opacity: 1, scale: 1 }}
-				viewport={{ once: true }}
-				transition={{ duration: 1, ease: "easeOut" }}
-			/>
-
-			<motion.div
-				initial={{ opacity: 0, y: -30, scale: 0.95 }}
-				whileInView={{ opacity: 1, y: 0, scale: 1 }}
-				viewport={{ once: true, margin: "-100px" }}
-				transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-				className="w-full relative z-10"
-			>
-				<h2 className="text-5xl text-center my-12 sm:text-6xl sm:text-left custom-lg:self-start gradient-text font-black tracking-tight">
+		<motion.section
+			initial={{ opacity: 0, y: 30 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true, margin: "-100px" }}
+			transition={{ duration: 0.6, delay: index * 0.1 }}
+			className="relative"
+		>
+			{/* Section header */}
+			<div className="mb-8">
+				<h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
 					{type}
 				</h2>
-				<p className="text-lg sm:text-xl text-center sm:text-left mb-8 text-custom-gray dark:text-custom-white-tertiary/80 font-medium">
-					{text}
-				</p>
-			</motion.div>
+				<div className="w-16 h-1 bg-gradient-to-r from-custom-blue to-custom-accent-cyan rounded-full" />
+			</div>
 
+			{/* Skills grid */}
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
 				whileInView="visible"
-				viewport={{ once: true, margin: "-100px" }}
-				className="w-full flex flex-row flex-wrap gap-8 justify-center custom-lg:justify-start relative z-10"
+				viewport={{ once: true, margin: "-50px" }}
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
 			>
 				{skills.map((skill) => (
 					<motion.div key={skill.name} variants={itemVariants}>
@@ -86,11 +90,6 @@ function SkillSection(
 					</motion.div>
 				))}
 			</motion.div>
-
-			{/*Duplicated header for centering the inner section*/}
-			<h2 className="text-6xl my-12 opacity-0 select-none pointer-events-none">
-				{type}
-			</h2>
-		</div>
+		</motion.section>
 	);
 }

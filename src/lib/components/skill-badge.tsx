@@ -2,107 +2,104 @@
 
 import { Skill } from "@/lib/types";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { cn } from "@/lib/utility";
 
 export default function SkillBadge(
-	{ name, experience, description, color }: Skill,
+	{ name, experience, description }: Skill,
 ) {
 	const [isExpanded, setIsExpanded] = useState(false);
+
+	// Map experience to visual indicator
+	const getExperienceColor = (exp: string) => {
+		switch (exp) {
+			case "Expert":
+				return "from-custom-blue to-custom-accent-cyan";
+			case "Advanced":
+			case "Experienced":
+				return "from-custom-accent-purple to-custom-accent-pink";
+			case "Proficient":
+				return "from-custom-accent-cyan to-custom-blue";
+			default:
+				return "from-custom-gray to-custom-dark-gray";
+		}
+	};
 
 	return (
 		<motion.div
 			onClick={() => setIsExpanded(!isExpanded)}
-			initial={{ opacity: 0, scale: 0.9 }}
-			animate={{ opacity: 1, scale: 1 }}
-			whileHover={{ scale: 1.02, y: -4 }}
-			whileTap={{ scale: 0.98 }}
-			transition={{ type: "spring", stiffness: 400, damping: 25 }}
+			whileHover={{ y: -4 }}
+			transition={{ type: "spring", stiffness: 300, damping: 20 }}
 			className={cn(
-				"relative cursor-pointer overflow-hidden rounded-2xl",
-				"shadow-lg hover:shadow-2xl transition-all duration-300",
-				isExpanded ? "w-72 sm:w-96" : "w-72 sm:w-96",
-				isExpanded ? "h-auto min-h-40" : "h-32"
+				"relative cursor-pointer overflow-hidden rounded-xl",
+				"glass border border-white/10 hover:border-custom-blue/30",
+				"transition-all duration-300",
+				"w-64 sm:w-72",
+				isExpanded ? "h-auto" : "h-28"
 			)}
 		>
-			{/* Gradient background with color */}
-			<div className={cn(
-				"absolute inset-0 bg-gradient-to-br",
-				color.background
-			)} />
-
-			{/* Overlay for depth */}
-			<div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20" />
-
-			{/* Glow effect on hover */}
+			{/* Subtle gradient overlay on hover */}
 			<motion.div
-				className="absolute -inset-1 bg-gradient-to-r from-custom-light-blue/50 via-custom-accent-purple/50 to-custom-accent-cyan/50 rounded-2xl opacity-0 blur-xl"
-				whileHover={{ opacity: 0.6 }}
+				className="absolute inset-0 bg-gradient-to-br from-custom-blue/5 via-transparent to-custom-accent-purple/5 opacity-0"
+				whileHover={{ opacity: 1 }}
 				transition={{ duration: 0.3 }}
 			/>
 
 			{/* Content */}
-			<div className="relative z-10 p-6 flex flex-col h-full">
-				{/* Header - Always visible */}
-				<div className="flex items-center justify-between mb-3">
-					<motion.h3
-						className="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg"
-						layout
-					>
+			<div className="relative z-10 p-5 flex flex-col h-full">
+				{/* Header */}
+				<div className="flex items-start justify-between mb-2">
+					<h3 className="text-xl font-bold text-white">
 						{name}
-					</motion.h3>
+					</h3>
 
-					{/* Expand indicator */}
+					{/* Expand indicator - subtle */}
 					<motion.div
 						animate={{ rotate: isExpanded ? 180 : 0 }}
 						transition={{ duration: 0.3 }}
-						className="text-white/80 text-xl"
+						className="text-custom-white-tertiary text-sm mt-1"
 					>
 						▼
 					</motion.div>
 				</div>
 
-				{/* Experience badge */}
-				<motion.div
-					layout
-					className={cn(
-						"inline-flex items-center px-4 py-1.5 rounded-full",
-						"bg-white/20 backdrop-blur-sm border border-white/40",
-						"text-white font-semibold text-sm shadow-lg",
-						"w-fit"
-					)}
-				>
-					{experience}
-				</motion.div>
+				{/* Experience badge with gradient */}
+				<div className="flex items-center gap-2 mb-3">
+					<div className={cn(
+						"h-1.5 w-16 rounded-full bg-gradient-to-r",
+						getExperienceColor(experience)
+					)} />
+					<span className="text-xs font-semibold text-custom-white-tertiary uppercase tracking-wide">
+						{experience}
+					</span>
+				</div>
 
 				{/* Description - Expands on click */}
-				<motion.div
-					initial={false}
-					animate={{
-						height: isExpanded ? "auto" : 0,
-						opacity: isExpanded ? 1 : 0,
-						marginTop: isExpanded ? 16 : 0
-					}}
-					transition={{ duration: 0.3, ease: "easeInOut" }}
-					className="overflow-hidden"
-				>
-					<p className="text-base leading-relaxed text-white/90 font-medium">
-						{description}
-					</p>
-				</motion.div>
+				<AnimatePresence>
+					{isExpanded && (
+						<motion.div
+							initial={{ height: 0, opacity: 0 }}
+							animate={{ height: "auto", opacity: 1 }}
+							exit={{ height: 0, opacity: 0 }}
+							transition={{ duration: 0.3, ease: "easeInOut" }}
+							className="overflow-hidden"
+						>
+							<p className="text-sm leading-relaxed text-custom-white-tertiary pt-2 border-t border-white/10">
+								{description}
+							</p>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 
-			{/* Shine effect on hover */}
+			{/* Subtle shine effect on hover */}
 			<motion.div
-				className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+				className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none"
 				initial={{ x: "-100%", skewX: -20 }}
 				whileHover={{ x: "200%" }}
-				transition={{ duration: 0.7, ease: "easeInOut" }}
+				transition={{ duration: 0.8, ease: "easeOut" }}
 			/>
-
-			{/* Border glow */}
-			<div className="absolute inset-0 rounded-2xl border border-white/20 pointer-events-none" />
 		</motion.div>
 	);
 }
