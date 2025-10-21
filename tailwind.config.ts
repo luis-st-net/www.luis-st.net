@@ -77,6 +77,9 @@ const config: Config = {
 						yellow: "var(--custom-accent-yellow)",
 						orange: "var(--custom-accent-orange)",
 						red: "var(--custom-accent-red)",
+						purple: "var(--custom-accent-purple)",
+						pink: "var(--custom-accent-pink)",
+						cyan: "var(--custom-accent-cyan)",
 					},
 					light: {
 						blue: "var(--custom-light-blue)",
