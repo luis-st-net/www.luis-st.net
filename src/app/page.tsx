@@ -46,7 +46,7 @@ export default function () {
 
 function HeroSection() {
 	return (
-		<section className="w-full flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 py-32 sm:py-40">
+		<section className="w-full h-[calc(100vh-5rem-4rem)] flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
 			<motion.div
 				className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-custom-blue/20 via-custom-accent-purple/15 to-transparent rounded-full blur-3xl"
 				animate={{
@@ -125,7 +125,7 @@ function AboutSection() {
 	const age = getAgeFromBirthdate();
 
 	return (
-		<section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+		<section className="w-full h-[calc(100vh-5rem-4rem)] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 			<div
 				className="text-center mb-16"
 			>
@@ -200,7 +200,7 @@ function ExpertiseSection() {
 	];
 
 	return (
-		<section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+		<section className="w-full h-[calc(100vh-5rem-4rem)] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 			<div
 				className="text-center mb-16"
 			>
@@ -232,7 +232,7 @@ function ExpertiseSection() {
 
 function SocialSection() {
 	return (
-		<section id="connect" className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+		<section id="connect" className="w-full h-[calc(100vh-5rem-4rem)] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
 			<motion.div
 				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-custom-accent-purple/10 to-custom-blue/10 rounded-full blur-3xl pointer-events-none"
 				animate={{
