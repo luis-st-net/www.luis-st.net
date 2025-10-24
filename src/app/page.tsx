@@ -101,7 +101,8 @@ function HeroSection() {
 					className="flex flex-wrap justify-center gap-4 mb-16"
 				>
 					<a
-						className="group px-8 py-4 rounded-xl bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan font-bold text-white text-lg transition-all hover:scale-105 hover:shadow-2xl hover:shadow-custom-blue/50"
+						href="#connect"
+						className="group px-8 py-4 rounded-xl bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan font-bold text-white text-lg transition-all hover:scale-105 hover:shadow-2xl hover:shadow-custom-blue/50 cursor-pointer"
 					>
 						Let's Connect
 					</a>

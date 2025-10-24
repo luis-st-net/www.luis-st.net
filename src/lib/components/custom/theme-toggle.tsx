@@ -38,9 +38,9 @@ export function ThemeToggle(
 				whileTap={{ scale: 0.95 }}
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					"size-10 sm:size-11 rounded-xl",
+					"h-10 sm:h-11 px-3 sm:px-4 rounded-xl",
 					"glass border border-white/20 hover:border-white/40",
-					"flex items-center justify-center",
+					"flex items-center justify-center gap-2",
 					"transition-all duration-300",
 					"shadow-lg hover:shadow-xl hover:shadow-custom-blue/20",
 					"relative overflow-hidden group"
@@ -50,8 +50,17 @@ export function ThemeToggle(
 				<div className="absolute inset-0 bg-gradient-to-br from-custom-light-blue/10 via-transparent to-custom-accent-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
 				{/* Icons */}
-				<Icons.Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-custom-light-blue relative z-10"/>
-				<Icons.Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-custom-accent-purple relative z-10"/>
+				<div className="relative z-10 flex items-center">
+					<Icons.Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-custom-light-blue"/>
+					<Icons.Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-custom-accent-purple"/>
+				</div>
+
+				{/* Dropdown indicator */}
+				<Icons.ChevronDown className={cn(
+					"h-3.5 w-3.5 transition-transform duration-300 relative z-10",
+					"text-custom-light-blue dark:text-custom-accent-purple",
+					isOpen && "rotate-180"
+				)} />
 			</motion.button>
 
 			{/* Dropdown Menu */}
