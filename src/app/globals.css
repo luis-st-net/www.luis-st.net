@@ -368,9 +368,18 @@
 		border-color: var(--border);
 	}
 
+	html {
+		overflow-x: hidden;
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+	}
+
 	body {
 		color: var(--custom-text-primary);
 		background-color: var(--custom-primary);
+		overflow-x: hidden;
+		overflow-y: auto;
+		scrollbar-gutter: stable;
 	}
 
 	body::before {
