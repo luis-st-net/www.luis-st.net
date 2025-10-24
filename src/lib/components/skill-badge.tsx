@@ -21,33 +21,33 @@ export default function SkillBadge(
 				};
 			case "Advanced":
 				return {
-					percentage: 80,
+					percentage: 70,
 					color: "from-custom-accent-purple via-custom-accent-pink to-custom-accent-purple",
 					glowColor: "shadow-custom-accent-pink/50"
 				};
 			case "Experienced":
 				return {
-					percentage: 75,
-					color: "from-custom-accent-purple via-custom-accent-pink to-custom-accent-purple",
-					glowColor: "shadow-custom-accent-pink/50"
-				};
-			case "Proficient":
-				return {
-					percentage: 60,
+					percentage: 50,
 					color: "from-custom-accent-cyan via-custom-blue to-custom-accent-cyan",
 					glowColor: "shadow-custom-accent-cyan/50"
 				};
+			case "Proficient":
+				return {
+					percentage: 32,
+					color: "from-green-400 via-emerald-400 to-teal-400",
+					glowColor: "shadow-emerald-400/50"
+				};
 			case "Beginner":
 				return {
-					percentage: 35,
-					color: "from-gray-400 to-gray-500",
-					glowColor: "shadow-gray-500/30"
+					percentage: 12,
+					color: "from-amber-400 via-orange-400 to-amber-400",
+					glowColor: "shadow-orange-400/50"
 				};
 			default:
 				return {
-					percentage: 35,
-					color: "from-gray-400 to-gray-500",
-					glowColor: "shadow-gray-500/30"
+					percentage: 12,
+					color: "from-amber-400 via-orange-400 to-amber-400",
+					glowColor: "shadow-orange-400/50"
 				};
 		}
 	};
@@ -79,12 +79,9 @@ export default function SkillBadge(
 							{name}
 						</h3>
 
-						<div className="flex items-center justify-between mb-2">
+						<div className="mb-2">
 							<span className="text-xs font-bold text-custom-white-secondary uppercase tracking-wider">
 								{experience}
-							</span>
-							<span className="text-xs font-semibold text-custom-light-blue">
-								{expData.percentage}%
 							</span>
 						</div>
 
