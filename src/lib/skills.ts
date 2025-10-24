@@ -44,7 +44,7 @@ const typescript: Skill = {
 const csharp: Skill = {
 	type: "language",
 	name: "C#",
-	experience: "Advanced",
+	experience: "Proficient",
 	description: "Main programming language at work. Used privately for developing small utility programs under Windows and for exploring the Unity game engine.",
 	color: {
 		background: "bg-language-csharp",
@@ -54,7 +54,7 @@ const csharp: Skill = {
 const cpp: Skill = {
 	type: "language",
 	name: "C++",
-	experience: "Experienced",
+	experience: "Proficient",
 	description: "Learned at university. Used for developing a small raspberry pi project. Unfortunately, there are no more projects but i have plans to use C++ in future projects.",
 	color: {
 		background: "bg-language-cpp",
@@ -74,7 +74,7 @@ const shell: Skill = {
 const kotlin: Skill = {
 	type: "language",
 	name: "Kotlin",
-	experience: "Beginner",
+	experience: "Advanced",
 	description: "Current language used for the Gradle scripts of my Java projects. Maintaining simple build scripts/pipelines.",
 	color: {
 		background: "bg-language-kotlin",
@@ -126,7 +126,7 @@ const css: Skill = {
 const spring: Skill = {
 	type: "framework",
 	name: "Spring",
-	experience: "Experienced",
+	experience: "Proficient",
 	description: "Primarily used at work for developing web applications, rest APIs and other microservices.",
 	color: {
 		background: "bg-framework-spring",
@@ -228,7 +228,7 @@ const unity: Skill = {
 const gradle: Skill = {
 	type: "build-system",
 	name: "Gradle",
-	experience: "Experienced",
+	experience: "Advanced",
 	description: "The build system i use for all of my java projects. I have used it for a lot of projects at work and for my own projects.",
 	color: {
 		background: "bg-build-system-gradle",
@@ -248,7 +248,7 @@ const maven: Skill = {
 const vite: Skill = {
 	type: "build-system",
 	name: "Vite",
-	experience: "Beginner",
+	experience: "Proficient",
 	description: "I am very new to this build system, i have used it until today only in one project.",
 	color: {
 		background: "bg-build-system-vite",
@@ -260,7 +260,7 @@ const vite: Skill = {
 const jetbrains: Skill = {
 	type: "development-tool",
 	name: "JetBrains",
-	experience: "Advanced",
+	experience: "Expert",
 	description: "The IDEs i love the most. IntelliJ, Rider, WebStorm, PyCharm, CLion, and all the other IDEs from JetBrains are my favorite tools to work with.",
 	color: {
 		background: "bg-development-tool-jetbrains",
@@ -270,7 +270,7 @@ const jetbrains: Skill = {
 const eclipse: Skill = {
 	type: "development-tool",
 	name: "Eclipse",
-	experience: "Expert",
+	experience: "Proficient",
 	description: "The IDE i have used until i discovered the JetBrains IDEs. If you use this IDE, i have questions!",
 	color: {
 		background: "bg-development-tool-eclipse",
@@ -280,7 +280,7 @@ const eclipse: Skill = {
 const npm: Skill = {
 	type: "development-tool",
 	name: "Npm",
-	experience: "Proficient",
+	experience: "Advanced",
 	description: "The package manager i use for all my Web projects. I have used it for a lot of projects at work and for my private projects.",
 	color: {
 		background: "bg-development-tool-npm",
@@ -300,7 +300,7 @@ const git: Skill = {
 const ciCd: Skill = {
 	type: "development-tool",
 	name: "CI/CD",
-	experience: "Experienced",
+	experience: "Advanced",
 	description: "I have used it for a lot of projects at work and for my private projects. I'm familiar with the standard pipelines for java, javascript and c# projects.",
 	color: {
 		background: "bg-development-tool-ci-cd",
@@ -320,7 +320,7 @@ const docker: Skill = {
 const postman: Skill = {
 	type: "development-tool",
 	name: "Postman",
-	experience: "Experienced",
+	experience: "Beginner",
 	description: "The tool i spent a lot of time to debug Rest APIs. I love it, but i hate it when i have to use it (this means something it's not working).",
 	color: {
 		background: "bg-development-tool-postman",

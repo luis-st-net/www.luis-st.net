@@ -16,8 +16,8 @@ export default function SkillBadge(
 			case "Expert":
 				return {
 					percentage: 95,
-					color: "from-custom-blue via-custom-accent-cyan to-custom-light-blue",
-					glowColor: "shadow-custom-blue/50"
+					color: "from-amber-400 via-orange-400 to-amber-400",
+					glowColor: "shadow-orange-400/50"
 				};
 			case "Advanced":
 				return {
@@ -40,14 +40,14 @@ export default function SkillBadge(
 			case "Beginner":
 				return {
 					percentage: 12,
-					color: "from-amber-400 via-orange-400 to-amber-400",
-					glowColor: "shadow-orange-400/50"
+					color: "from-rose-400 via-pink-400 to-rose-400",
+					glowColor: "shadow-rose-400/50"
 				};
 			default:
 				return {
 					percentage: 12,
-					color: "from-amber-400 via-orange-400 to-amber-400",
-					glowColor: "shadow-orange-400/50"
+					color: "from-rose-400 via-pink-400 to-rose-400",
+					glowColor: "shadow-rose-400/50"
 				};
 		}
 	};

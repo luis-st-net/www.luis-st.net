@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaDiscord, FaGithub, FaLinkedin, FaCode, FaServer, FaRocket, FaJava } from "react-icons/fa";
-import { SiTypescript, SiReact, SiNextdotjs, SiSpring } from "react-icons/si";
+import { SiTypescript, SiReact, SiNextdotjs, SiSpring, SiDocker, SiKotlin } from "react-icons/si";
 import { SocialLink } from "@/lib/types";
 import { getAgeFromBirthdate } from "@/lib/utility";
 import SocialLinkBadge from "@/lib/components/social-link-badge";
@@ -119,13 +119,12 @@ function HeroSection() {
 					transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
 					className="flex justify-center gap-6 flex-wrap"
 				>
-					{[FaJava, SiTypescript, SiReact, SiNextdotjs, SiSpring].map((Icon, index) => (
+					{[FaJava, SiDocker, SiTypescript, SiReact, SiKotlin].map((Icon, index) => (
 						<motion.div
 							key={index}
 							initial={{ opacity: 0, scale: 0.8 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ duration: 0.4, delay: 0.8 + index * 0.1, ease: "easeOut" }}
-							whileHover={{ scale: 1.1, y: -4 }}
 							className="p-4 rounded-xl glass border border-white/10 hover:border-custom-blue/50 transition-colors"
 						>
 							<Icon className="size-8 text-custom-light-blue" />
