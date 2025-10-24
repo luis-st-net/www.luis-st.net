@@ -2,15 +2,17 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { ThemeToggle } from "@/lib/components/custom";
 import { FaCode } from "react-icons/fa";
+import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utility";
 
 export default function NavigationBar() {
 	const { scrollY } = useScroll();
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { theme, resolvedTheme } = useTheme();
 
 	React.useEffect(() => {
 		const unsubscribe = scrollY.on("change", (latest) => {
@@ -19,10 +21,14 @@ export default function NavigationBar() {
 		return () => unsubscribe();
 	}, [scrollY]);
 
+	const currentTheme = theme === "system" ? resolvedTheme : theme;
+
 	const headerBackground = useTransform(
 		scrollY,
 		[0, 100],
-		["rgba(15, 23, 42, 0.3)", "rgba(15, 23, 42, 0.8)"]
+		currentTheme === "light"
+			? ["rgba(248, 250, 252, 0.8)", "rgba(248, 250, 252, 0.95)"]
+			: ["rgba(15, 23, 42, 0.8)", "rgba(15, 23, 42, 0.95)"]
 	);
 
 	return (
@@ -63,10 +69,10 @@ export default function NavigationBar() {
 								<FaCode className="size-6 text-white" />
 							</motion.div>
 							<div className="hidden sm:flex flex-col">
-								<span className="text-xl font-black text-white drop-shadow-lg">
+								<span className="text-xl font-black text-custom-text-primary drop-shadow-lg">
 									Luis Staudt
 								</span>
-								<span className="text-xs text-custom-white-tertiary font-medium -mt-1">
+								<span className="text-xs text-custom-text-tertiary font-medium -mt-1">
 									Software Developer
 								</span>
 							</div>
@@ -106,7 +112,7 @@ function PageLink(
 				href={href ? href : "/" + title.toLowerCase()}
 				className={cn(
 					"relative px-3 py-2 text-sm xs:text-base sm:text-lg font-bold",
-					"text-custom-white-primary transition-all duration-300",
+					"text-custom-text-primary transition-all duration-300",
 					"hover:text-transparent hover:bg-gradient-to-r hover:from-custom-light-blue hover:to-custom-accent-cyan hover:bg-clip-text",
 					"after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px]",
 					"after:bg-gradient-to-r after:from-custom-blue after:via-custom-accent-purple after:to-custom-accent-cyan",

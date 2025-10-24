@@ -28,7 +28,7 @@ export default function InformationCard(
 					{title}
 				</motion.h1>
 				<motion.p
-					className="text-lg sm:text-xl text-center mb-4 sm:text-left 2xl:w-2/3 text-custom-gray dark:text-custom-white-tertiary/90 leading-relaxed font-medium"
+					className="text-lg sm:text-xl text-center mb-4 sm:text-left 2xl:w-2/3 text-custom-text-tertiary/90 leading-relaxed font-medium"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.3 }}

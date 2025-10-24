@@ -89,7 +89,7 @@ function HeroSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-					className="text-xl sm:text-2xl md:text-3xl text-custom-white-tertiary font-medium mb-12 max-w-3xl mx-auto"
+					className="text-xl sm:text-2xl md:text-3xl text-custom-text-tertiary font-medium mb-12 max-w-3xl mx-auto"
 				>
 					Software Developer & Computer Science Student
 				</motion.p>
@@ -164,11 +164,11 @@ function AboutSection() {
 					className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/30 transition-colors"
 				>
 					<h3 className="text-2xl font-bold text-custom-light-blue mb-6">Background</h3>
-					<p className="text-custom-white-tertiary text-lg leading-relaxed mb-4">
+					<p className="text-custom-text-tertiary text-lg leading-relaxed mb-4">
 						I'm a {age}-year-old software developer and computer science student at the University of Furtwangen in Germany.
 						My passion lies in crafting elegant solutions to complex problems.
 					</p>
-					<p className="text-custom-white-tertiary text-lg leading-relaxed">
+					<p className="text-custom-text-tertiary text-lg leading-relaxed">
 						With expertise spanning from backend development to modern web applications,
 						I continuously explore emerging technologies and push the boundaries of what's possible in software engineering.
 					</p>
@@ -196,7 +196,7 @@ function AboutSection() {
 								whileInView={{ opacity: 1, x: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.4, delay: 0.6 + index * 0.1, ease: "easeOut" }}
-								className="flex items-center gap-3 text-custom-white-tertiary text-lg"
+								className="flex items-center gap-3 text-custom-text-tertiary text-lg"
 							>
 								<div className="w-2 h-2 rounded-full bg-gradient-to-r from-custom-blue to-custom-accent-cyan" />
 								{interest}
@@ -258,10 +258,10 @@ function ExpertiseSection() {
 						className="glass rounded-2xl p-8 border border-white/10 hover:border-custom-blue/50 transition-colors group"
 					>
 						<div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${item.color} mb-6 group-hover:scale-110 transition-transform`}>
-							<item.icon className="size-8 text-white" />
+							<item.icon className="size-8 text-custom-text-primary" />
 						</div>
-						<h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-						<p className="text-custom-white-tertiary text-base leading-relaxed">
+						<h3 className="text-2xl font-bold text-custom-text-primary mb-4">{item.title}</h3>
+						<p className="text-custom-text-tertiary text-base leading-relaxed">
 							{item.description}
 						</p>
 					</motion.div>
@@ -298,7 +298,7 @@ function SocialSection() {
 					Let's Connect
 				</h2>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full mb-6" />
-				<p className="text-xl text-custom-white-tertiary max-w-2xl mx-auto">
+				<p className="text-xl text-custom-text-tertiary max-w-2xl mx-auto">
 					Interested in my work or want to collaborate? Feel free to reach out on any of these platforms.
 				</p>
 			</motion.div>

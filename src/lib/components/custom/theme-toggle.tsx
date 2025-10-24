@@ -100,7 +100,7 @@ export function ThemeToggle(
 											"transition-all duration-200",
 											"hover:bg-gradient-to-r hover:from-custom-light-blue/20 hover:to-custom-accent-purple/20",
 											theme === themeOption.value && "bg-gradient-to-r from-custom-light-blue/30 to-custom-accent-purple/30",
-											"text-white"
+											"text-custom-text-primary"
 										)}
 									>
 										<Icon className="h-4 w-4" />

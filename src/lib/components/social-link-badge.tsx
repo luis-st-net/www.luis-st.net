@@ -31,13 +31,13 @@ export default function SocialLinkBadge(
 						<Icon className="size-12 tiny:size-14 xs:size-20 text-custom-light-blue drop-shadow-lg"/>
 					</div>
 					<div className="ml-4 my-0.5 tiny:my-1">
-						<h5 className="text-base tiny:text-lg sm:text-xl font-bold text-white mb-1 transition-colors group-hover:text-custom-light-blue">
+						<h5 className="text-base tiny:text-lg sm:text-xl font-bold text-custom-text-primary mb-1 transition-colors group-hover:text-custom-light-blue">
 							{title}
 						</h5>
-						<p className="text-xs tiny:text-sm text-custom-white-tertiary font-medium">
+						<p className="text-xs tiny:text-sm text-custom-text-tertiary font-medium">
 							{username}
 						</p>
-						<p className="text-xs tiny:text-sm text-custom-white-tertiary/80">
+						<p className="text-xs tiny:text-sm text-custom-text-tertiary/80">
 							{description}
 						</p>
 					</div>

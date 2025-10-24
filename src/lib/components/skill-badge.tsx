@@ -75,12 +75,12 @@ export default function SkillBadge(
 			<div className="relative z-10 p-5">
 				<div className="flex items-start justify-between mb-4">
 					<div className="flex-1">
-						<h3 className="text-lg font-bold text-white mb-3">
+						<h3 className="text-lg font-bold text-custom-text-primary mb-3">
 							{name}
 						</h3>
 
 						<div className="mb-2">
-							<span className="text-xs font-bold text-custom-white-secondary uppercase tracking-wider">
+							<span className="text-xs font-bold text-custom-text-secondary uppercase tracking-wider">
 								{experience}
 							</span>
 						</div>
@@ -108,7 +108,7 @@ export default function SkillBadge(
 					<motion.div
 						animate={{ rotate: isExpanded ? 180 : 0 }}
 						transition={{ duration: 0.3, ease: "easeInOut" }}
-						className="ml-3 mt-1 text-custom-white-tertiary/60 group-hover:text-custom-light-blue transition-colors flex-shrink-0"
+						className="ml-3 mt-1 text-custom-text-tertiary/60 group-hover:text-custom-light-blue transition-colors flex-shrink-0"
 					>
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
 							<path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
@@ -126,7 +126,7 @@ export default function SkillBadge(
 							className="overflow-hidden"
 						>
 							<div className="pt-3 border-t border-white/10">
-								<p className="text-sm leading-relaxed text-custom-white-tertiary">
+								<p className="text-sm leading-relaxed text-custom-text-tertiary">
 									{description}
 								</p>
 							</div>

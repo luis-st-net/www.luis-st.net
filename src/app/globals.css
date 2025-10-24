@@ -52,11 +52,16 @@
 	--color-custom-white-primary: var(--custom-white-primary);
 	--color-custom-white-secondary: var(--custom-white-secondary);
 	--color-custom-white-tertiary: var(--custom-white-tertiary);
-	
+
 	--color-custom-black: var(--custom-black);
 	--color-custom-black-primary: var(--custom-black-primary);
 	--color-custom-black-secondary: var(--custom-black-secondary);
 	--color-custom-black-tertiary: var(--custom-black-tertiary);
+
+	--color-custom-text-primary: var(--custom-text-primary);
+	--color-custom-text-secondary: var(--custom-text-secondary);
+	--color-custom-text-tertiary: var(--custom-text-tertiary);
+	--color-custom-text-quaternary: var(--custom-text-quaternary);
 	
 	--color-language-java: var(--language-java);
 	--color-language-python: var(--language-python);
@@ -277,6 +282,12 @@
 		--custom-secondary: var(--custom-white-primary);
 		--custom-tertiary: var(--custom-white-tertiary);
 		--custom-quaternary: var(--custom-white-quaternary);
+
+		/*Text colors for light mode - dark text on light background*/
+		--custom-text-primary: var(--custom-black);
+		--custom-text-secondary: var(--custom-black-secondary);
+		--custom-text-tertiary: var(--custom-black-tertiary);
+		--custom-text-quaternary: var(--custom-gray);
 		
 		/*Programming Languages*/
 		--language-java: #f89820;
@@ -342,6 +353,12 @@
 		--custom-tertiary: var(--custom-black-tertiary);
 		--custom-quaternary: var(--custom-black-quaternary);
 
+		/*Text colors for dark mode - light text on dark background*/
+		--custom-text-primary: var(--custom-white);
+		--custom-text-secondary: var(--custom-white-primary);
+		--custom-text-tertiary: var(--custom-white-tertiary);
+		--custom-text-quaternary: var(--custom-light-gray);
+
 		--framework-next-js: #ffffff;
 	}
 }
@@ -350,7 +367,12 @@
 	* {
 		border-color: var(--border);
 	}
-	
+
+	body {
+		color: var(--custom-text-primary);
+		background-color: var(--custom-primary);
+	}
+
 	body::before {
 		content: '';
 		position: fixed;
@@ -364,6 +386,22 @@
 			radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
 		pointer-events: none;
 		z-index: 0;
+	}
+
+	/* Darker animated background for light mode */
+	:root body::before {
+		background:
+			radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+			radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+	}
+
+	/* Restore original for dark mode */
+	.dark body::before {
+		background:
+			radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.08) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+			radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
 	}
 
 	body > * {
@@ -407,10 +445,10 @@
 	}
 
 	.glass {
-		background: rgba(255, 255, 255, 0.05);
+		background: rgba(248, 250, 252, 0.7);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(59, 130, 246, 0.15);
 	}
 
 	.dark .glass {

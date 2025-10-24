@@ -19,7 +19,7 @@ export default function () {
 					My Skills
 				</h1>
 				<div className="w-24 h-1 bg-gradient-to-r from-custom-blue via-custom-accent-purple to-custom-accent-cyan mx-auto rounded-full mb-6" />
-				<p className="text-xl text-custom-white-tertiary max-w-2xl mx-auto">
+				<p className="text-xl text-custom-text-tertiary max-w-2xl mx-auto">
 					Technologies and tools I've worked with throughout my journey as a developer.
 				</p>
 			</motion.div>
