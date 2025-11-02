@@ -273,7 +273,7 @@ function ExpertiseSection() {
 
 function SocialSection() {
 	return (
-		<section id="connect" className="w-full min-h-[calc(100vh-5rem-4rem)] flex flex-col justify-center items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 relative overflow-x-hidden">
+		<section id="connect" className="w-full min-h-[calc(100vh-5rem-4rem)] flex flex-col justify-center items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 relative overflow-hidden">
 			<motion.div
 				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-96 md:w-[500px] lg:w-[600px] h-80 sm:h-96 md:h-[500px] lg:h-[600px] bg-gradient-to-br from-custom-accent-purple/10 to-custom-blue/10 rounded-full blur-3xl pointer-events-none"
 				animate={{
@@ -311,7 +311,7 @@ function SocialSection() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true, margin: "-100px" }}
 						transition={{ duration: 0.5, delay: 0.3 + index * 0.15, ease: "easeOut" }}
-						whileHover={{ scale: 1.05, y: -8 }}
+						whileHover={{ scale: 1.02, y: -8 }}
 						className="w-full max-w-sm sm:max-w-none sm:w-auto"
 					>
 						<SocialLinkBadge {...social}/>
