@@ -1,5 +1,6 @@
 services:
   web:
+    build: .
     image: main-web:latest
     container_name: main-web
     healthcheck:
