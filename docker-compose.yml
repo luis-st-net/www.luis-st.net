@@ -30,7 +30,7 @@ services:
       OWNER_COUNTRY: ${OWNER_COUNTRY}
       OWNER_MAIL: ${OWNER_MAIL}
     ports:
-      - "3006:3000"
+      - "3000:3000"
     restart: unless-stopped
     network_mode: bridge
     extra_hosts:
