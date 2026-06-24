@@ -10,7 +10,6 @@
 #  docker run -d -p 3000:3000 --restart unless-stopped --name main-web main-web:<version>
 # With docker compose:
 #  docker compose up -d --build
-#  docker compose down
 
 FROM node:lts-alpine
 
