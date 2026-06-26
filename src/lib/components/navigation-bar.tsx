@@ -82,7 +82,8 @@ export default function NavigationBar() {
 					<div className="flex items-center gap-2 sm:gap-4 custom-lg:gap-8">
 						<PageLink title="Home" href="/" index={0}/>
 						<PageLink title="Projects" href="https://github.com/Luis-St" index={1}/>
-						<PageLink title="Skills" index={2}/>
+						<PageLink title="Publications" href="https://ur.luis-st.net/" index={2}/>
+						<PageLink title="Skills" index={3}/>
 
 						<motion.div
 							initial={{ opacity: 0, scale: 0 }}
