@@ -1,33 +1,29 @@
-# Build image on host (windows only):
-#  docker buildx build --load --platform linux/arm64 -t main-web:<version> .
-#  docker save -o D:\Programmieren\Docker\Images\Main-Website\main-web-<version>.tar main-web
-#  docker load -i ./main-web-<version>.tar
-# Build image on remote:
-#  docker build -t main-web:<version> .
-# Update the container:
-#  docker stop main-web
-#  docker rm main-web
-#  docker run -d -p 3000:3000 --restart unless-stopped --name main-web main-web:<version>
-# With docker compose:
-#  docker compose up -d --build
-
-FROM node:lts-alpine
-
+FROM node:lts-alpine AS deps
 WORKDIR /app
-
 COPY package.json package-lock.json ./
-
 RUN npm ci
 
+FROM node:lts-alpine AS builder
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
 RUN npm run build
-RUN npm prune --omit=dev
+
+FROM node:lts-alpine AS runner
+WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+RUN mkdir -p .next/cache && chown node:node .next/cache
+
+USER node
 
 EXPOSE 3000
 
